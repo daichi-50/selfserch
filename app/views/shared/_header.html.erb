@@ -13,10 +13,9 @@
             <% end %>
         </div>      
     </div>
-
-    <%= link_to new_user_path, class: 'btn btn-primary btn-sm fs-sm rounded d-lg-inline-flex' do %>
-    <i class="bx bx-cart fs-5 lh-1 me-1"></i>
-    会員登録
-    <% end %>
+    <div class="form-check form-switch mode-switch pe-lg-1 ms-auto me-4" data-bs-toggle="mode">
+        <%= link_to 'ログイン', new_user_session_path, class: 'btn btn-secondary btn-sm fs-sm rounded d-lg-inline-flex' %>
+    </div>
+    <%= link_to '会員登録', new_user_path, class: 'btn btn-primary btn-sm fs-sm rounded d-lg-inline-flex' %>
 </div>
 </header>
