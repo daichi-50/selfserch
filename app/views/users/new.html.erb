@@ -1,54 +1,30 @@
 <!-- Sign up form -->
 <div class="container d-flex flex-wrap justify-content-center justify-content-xl-start h-100 pt-5">
     <div class="w-100 align-self-end pt-1 pt-md-4 pb-4" style="max-width: 526px;">
-    <h1 class="text-center text-xl-start">Create Account</h1>
+    <h1 class="text-center text-xl-start">会員登録</h1>
     <p class="text-center text-xl-start pb-3 mb-3">Already have an account? <a href="account-signin.html">Sign in here.</a></p>
-        <form class="needs-validation" novalidate>
+        <%= form_with model: @user, local: true, html: {class: 'needs-validation'} do |f| %>
             <div class="row">
             <div class="col-sm-6">
                 <div class="position-relative mb-4">
-                <label for="name" class="form-label fs-base">Full name</label>
-                <input type="text" id="name" class="form-control form-control-lg" required>
-                <div class="invalid-feedback position-absolute start-0 top-100">Please enter your name!</div>
-                </div>
-            </div>
-            <div class="col-sm-6">
-                <div class="position-relative mb-4">
-                <label for="email" class="form-label fs-base">Email</label>
-                <input type="email" id="email" class="form-control form-control-lg" required>
-                <div class="invalid-feedback position-absolute start-0 top-100">Please enter a valid email address!</div>
+                <%= f.label :username, class: 'form-label fs-base' %>
+                <%= f.text_field :username, class: 'form-control form-control-lg'%>
                 </div>
             </div>
             <div class="col-12 mb-4">
-                <label for="password" class="form-label fs-base">Password</label>
-                <div class="password-toggle">
-                <input type="password" id="password" class="form-control form-control-lg" required>
-                <label class="password-toggle-btn" aria-label="Show/hide password">
-                    <input class="password-toggle-check" type="checkbox">
-                    <span class="password-toggle-indicator"></span>
-                </label>
-                <div class="invalid-feedback position-absolute start-0 top-100">Please enter a password!</div>
-                </div>
+                    <%= f.label :email, class: 'form-label fs-base' %>
+                    <%= f.email_field :email, class: 'form-control form-control-lg'%>
             </div>
             <div class="col-12 mb-4">
-                <label for="password-confirm" class="form-label fs-base">Confirm password</label>
-                <div class="password-toggle">
-                <input type="password" id="password-confirm" class="form-control form-control-lg" required>
-                <label class="password-toggle-btn" aria-label="Show/hide password">
-                    <input class="password-toggle-check" type="checkbox">
-                    <span class="password-toggle-indicator"></span>
-                </label>
-                <div class="invalid-feedback position-absolute start-0 top-100">Please enter a password!</div>
+                <%= f.label :password, class: 'form-label fs-base' %>
+                <%= f.password_field :password, class: 'form-control form-control-lg'%>
+                </div>
+                <div class="col-12 mb-4">
+                    <%= f.label :password_confirmation, class: 'form-label fs-base' %>
+                    <%= f.password_field :password_confirmation, class: 'form-control form-control-lg'%>
                 </div>
             </div>
-            </div>
-            <div class="mb-4">
-            <div class="form-check">
-                <input type="checkbox" id="terms" class="form-check-input">
-                <label for="terms" class="form-check-label fs-base">I agree to <a href="#">Terms &amp; Conditions</a></label>
-            </div>
-            </div>
-            <button type="submit" class="btn btn-primary shadow-primary btn-lg w-100">Sign up</button>
-        </form>
+            <%= f.submit '会員登録', class: 'btn btn-primary shadow-primary btn-lg w-100' %>
+        <% end %>
     </div>
 </div>
