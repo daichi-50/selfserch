@@ -1,0 +1,25 @@
+<!-- Page content -->
+<section class="position-relative h-100 pt-5 pb-4">
+
+<!-- Sign in form -->
+<div class="container d-flex flex-wrap justify-content-center justify-content-xl-start h-100 pt-5">
+    <div class="w-100 align-self-end pt-1 pt-md-4 pb-4" style="max-width: 526px;">
+        <h1 class="text-center text-xl-start">ログイン</h1>
+        <p class="text-center text-xl-start pb-3 mb-3">会員登録はこちら <%= link_to '会員登録', new_user_path %>
+        </p>
+        <%= form_with url: user_session_path, local: true, html: {class: 'needs-validation mb-2', novalidate: true} do |f| %>
+            <div class="position-relative mb-4">
+                <%= f.label :email, 'メールアドレス',class: 'form-label fs-base' %>
+                <%= f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control form-control-lg', placeholder: 'メールアドレス', required: true %>
+                <div class="invalid-feedback position-absolute start-0 top-100">Please enter a valid email address!</div>
+                </div>
+                <div class="mb-4">
+                    <%= f.label :password, 'パスワード',class: 'form-label fs-base' %>
+                    <%= f.password_field :password, autocomplete: 'current-password', class: 'form-control form-control-lg', placeholder: 'パスワード', required: true %>
+                </div>
+            </div>
+            <%= f.submit 'ログイン', class: 'btn btn-primary shadow-primary btn-lg w-100' %>
+        <% end %>
+    </div>
+</div>
+
