@@ -2,20 +2,24 @@
 <!-- Remove "fixed-top" class to make navigation bar scrollable with the page -->
 
 <header class="header navbar navbar-expand-lg bg-light shadow-sm fixed-top">
-<div class="container px-3">
-    <a href="index.html" class="navbar-brand pe-3">
-    <%= link_to '自分、探してます', root_path, class: 'navbar-brand pe-3', width:47 %>
-    <div id="navbarNav" class="offcanvas offcanvas-end">
-        <div class="offcanvas-header border-top">
-            <%= link_to new_user_path, class: 'btn btn-primary w-100' do %>
-            <i class="bx bx-cart fs-4 lh-1 me-1"></i>
-            会員登録
-            <% end %>
-        </div>      
+    <div class="container px-3">
+        <a href="index.html" class="navbar-brand pe-3">
+        <%= link_to '自分、探してます', root_path, class: 'navbar-brand pe-3', width:47 %>
+        <div id="navbarNav" class="offcanvas offcanvas-end">
+            <div class="offcanvas-header border-top">
+                <%= link_to new_user_path, class: 'btn btn-primary w-100' do %>
+                <i class="bx bx-cart fs-4 lh-1 me-1"></i>
+                会員登録
+                <% end %>
+            </div>      
+        </div>
+        <% if logged_in? %>
+            <%= link_to 'ログアウト', user_session_path, class: 'btn btn-primary btn-sm fs-sm rounded d-lg-inline-flex', data: {"turbo_method": :delete} %>
+        <% else %>
+            <div class="form-check form-switch mode-switch pe-lg-1 ms-auto me-4" data-bs-toggle="mode">
+                <%= link_to 'ログイン', new_user_session_path, class: 'btn btn-secondary btn-sm fs-sm rounded d-lg-inline-flex' %>
+            </div>
+            <%= link_to '会員登録', new_user_path, class: 'btn btn-primary btn-sm fs-sm rounded d-lg-inline-flex' %>
+        <% end %>
     </div>
-    <div class="form-check form-switch mode-switch pe-lg-1 ms-auto me-4" data-bs-toggle="mode">
-        <%= link_to 'ログイン', new_user_session_path, class: 'btn btn-secondary btn-sm fs-sm rounded d-lg-inline-flex' %>
-    </div>
-    <%= link_to '会員登録', new_user_path, class: 'btn btn-primary btn-sm fs-sm rounded d-lg-inline-flex' %>
-</div>
 </header>
