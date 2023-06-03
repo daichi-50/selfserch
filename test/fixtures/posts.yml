@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  image: MyString
+  lost_item_category: MyString
+  when: MyString
+  heighy: 1
+  body_weight: 1
+  lost_item_description: MyString
+
+two:
+  user: two
+  image: MyString
+  lost_item_category: MyString
+  when: MyString
+  heighy: 1
+  body_weight: 1
+  lost_item_description: MyString

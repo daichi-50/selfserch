@@ -10,3 +10,10 @@ ja:
         password_confirmation: パスワード（確認）
         created_at: 登録日時
         updated_at: 更新日時
+      post: 
+        image: 画像
+        lost_item_category: 見失ったもの
+        start_at: いつなくした？
+        user_height: 身長
+        user_weight: 体重or体型
+        lost_item_description: 見失ったものの詳細
