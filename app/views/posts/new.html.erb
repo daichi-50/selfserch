@@ -1,0 +1,110 @@
+<section class="position-relative bg-secondary pt-5">
+    <div class="container position-relative zindex-2 pt-5" style="margin-top: 50px;">
+        <div class="row">
+        <!-- Contact links -->
+            <div class="col-xl-4 col-lg-5 pb-4 pb-sm-5 mb-2 mb-sm-0">
+                <div class="pe-lg-4 pe-xl-0">
+                    <h1 class="pb-3 pb-md-4 mb-lg-5">投稿作成</h1>
+                <div class="d-flex align-items-start pb-3 mb-sm-1 mb-md-3">
+                    <div class="bg-light text-primary rounded-circle flex-shrink-0 fs-3 lh-1 p-3">
+                        <i class="bx bx-envelope"></i>
+                    </div>
+                    <div class="ps-3 ps-sm-4">
+                        <h2 class="h4 pb-1 mb-2">ユーザー</h2>
+                        <%= image_tag "enviroment/post_sample.png" %>
+                    </div>
+                </div>
+                <div class="d-flex align-items-start">
+                    <div class="bg-light text-primary rounded-circle flex-shrink-0 fs-3 lh-1 p-3">
+                        <i class="bx bx-group"></i>
+                    </div>
+                    <div class="ps-3 ps-sm-4">
+                        <h2 class="h4 pb-1 mb-2">コメント</h2>
+                        <%= image_tag "enviroment/comment_sample.png" %>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact form -->
+        <div class="col-xl-6 col-lg-7 offset-xl-2">
+            <div class="card border-light shadow-lg py-3 p-sm-4 p-md-5">
+                <div class="bg-dark position-absolute top-0 start-0 w-100 h-100 rounded-3 d-none d-dark-mode-block"></div>
+                    <div class="card-body position-relative zindex-2">
+                        <h2 class="card-title pb-3 mb-4">探し物は何ですか？</h2>
+                        <%= form_with model: @post, local: true, html: {class: 'needs-validation', novalidate: true} do |f| %>
+                            <div class="row g-4 needs-validation">
+                                <div class="col-12">
+                                    <div class="position-relative mb-4">
+                                        <%= f.label :image, class: 'form-label fs-base' %>
+                                        <%= f.file_field :image, class: 'form-control form-control-lg'%>
+                                </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="position-relative mb-4">
+                                        <%= f.label :lost_item_category, class: 'form-label fs-base' %>
+                                        <%= f.text_field :lost_item_category, class: 'form-control form-control-lg'%>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="position-relative mb-4">
+                                        <%= f.label :when, class: 'form-label fs-base' %>
+                                        <%= f.datetime_field :when, class: 'form-control form-control-lg'%>
+                                    </div>
+                                </div>
+                                <div class="col-sm-8">
+                                    <div class="position-relative mb-4">
+                                        <%= f.label :user_height, class: 'form-label fs-base' %>
+                                        <%= f.text_field :user_height, class: 'form-control form-control-lg'%>
+                                    </div>
+                                </div>
+                                <div class="col-sm-8">
+                                    <div class="position-relative mb-4">
+                                        <%= f.label :user_weight, class: 'form-label fs-base' %>
+                                        <%= f.text_field :user_weight, class: 'form-control form-control-lg'%>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="position-relative mb-4">
+                                        <%= f.label :lost_item_description, class: 'form-label fs-base' %>
+                                        <%= f.text_area :lost_item_description, class: 'form-control form-control-lg'%>
+                                    </div>
+                                </div>
+                            </div>
+                            <%= f.submit '投稿する', class: 'btn btn-lg btn-primary w-100 w-sm-auto' %>
+                        <% end %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="position-absolute bottom-0 start-0 w-100 bg-light" style="height: 8rem;"></div>
+</section>
+
+
+<!-- Branches -->
+<section class="container py-2 py-lg-4 py-xl-5 mb-2 mb-md-3">
+    <div class="row py-5">
+        <div class="col-lg-6 mb-5 mb-lg-0">
+        <div class="d-flex flex-column h-100 shadow-sm rounded-3 overflow-hidden">
+            <iframe class="d-block h-100" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5020.057277316842!2d-122.40737351959179!3d37.73986147046842!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xd5ce6be90058bc85!2sOur%20Planet%20Recycling%20S.F.!5e0!3m2!1sen!2sua!4v1653946944869!5m2!1sen!2sua" style="border: 0; min-height: 300px;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+        </div>
+        <div class="col-lg-5 offset-lg-1">
+        <h2 class="h4 mb-4">自分を見失った場所</h2>
+            <ul class="list-unstyled pb-2 pb-lg-0 mb-4 mb-lg-5">
+                <li class="d-flex pb-1 mb-2">
+                <i class="bx bx-map text-primary fs-xl me-2" style="margin-top: .125rem;"></i>
+                445 Bayshor Blvd, San Francisco, CA 94124
+                </li>
+                <li class="d-flex pb-1 mb-2">
+                <i class="bx bx-phone-call text-primary fs-xl me-2" style="margin-top: .125rem;"></i>
+                (406) 555-0120
+                </li>
+                <li class="d-flex">
+                <i class="bx bx-time-five text-primary fs-xl me-2" style="margin-top: .125rem;"></i>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
