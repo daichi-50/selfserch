@@ -1,0 +1,77 @@
+<!-- Breadcrumb -->
+<nav class="container mt-lg-4 pt-5" aria-label="breadcrumb">
+    <ol class="breadcrumb mb-0 pt-5">
+        <li class="breadcrumb-item active" aria-current="page">投稿一覧</li>
+    </ol>
+</nav>
+
+<!-- Page content -->
+<section class="container mt-4 mb-lg-5 pt-lg-2 pb-5">
+    <!-- Page title + Layout switcher + Search form -->
+    <div class="row align-items-end gy-3 mb-4 pb-lg-3 pb-1">
+        <div class="col-lg-5 col-md-4">
+        <h1 class="mb-2 mb-md-0">投稿一覧</h1>
+        </div>
+        <div class="col-lg-7 col-md-8">
+            <form class="row gy-2">
+                <div class="col-lg-5 col-sm-6">
+                <div class="d-flex align-items-center">
+                    <div class="d-flex align-items-center me-sm-4 me-3">
+                    <a href="blog-list-no-sidebar.html" class="nav-link me-2 p-0">
+                        <i class="bx bx-list-ul fs-4"></i>
+                    </a>
+                    <a href="blog-grid-no-sidebar.html" class="nav-link p-0 active">
+                        <i class="bx bx-grid-alt fs-4"></i>
+                    </a>
+                    </div>
+                    <select class="form-select">
+                    <option>All categories</option>
+                    <option value="processes-and-tools">Processes &amp; Tools</option>
+                    <option value="startups">Startups</option>
+                    <option value="digital">Digital</option>
+                    <option value="strategy">Strategy</option>
+                    <option value="business">Business</option>
+                    </select>
+                </div>
+                </div>
+                <div class="col-lg-7 col-sm-6">
+                <div class="input-group">
+                    <input type="text" class="form-control pe-5 rounded" placeholder="Search the blog...">
+                    <i class="bx bx-search position-absolute top-50 end-0 translate-middle-y me-3 zindex-5 fs-lg"></i>
+                </div>
+                </div>
+            </form>
+        </div>
+    </div>
+<!-- Blog grid -->
+    <div class="row row-cols-lg-3 row-cols-sm-2 row-cols-1 gy-md-4 gy-2">
+        <% @posts.each do |post| %>
+            <!-- Item -->
+            <div class="col pb-3">
+                <article class="card border-0 shadow-sm h-100">
+                    <div class="position-relative">
+                        <a href="blog-single.html" class="position-absolute top-0 start-0 w-100 h-100" aria-label="Read more"></a>
+                        <a href="#" class="btn btn-icon btn-light bg-white border-white btn-sm rounded-circle position-absolute top-0 end-0 zindex-5 me-3 mt-3" data-bs-toggle="tooltip" data-bs-placement="left" title="Read later">
+                            <i class="bx bx-bookmark"></i>
+                        </a>
+                        <%= link_to image_tag(post.image.url, size: "300x200"), post_path(post), class: "card-img-top", alt: "Image" %>
+                    </div>
+                    <div class="card-body pb-4">
+                        <div class="d-flex align-items-center justify-content-between mb-3">
+                            <span class="fs-sm text-muted"><%= post.created_at.strftime('%Y年%m月%d日 %H:%M') %> </span>
+                        </div>
+                        <h3 class="h5 mb-0">
+                            <a href="blog-single.html"> <%= post.when %><br><%= post.lost_item_category %>を見失いました。<br>身長:<%= post.user_height %><br>体重:<%= post.user_weight %><br><%= post.lost_item_description %> </a>
+                        </h3>
+                    </div>
+                    <div class="card-footer py-4">
+                        <a href="#" class="d-flex align-items-center fw-bold text-dark text-decoration-none">
+                            <img src="assets/img/avatar/01.jpg" class="rounded-circle me-3" width="48" alt="Avatar">
+                            <%= post.user.username %>
+                        </a>
+                    </div>
+                </article>
+            </div>
+        <% end %>
+    </div>
+</section>

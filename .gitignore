@@ -5,6 +5,9 @@
 #   git config --global core.excludesfile '~/.gitignore_global'
 
 # Ignore bundler config.
+.DS_Store
+dtabase.yml
+vendor/bundle
 /.bundle
 
 # Ignore all logfiles and tempfiles.
