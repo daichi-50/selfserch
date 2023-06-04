@@ -14,7 +14,12 @@
             </div>      
         </div>
         <% if logged_in? %>
-            <%= link_to 'ログアウト', user_session_path, class: 'btn btn-primary btn-sm fs-sm rounded d-lg-inline-flex', data: {"turbo_method": :delete} %>
+            <div class="form-check form-switch mode-switch pe-lg-1 ms-auto me-4" data-bs-toggle="mode">
+                <%= link_to "新規投稿", new_post_path, class: "btn btn-primary btn-sm fs-sm rounded d-lg-inline-flex" %>
+            </div>
+            <div class="form-check form-switch mode-switch pe-lg-1 ms-auto me-4" data-bs-toggle="mode">
+                <%= link_to 'ログアウト', user_session_path, class: 'btn btn-primary btn-sm fs-sm rounded d-lg-inline-flex', data: {"turbo_method": :delete} %>
+            </div>
         <% else %>
             <div class="form-check form-switch mode-switch pe-lg-1 ms-auto me-4" data-bs-toggle="mode">
                 <%= link_to 'ログイン', new_user_session_path, class: 'btn btn-secondary btn-sm fs-sm rounded d-lg-inline-flex' %>

@@ -13,7 +13,7 @@ ja:
       post: 
         image: 画像
         lost_item_category: 見失ったもの
-        start_at: いつなくした？
+        when: いつなくした？
         user_height: 身長
         user_weight: 体重or体型
         lost_item_description: 見失ったものの詳細
