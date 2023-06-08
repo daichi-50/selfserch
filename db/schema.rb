@@ -19,6 +19,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_01_222316) do
     t.string "image"
     t.string "lost_item_category"
     t.string "when"
+    t.string "generated_card"
     t.string "user_height"
     t.string "user_weight"
     t.string "lost_item_description"

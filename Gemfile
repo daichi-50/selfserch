@@ -78,5 +78,6 @@ end
 
 gem "sorcery", "~> 0.16.5"
 
-gem 'rmagick'
+gem 'mini_magick'
 gem 'pry-byebug'
+gem 'rmagick'
