@@ -43,13 +43,9 @@ class Post < ApplicationRecord
   end
 
   def add_line_breaks(body, n = 13)
-    body.split(/\s/).reduce(['']) do |lines, word|
-      if lines.last.length + word.length > n
-        lines << word
-      else
-        lines[-1] += " #{word}"
-      end
-      lines[0..4]
-    end.join("\n").strip
+    broken_lines = body.split(/[\r\n]/).flat_map do |line|
+      line.scan(/.{1,#{n}}/)
+    end
+    broken_lines[0..4].join("\n")
   end
 end
