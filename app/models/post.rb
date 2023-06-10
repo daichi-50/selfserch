@@ -5,22 +5,41 @@ class Post < ApplicationRecord
   belongs_to :user
 
   require 'base64'
-  require 'rmagic'
+  require 'rmagick'
   require 'mini_magick'
 
-  def self.create_image(lost_item_category:)
-    base_image = MiniMagick::Image.open("app/assets/images/lost_item_template.png")
-
-    cap_lost_item_category = lost_item_category.gsub(/[\r\n]/, "").truncate(20).scan(/.{1,20}/).join("\n")
-
-    draw = Magick::Draw.new do
-      self.gravity = Magick::CenterGravity
+      # 画像に文字を入れる
+  def create_image(title:, description:)
+    base_image = MiniMagick::Image.open("app/assets/images/enviroment/serch_card.png")
+    base_image = base_image.combine_options do |c|
+      c.resize '800x700'
     end
 
-    draw.annotate(base_image, 0, 0, 75, 75, cap_title) do
-      self.font = './fonts/NotoSansJP-Bold.otf'
-      self.pointsize = 20
+    #投稿された画像を合成
+
+    result = base_image.composite(MiniMagick::Image.open("https://serchself.s3.amazonaws.com/#{self.image.file.path}")) do |config|
+      config.compose 'Over'
+      config.gravity 'center'
+      config.geometry '+0-40'
+      #binding.pry
+    end
+  
+
+    cap_title = title.gsub(/[\r\n]/, "").truncate(20).scan(/.{1,20}/).join("\n")
+    cap_description = description.gsub(/[\r\n]/, "").truncate(20).scan(/.{1,20}/).join("\n")
+
+    result.combine_options do |config|
+      #pry-byebug
+      config.font './fonts/NotoSansJP-Bold.otf'
+      config.fill 'black'
+      config.gravity 'NorthWest'  #左上に合わせる
+      config.pointsize 34
+      config.draw "text 35, 35 '#{cap_title}'"
+      config.pointsize 30
+      #pry-byebug
+      config.draw "text 42, 530 '#{cap_description}'"
     end
 
-    base_image.write('.images/output.png') # 画像を見ながら調整
+    self.generated_card = result
+  end
 end
