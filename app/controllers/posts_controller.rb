@@ -14,7 +14,7 @@ class PostsController < ApplicationController
     def create
         @post = current_user.posts.build(post_params)
 
-        @post.create_image(title: @post.title, description: @post.description)
+        @post.create_image
 
         if @post.save
             flash[:success] = "Post created"
