@@ -21,6 +21,9 @@
             <div class="form-check form-switch mode-switch pe-lg-1 ms-auto me-4" data-bs-toggle="mode">
                 <%= link_to 'ログアウト', user_session_path, class: 'btn btn-primary btn-sm fs-sm rounded d-lg-inline-flex', data: {"turbo_method": :delete} %>
             </div>
+            <div class="form-check form-switch mode-switch pe-lg-1 ms-auto me-4" data-bs-toggle="mode">
+                <%= link_to 'マイページ', user_path(current_user), class: 'btn btn-primary btn-sm fs-sm rounded d-lg-inline-flex' %>
+            </div>
         <% else %>
             <div class="form-check form-switch mode-switch pe-lg-1 ms-auto me-4" data-bs-toggle="mode">
                 <%= link_to 'ログイン', new_user_session_path, class: 'btn btn-secondary btn-sm fs-sm rounded d-lg-inline-flex' %>

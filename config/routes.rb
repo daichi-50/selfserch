@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "tops#index"
 
-  resources :users, only: [:new, :create]
+  resources :users, only: [:new, :create, :show]
   resource :user_session, only: [:new, :create, :destroy]
   resources :posts
 end
