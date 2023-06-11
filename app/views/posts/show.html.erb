@@ -70,22 +70,24 @@
     <div class="col-lg-9">
 
     <!-- Comment -->
-    <div class="py-4">
-        <div class="d-flex align-items-center justify-content-between pb-2 mb-1">
-        <div class="d-flex align-items-center me-3">
-            <img src="assets/img/avatar/03.jpg" class="rounded-circle" width="48" alt="Avatar">
-            <div class="ps-3">
-            <h6 class="fw-semibold mb-0">Esther Howard</h6>
-            <span class="fs-sm text-muted">4 mins ago</span>
+    <% @messages.each do |message| %>
+        <div class="py-4">
+            <div class="d-flex align-items-center justify-content-between pb-2 mb-1">
+                <div class="d-flex align-items-center me-3">
+                    <img src="assets/img/avatar/03.jpg" class="rounded-circle" width="48" alt="Avatar">
+                    <div class="ps-3">
+                    <h6 class="fw-semibold mb-0">Esther Howard</h6>
+                    <span class="fs-sm text-muted">4 mins ago</span>
+                    </div>
+                </div>
+                <a href="#" class="nav-link fs-sm px-0">
+                <i class="bx bx-share fs-lg me-2"></i>
+                Reply
+            </a>
             </div>
+            <p class="mb-0"><%= message.contents %></p>
         </div>
-        <a href="#" class="nav-link fs-sm px-0">
-            <i class="bx bx-share fs-lg me-2"></i>
-            Reply
-        </a>
-        </div>
-        <p class="mb-0">Nibh enim porta ut augue felis, donec sit luctus. Quis ullamcorper dolor sit mauris. Hendrerit eu libero, eu tristique sodales ultrices etiam adipiscing. Donec viverra sodales arcu gravida nibh at. Neque lobortis quis porta integer et placerat lectus scelerisque. Velit eget malesuada morbi faucibus at sed euismod. Tortor, eu ut id tincidunt leo placerat luctus.</p>
-    </div>
+    <% end %>
 
     <hr class="my-2">
 

@@ -3,6 +3,7 @@ class Post < ApplicationRecord
     mount_uploader :generated_card, GeneratedCardUploader
 
   belongs_to :user
+  has_many :messages, dependent: :destroy
 
   require 'base64'
   require 'rmagick'

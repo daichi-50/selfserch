@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   authenticates_with_sorcery!
   has_many :posts, dependent: :destroy
+  has_many :messages, dependent: :destroy
 
   validates :username, presence: true, length: { maximum: 50, allow_blank: true }
   validates :email, presence: true, uniqueness: true

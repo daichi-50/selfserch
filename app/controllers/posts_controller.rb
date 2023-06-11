@@ -5,7 +5,10 @@ class PostsController < ApplicationController
         @posts = Post.all
     end
 
-    def show; end
+    def show
+        @message = Message.new
+        @messages = @post.messages
+    end
 
     def new
         @post = current_user.posts.build

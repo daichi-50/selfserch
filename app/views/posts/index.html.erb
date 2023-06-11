@@ -48,18 +48,17 @@
         <% @posts.each do |post| %>
             <!-- Item -->
             <div class="col pb-3">
-                <article class="card border-0 shadow-sm h-100">
+                <article class="card card-hover">
                     <div class="position-relative">
                         <%= link_to image_tag(post.generated_card.url, size: "300x200"), post_path(post), class: "card-img-top", alt: "Image" %>
                     </div>
-                    <div class="card-body pb-4">
-                        <div class="d-flex align-items-center justify-content-between mb-3">
+                    <div class="card-body pb-0">
+                        <div class="d-flex align-items-center text-muted">
                             <span class="fs-sm text-muted"><%= post.created_at.strftime('%Y年%m月%d日 %H:%M') %> </span>
                         </div>
                     </div>
                     <div class="card-footer py-4">
                         <a href="#" class="d-flex align-items-center fw-bold text-dark text-decoration-none">
-                            <img src="assets/img/avatar/01.jpg" class="rounded-circle me-3" width="48" alt="Avatar">
                             <%= post.user.username %>
                         </a>
                     </div>
