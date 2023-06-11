@@ -50,10 +50,6 @@
             <div class="col pb-3">
                 <article class="card border-0 shadow-sm h-100">
                     <div class="position-relative">
-                        <a href="blog-single.html" class="position-absolute top-0 start-0 w-100 h-100" aria-label="Read more"></a>
-                        <a href="#" class="btn btn-icon btn-light bg-white border-white btn-sm rounded-circle position-absolute top-0 end-0 zindex-5 me-3 mt-3" data-bs-toggle="tooltip" data-bs-placement="left" title="Read later">
-                            <i class="bx bx-bookmark"></i>
-                        </a>
                         <%= link_to image_tag(post.generated_card.url, size: "300x200"), post_path(post), class: "card-img-top", alt: "Image" %>
                     </div>
                     <div class="card-body pb-4">
