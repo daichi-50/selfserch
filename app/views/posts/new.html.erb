@@ -40,34 +40,22 @@
                                         <%= f.file_field :image, class: 'form-control form-control-lg'%>
                                     </div>
                                 </div>
-                                <div class="col-sm-6">
-                                    <div class="position-relative mb-4">
-                                        <%= f.label :when, class: 'form-label fs-base' %>
-                                        <%= f.text_field :when, class: 'form-control form-control-lg', placeholder: '先日'%>
-                                    </div>
-                                </div>
                                 <div class="col-12">
                                     <div class="position-relative mb-4">
                                         <%= f.label :title, class: 'form-label fs-base' %>
                                         <%= f.text_field :title, class: 'form-control form-control-lg', placeholder: '二度と戻らない彼との日々' %>
                                     </div>
                                 </div>
-                                <div class="col-sm-8">
-                                    <div class="position-relative mb-4">
-                                        <%= f.label :user_height, class: 'form-label fs-base' %>
-                                        <%= f.text_field :user_height, class: 'form-control form-control-lg', placeholder: '彼とは５センチ差だったな...' %>
-                                    </div>
-                                </div>
-                                <div class="col-sm-8">
-                                    <div class="position-relative mb-4">
-                                        <%= f.label :user_weight, class: 'form-label fs-base' %>
-                                        <%= f.text_field :user_weight, class: 'form-control form-control-lg', placeholder: '20キロのりんご3つ分' %>
-                                    </div>
-                                </div>
                                 <div class="col-12">
                                     <div class="position-relative mb-4">
                                         <%= f.label :description, class: 'form-label fs-base' %>
                                         <%= f.text_area :description, class: 'form-control form-control-lg', placeholder: 'あの日のことを思い出すと、胸が痛みます。タイムマシンに心あたりがある方はご一報ください'%>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="position-relative mb-4">
+                                        <%= f.label :prize_money, class: 'form-label fs-base' %>
+                                        <%= f.number_field :prize_money, class: 'form-control form-control-lg', placeholder: '1000000' %>
                                     </div>
                                 </div>
                             </div>

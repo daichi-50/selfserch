@@ -25,18 +25,20 @@ class Post < ApplicationRecord
     end
 
     cap_title = title.gsub(/[\r\n]/, "").truncate(20).scan(/.{1,20}/).join("\n")
-    cap_description = add_line_breaks(description.gsub(/[\r\n]/, " "), 13)
+    cap_description = add_line_breaks(description, 13)
 
     result.combine_options do |config|
       #pry-byebug
       config.font 'app/assets/fonts/craft/craftmincho.otf'
       config.fill 'black'
-      config.gravity 'NorthWest'  #左上に合わせる
-      config.pointsize 55
-      config.draw "text 35, 47 '#{cap_title}'"
+      config.gravity 'center'  #中央に合わせる
+      config.pointsize 40
+      config.draw "text 0, -260 '#{escape_text(cap_title)}'"
       config.pointsize 30
       #pry-byebug
-      config.draw "text 42, 400 '#{cap_description}'"
+      config.draw "text 0, 120 '#{escape_text(cap_description)}'"
+      config.pointsize 35
+      config.draw "text 0, 320 '#{prize_money}'"
     end
 
     self.generated_card = result
@@ -47,5 +49,9 @@ class Post < ApplicationRecord
       line.scan(/.{1,#{n}}/)
     end
     broken_lines[0..4].join("\n")
+  end
+
+  def escape_text(text)
+    text.gsub("'", "\\\\'")  # replace ' with \'
   end
 end
