@@ -1,5 +1,5 @@
 <!-- Hero -->
-<section class="jarallax position-relative d-flex align-items-center min-vh-100 bg-light mb-5 py-lg-5 pt-5" style="background-image: url(assets/img/landing/digital-agency/hero-bg.svg);" data-jarallax data-img-position="0% 100%" data-speed="0.5">
+<section class="jarallax position-relative d-flex align-items-center min-vh-100 bg-light mb-5 py-lg-5 pt-5" style="background-image: url(<%= asset_path('enviroment/backgroud.jpg') %>);background-size: cover; background-position: center;" >
     <div class="container position-relative zindex-5 py-5">
         <div class="row justify-content-md-start justify-content-center">
             <div class="col-md-6 col-sm-8 order-md-1 order-2 d-flex flex-column justify-content-between mt-4 pt-2 text-md-start text-center">
@@ -7,7 +7,8 @@
 
                 <!-- Text -->
                 <h1 class="display-2 mb-md-5 mb-3 pb-3">
-                    <span class="text-gradient-primary">自分、</span> <br>探しませんか？
+                    <span class="text-gradient-primary">自分、</span>
+                    <span class="white-text"><br>探しませんか？</span>
                 </h1>
                 <div class="d-md-flex align-items-md-start">
                     <a href="contacts-v1.html" class="btn btn-lg btn-primary flex-shrink-0 me-md-4 mb-md-0 mb-sm-4 mb-3">はじめよう</a>
@@ -18,13 +19,10 @@
             <!-- Animated gfx -->
             <div class="col-sm-6 col-sm-6 col-9 order-md-2 order-1">
                 <div class="parallax" style="max-width: 746px;">
-                    <div class="parallax-layer" data-depth="0.1">
-                        <%= image_tag "enviroment/back_top.jpg" %>
+                    <div class="parallax-layer" data-depth="0.2">
+                        <%= image_tag "enviroment/board.png" %>
                     </div>
-                <div class="parallax-layer" data-depth="0.2">
-                  <%= image_tag "enviroment/top_irast.svg" %>
                 </div>
-              </div>
             </div>
         </div>
     </div>

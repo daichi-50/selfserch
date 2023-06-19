@@ -7,7 +7,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
       {
         received: function(data) {
         console.log(data);
-          return $("#messages").append(data.message);
+        return $("#messages").append(data.message);
         },
     
         speak: function(message) {

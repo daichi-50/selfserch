@@ -1,3 +1,10 @@
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons';
 @import 'theme.min';
+
+.white-text {color: white;}
+body {
+    background-image: image-url('enviroment/backgroud.jpg');
+    background-size: cover;
+    background-position: center;
+  }
