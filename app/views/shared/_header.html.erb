@@ -12,23 +12,44 @@
                 <i class="bx bx-cart fs-4 lh-1 me-1"></i>
                 会員登録
                 <% end %>
-            </div>      
+            </div>
+            <div class="offcanvas-body">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item dropdown">
+                  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">ギルド</a>
+                  <div class="dropdown-menu">
+                    <div class="d-lg-flex pt-lg-3">
+                      <div class="mega-dropdown-column">
+                        <h6 class="px-3 mb-2">About</h6>
+                        <ul class="list-unstyled mb-3">
+                          <li><%= link_to "新規投稿", new_post_path, class: "dropdown-item py-1" %></li>
+                          <li><%=  link_to "投稿一覧", posts_path, class: "dropdown-item py-1" %></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li class="nav-item dropdown">
+                  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">依頼人</a>
+                  <div class="dropdown-menu">
+                    <div class="d-lg-flex pt-lg-3">
+                      <div class="mega-dropdown-column">
+                        <h6 class="px-3 mb-2">User</h6>
+                        <ul class="list-unstyled mb-3">
+                          <% if logged_in? %>
+                            <li><%= link_to "マイページ", user_path(current_user), class: "dropdown-item py-1" %></li>
+                            <li><%=  link_to "ログアウト", user_session_path, class: "dropdown-item py-1", data: {"turbo_method": :delete} %></li>
+                          <% else %>
+                            <li><%= link_to "ログイン", new_user_session_path, class: "dropdown-item py-1" %></li>
+                            <li><%= link_to "会員登録", new_user_path, class: "dropdown-item py-1" %></li>
+                        <% end %>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
         </div>
-        <% if logged_in? %>
-            <div class="form-check form-switch mode-switch pe-lg-1 ms-auto me-4" data-bs-toggle="mode">
-                <%= link_to "新規投稿", new_post_path, class: "btn btn-primary btn-sm fs-sm rounded d-lg-inline-flex" %>
-            </div>
-            <div class="form-check form-switch mode-switch pe-lg-1 ms-auto me-4" data-bs-toggle="mode">
-                <%= link_to 'ログアウト', user_session_path, class: 'btn btn-primary btn-sm fs-sm rounded d-lg-inline-flex', data: {"turbo_method": :delete} %>
-            </div>
-            <div class="form-check form-switch mode-switch pe-lg-1 ms-auto me-4" data-bs-toggle="mode">
-                <%= link_to 'マイページ', user_path(current_user), class: 'btn btn-primary btn-sm fs-sm rounded d-lg-inline-flex' %>
-            </div>
-        <% else %>
-            <div class="form-check form-switch mode-switch pe-lg-1 ms-auto me-4" data-bs-toggle="mode">
-                <%= link_to 'ログイン', new_user_session_path, class: 'btn btn-secondary btn-sm fs-sm rounded d-lg-inline-flex' %>
-            </div>
-            <%= link_to '会員登録', new_user_path, class: 'btn btn-primary btn-sm fs-sm rounded d-lg-inline-flex' %>
-        <% end %>
     </div>
 </header>
