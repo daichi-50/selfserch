@@ -16,11 +16,11 @@
             <div class="offcanvas-body">
               <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item dropdown">
-                  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">ギルド</a>
+                  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><%= image_tag "enviroment/serch_card.png", alt: "logo", width: 50 %></a>
                   <div class="dropdown-menu">
                     <div class="d-lg-flex pt-lg-3">
                       <div class="mega-dropdown-column">
-                        <h6 class="px-3 mb-2">About</h6>
+                        <h6 class="px-3 mb-2">WANTED</h6>
                         <ul class="list-unstyled mb-3">
                           <li><%= link_to "新規投稿", new_post_path, class: "dropdown-item py-1" %></li>
                           <li><%=  link_to "投稿一覧", posts_path, class: "dropdown-item py-1" %></li>
@@ -30,7 +30,7 @@
                   </div>
                 </li>
                 <li class="nav-item dropdown">
-                  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">依頼人</a>
+                  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><%= image_tag "enviroment/user_logo.png", alt: "logo", width: 70 %></a>
                   <div class="dropdown-menu">
                     <div class="d-lg-flex pt-lg-3">
                       <div class="mega-dropdown-column">

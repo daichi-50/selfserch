@@ -1,0 +1,27 @@
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
+    <%= link_to raw("<i class='bx bx-chevron-left mx-n1'></i>"), url_for(page: current_page.number - 1), class: 'page-link', rel: 'prev', remote: remote unless current_page.first? %>
+    <li class="page-item disabled d-sm-none">
+      <span class="page-link text-body"><%= current_page %> / <%= total_pages %></span>
+    </li>
+    <% paginator.each_page do |page| %>
+      <% if page.left_outer? || page.right_outer? || page.inside_window? %>
+        <% if page.current? %>
+          <li class="page-item active d-none d-sm-block" aria-current="page">
+            <span class="page-link">
+              <%= page.number %>
+              <span class="visually-hidden">(current)</span>
+            </span>
+          </li>
+        <% else %>
+          <li class="page-item d-none d-sm-block">
+            <%= link_to page.number, url_for(page: page.number), class: 'page-link', remote: remote %>
+          </li>
+        <% end %>
+      <% elsif !page.was_truncated? %>
+        <li class="page-item disabled"><span class="page-link">...</span></li>
+      <% end %>
+    <% end %>
+    <%= link_to raw("<i class='bx bx-chevron-right mx-n1'></i>"), url_for(page: current_page.number + 1), class: 'page-link', rel: 'next', remote: remote unless current_page.last? %>
+  </ul>
+</nav>
