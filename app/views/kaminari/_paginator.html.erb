@@ -1,5 +1,5 @@
 <nav aria-label="Page navigation example">
-  <ul class="pagination">
+  <ul class="pagination justify-content-center">
     <%= link_to raw("<i class='bx bx-chevron-left mx-n1'></i>"), url_for(page: current_page.number - 1), class: 'page-link', rel: 'prev', remote: remote unless current_page.first? %>
     <li class="page-item disabled d-sm-none">
       <span class="page-link text-body"><%= current_page %> / <%= total_pages %></span>
