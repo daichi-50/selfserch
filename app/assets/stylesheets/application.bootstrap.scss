@@ -9,14 +9,3 @@ body {
     background-position: center;
 }
 
-.jarallax::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5); /* ここで透過度を調整します。0.5は50%透過を意味します */
-    z-index: 1;
-}
-

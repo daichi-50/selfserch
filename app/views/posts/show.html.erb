@@ -124,3 +124,17 @@
         </div>
     </div>
 </section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        window.swiper = new Swiper('.swiper', {
+            direction: 'vertical',
+            slidesPerView: 'auto',
+            freeMode: true,
+            scrollbar: {
+            el: '.swiper-scrollbar',
+            },
+            mousewheel: true,
+        });
+    });
+</script>

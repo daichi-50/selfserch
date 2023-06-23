@@ -8,12 +8,23 @@ function scrollToBottom() {
 window.addEventListener('DOMContentLoaded', (event) => {
   const messages = document.getElementById('messages');
   const postId = messages.dataset.postId;
+  console.log(`Post ID is: ${postId}`);
   const appPost = consumer.subscriptions.create({channel: "PostChannel", post_id: postId}, {
-    connected() {},
+    connected() {
+      console.log('Successfully connected to the channel.');
+    },
     disconnected() {},
     received(data) {
-      const messages = document.getElementById('messages');
+      console.log('Received data:', data);
       messages.insertAdjacentHTML('beforeend', data['message']);
+      console.log('Message inserted');
+      setTimeout(function() {
+        window.swiper.update(); // 更新
+        const swiperContainer = document.querySelector('.swiper');
+        if (swiperContainer) {
+          swiperContainer.scrollTop = swiperContainer.scrollHeight;
+        }
+      }, 100);
     },
     speak: function(message, postId) {
       return this.perform('speak', {message: message, post_id: postId});
