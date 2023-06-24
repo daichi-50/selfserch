@@ -11,7 +11,7 @@
     <!-- Page title + Layout switcher + Search form -->
     <div class="row align-items-end gy-3 mb-4 pb-lg-3 pb-1">
         <div class="col-lg-5 col-md-4">
-        <h1 class="mb-2 mb-md-0">投稿一覧</h1>
+        <h1 class="mb-2 mb-md-0">手配書</h1>
         </div>
         <div class="col-lg-7 col-md-8">
             <form class="row gy-2">
@@ -51,7 +51,7 @@
             <div class="col pb-3">
                 <article class="card card-hover">
                     <div class="position-relative">
-                        <%= link_to image_tag(post.generated_card.url, size: "300x200"), post_path(post), class: "card-img-top", alt: "Image",data: { turbolinks: false } %>
+                        <%= link_to image_tag(post.generated_card.url, size: "400x400"), post_path(post), class: "card-img-top", alt: "Image",data: { turbolinks: false } %>
                     </div>
                     <div class="card-body pb-0">
                         <div class="d-flex align-items-center text-muted">
