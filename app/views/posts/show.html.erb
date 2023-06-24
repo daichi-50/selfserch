@@ -102,7 +102,7 @@
                                 <!-- User message -->
                                 <h1>Chat room</h1>
                                 <div data-post-id="<%= @post.id %>" id="messages">
-                                <%= render partial: 'messages/message', collection: @messages, as: :message %>
+                                    <%= render partial: 'messages/message', collection: @messages, as: :message %>
                                 </div>
                             </div>
                         </div>
@@ -126,15 +126,23 @@
 </section>
 
 <script>
-    document.addEventListener('DOMContentLoaded', (event) => {
-        window.swiper = new Swiper('.swiper', {
-            direction: 'vertical',
-            slidesPerView: 'auto',
-            freeMode: true,
-            scrollbar: {
-            el: '.swiper-scrollbar',
-            },
-            mousewheel: true,
-        });
+window.onload = function() {
+    window.swiper = new Swiper('.swiper', {
+        direction: 'vertical',
+        slidesPerView: 'auto',
+        freeMode: true,
+        scrollbar: {
+        el: '.swiper-scrollbar',
+        },
+        mousewheel: true,
     });
+
+    setTimeout(function() {
+    window.swiper.update();
+    const swiperContainer = document.querySelector('.swiper');
+    if (swiperContainer) {
+      swiperContainer.scrollTop = swiperContainer.scrollHeight;
+    }
+  }, 100);
+};
 </script>

@@ -8,7 +8,7 @@ class PostsController < ApplicationController
     def show
         @post = Post.find(params[:id])
         @message = Message.new
-        @messages = @post.messages
+        @messages = @post.messages.includes(:user).order(created_at: :desc)
     end
 
     def new
@@ -18,7 +18,8 @@ class PostsController < ApplicationController
     def create
         @post = current_user.posts.build(post_params)
 
-        @post.create_image
+        @post.set_prize_money #懸賞金の設定
+        @post.create_image #画像の作成
 
         if @post.save
             flash[:success] = "Post created"

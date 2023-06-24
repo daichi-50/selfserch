@@ -58,3 +58,14 @@ window.addEventListener('DOMContentLoaded', (event) => {
     console.error("Could not find element with id 'submit_button'");
   }
 });
+
+// Popstate event
+window.addEventListener('popstate', function(event) {
+  setTimeout(function() {
+    window.swiper.update();
+    const swiperContainer = document.querySelector('.swiper');
+    if (swiperContainer) {
+      swiperContainer.scrollTop = swiperContainer.scrollHeight;
+    }
+  }, 100);
+});
