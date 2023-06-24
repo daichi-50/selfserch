@@ -20,7 +20,12 @@ class UsersController < ApplicationController
         @posts = @user.posts
     end
 
+    def search
+        @post = Post.find(params[:post_id])
+        @users = User.where('username LIKE ?', "%#{params[:username]}%")
+    end
 private
+
     def user_params
         params.require(:user).permit(:username, :email, :password, :password_confirmation)
     end
