@@ -1,30 +1,32 @@
 <!-- Sign up form -->
-<div class="container d-flex flex-wrap justify-content-center justify-content-xl-start h-100 pt-5">
-    <div class="w-100 align-self-end pt-1 pt-md-4 pb-4" style="max-width: 526px;">
-        <h1 class="text-center text-xl-start">会員登録</h1>
-        <p class="text-center text-xl-start pb-3 mb-3">Already have an account? <a href="account-signin.html">Sign in here.</a></p>
-        <%= form_with model: @user, local: true, html: {class: 'needs-validation'} do |f| %>
-            <div class="row">
-                <div class="col-sm-6">
-                    <div class="position-relative mb-4">
-                        <%= f.label :username, class: 'form-label fs-base' %>
-                        <%= f.text_field :username, class: 'form-control form-control-lg'%>
+<section class="jarallax position-relative d-flex align-items-center min-vh-100 bg-light mb-5 py-lg-5 pt-5" style="background-image: url(<%= asset_path('enviroment/background.jpg') %>);background-size: cover; background-position: center;" >
+    <div class="container d-flex flex-wrap justify-content-center justify-content-xl-start h-100 pt-5">
+        <div class="w-100 align-self-end pt-1 pt-md-4 pb-4" style="max-width: 526px;">
+            <h1 class="text-center text-xl-start">会員登録</h1>
+            <p class="text-center text-xl-start pb-3 mb-3">Already have an account? <a href="account-signin.html">Sign in here.</a></p>
+            <%= form_with model: @user, local: true, html: {class: 'needs-validation'} do |f| %>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="position-relative mb-4">
+                            <%= f.label :username, class: 'form-label fs-base' %>
+                            <%= f.text_field :username, class: 'form-control form-control-lg'%>
+                        </div>
+                    </div>
+                    <div class="col-12 mb-4">
+                        <%= f.label :email, class: 'form-label fs-base' %>
+                        <%= f.email_field :email, class: 'form-control form-control-lg'%>
+                    </div>
+                    <div class="col-12 mb-4">
+                        <%= f.label :password, class: 'form-label fs-base' %>
+                        <%= f.password_field :password, class: 'form-control form-control-lg'%>
+                    </div>
+                    <div class="col-12 mb-4">
+                        <%= f.label :password_confirmation, class: 'form-label fs-base' %>
+                        <%= f.password_field :password_confirmation, class: 'form-control form-control-lg'%>
                     </div>
                 </div>
-                <div class="col-12 mb-4">
-                    <%= f.label :email, class: 'form-label fs-base' %>
-                    <%= f.email_field :email, class: 'form-control form-control-lg'%>
-                </div>
-                <div class="col-12 mb-4">
-                    <%= f.label :password, class: 'form-label fs-base' %>
-                    <%= f.password_field :password, class: 'form-control form-control-lg'%>
-                </div>
-                <div class="col-12 mb-4">
-                    <%= f.label :password_confirmation, class: 'form-label fs-base' %>
-                    <%= f.password_field :password_confirmation, class: 'form-control form-control-lg'%>
-                </div>
-            </div>
-            <%= f.submit '会員登録', class: 'btn btn-primary shadow-primary btn-lg w-100' %>
-        <% end %>
+                <%= f.submit '会員登録', class: 'btn btn-primary shadow-primary btn-lg w-100' %>
+            <% end %>
+        </div>
     </div>
-</div>
+</section>
