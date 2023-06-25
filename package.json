@@ -14,7 +14,7 @@
     "sass": "^1.62.1"
   },
   "scripts": {
-    "build": "esbuild app/javascript/*.* app/javascript/packs/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=assets",
+    "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=assets",
     "build:css": "sass ./app/assets/stylesheets/application.bootstrap.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules"
   }
 }

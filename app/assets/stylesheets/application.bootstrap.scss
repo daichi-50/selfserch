@@ -1,6 +1,11 @@
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons';
 @import 'theme.min';
+@import url('https://fonts.googleapis.com/css2?family=Stick&display=swap');
+
+section {
+    font-family: 'Stick', sans-serif;
+}
 
 .white-text {color: white;}
 body {
