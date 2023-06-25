@@ -1,0 +1,27 @@
+<section class="container py-5 my-md-3 my-lg-5">
+  <div class="row align-items-center">
+    <div class="col-md-6 text-center text-md-start">
+      <h2 class="h1 mb-4">懸賞金の獲得 <br> ランキング！！！！</h2>
+      <p class="fs-lg mb-md-0">Check out the ranking based on the amount of money each user has.</p>
+    </div>
+    <div class="col-md-6">
+      <div class="row row-cols-1 row-cols-md-3">
+        <% @users.each_with_index do |user, index| %>
+        <div class="col text-md-center pb-2 mb-4">
+          <h3 class="h5 mb-2 mb-md-3">Rank: <%= index + 1 %></h3>
+          <ul class="list-unstyled">
+            <li class="d-flex align-items-center p-2">
+              <span class="text-dark fw-medium">User Name:&nbsp;</span>
+              <%= user.username %>
+            </li>
+            <li class="d-flex align-items-center p-2 bg-secondary">
+              <span class="text-dark fw-medium">Money:&nbsp;</span>
+              <%= user.money %>
+            </li>
+          </ul>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>

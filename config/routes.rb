@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   mount ActionCable.server => '/cable'
   root "tops#index"
 
-  resources :users, only: [:new, :create, :show]
+  resources :users, only: [:new, :create, :show, :index]
   resource :user_session, only: [:new, :create, :destroy]
   resources :posts do
     resources :messages, only: [:create]

@@ -43,7 +43,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_24_061559) do
     t.string "salt"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "money"
+    t.integer "money", default: 0
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

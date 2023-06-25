@@ -118,18 +118,28 @@
     </div>
 </section>
 
-<%= form_with url: search_users_path, class: "needs-validation", method: :get do |f| %>
-    <div class="row g-4">
-        <div class="col-sm-6">
-            <%= f.label :username, 'ユーザー名', class: "form-label fs-base" %>
-            <%= f.text_field :username , class: "form-control form-control-lg", required: true %>
-            <%= hidden_field_tag :post_id, @post.id %>
-        </div>
-        <div class="col-12">
-            <%= f.submit '検索', class: "btn btn-lg btn-outline-secondary" %>
+<div style="height: 100px;"></div>
+    <div class="container pt-lg-4">
+        <div class="row pb-5">
+            <div class="col-lg-4 col-md-6">
+            <div class="navbar-brand text-dark p-0 me-0 mb-3 mb-lg-4">
+                <img src="assets/img/logo.svg" width="47" alt="Silicon">
+                懸賞金を支払う
+            </div>
+            <p class="fs-sm pb-lg-3 mb-4">チャットをくれた人に懸賞金を贈ろう！！！その人の名前を入れてね！</p>
+            <%= form_with url: search_users_path, class: "needs-validation", method: :get do |f| %>
+                <%= f.label :username, 'ユーザー名', class: "form-label" %>
+                <div class="input-group">
+                <%= f.text_field :username , class: "form-control rounded-start ps-5",  placeholder:"あきら" ,required: true %>
+                <%= hidden_field_tag :post_id, @post.id %>
+                <i class="bx bx-envelope fs-lg text-muted position-absolute top-50 start-0 translate-middle-y ms-3 zindex-5"></i>
+                <%= f.submit '検索', class: "btn btn-primary" %>
+                </div>
+            <% end %>
+            </div>
         </div>
     </div>
-<% end %>
+</div>
 
 <script>
 window.onload = function() {
@@ -144,11 +154,11 @@ window.onload = function() {
     });
 
     setTimeout(function() {
-    window.swiper.update();
-    const swiperContainer = document.querySelector('.swiper');
-    if (swiperContainer) {
-      swiperContainer.scrollTop = swiperContainer.scrollHeight;
-    }
-  }, 100);
+        window.swiper.update();
+        const swiperContainer = document.querySelector('.swiper');
+        if (swiperContainer) {
+            swiperContainer.scrollTop = swiperContainer.scrollHeight;
+        }
+    }, 100);
 };
 </script>
