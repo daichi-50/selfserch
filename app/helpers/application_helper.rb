@@ -17,7 +17,7 @@ module ApplicationHelper
             image: post&.generated_card&.file&.present? ? post.generated_card.url : image_url("ogp.jpg"),
             type: 'website',
             url: request.original_url,
-            local: 'ja_JP'
+            local: 'ja-JP'
             },
             twitter: {
             card: 'summary_large_image',

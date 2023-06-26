@@ -6,7 +6,7 @@ class UsersController < ApplicationController
     end
 
     def index
-        @users = User.order(money: :desc)
+        @users = User.order(money: :desc).limit(9)
     end
 
     def create
