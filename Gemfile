@@ -83,3 +83,4 @@ gem 'pry-byebug'
 gem 'rmagick'
 gem 'kaminari'
 gem "meta-tags"
+gem 'devise'

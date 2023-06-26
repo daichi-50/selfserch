@@ -1,13 +1,10 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
+  devise_for :users
 
   mount ActionCable.server => '/cable'
   root "tops#index"
 
-  resources :users, only: [:new, :create, :show, :index]
-  resource :user_session, only: [:new, :create, :destroy]
+  resources :users, only: [:show, :index]
   resources :posts do
     resources :messages, only: [:create]
   end
