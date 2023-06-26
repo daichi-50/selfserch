@@ -11,4 +11,11 @@ class User < ApplicationRecord
   def own?(object)
     object.user_id == id
   end
+
+  def self.guest
+    find_or_create_by!(email: 'guest@example.com') do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.username = "ゲスト" 
+    end
+  end
 end
