@@ -1,31 +1,54 @@
 <!-- Navbar -->
 <!-- Remove "fixed-top" class to make navigation bar scrollable with the page -->
-
+<section>
 <header class="header navbar navbar-expand-lg bg-light shadow-sm fixed-top">
-    <div class="container px-3">
-        <a href="index.html" class="navbar-brand pe-3">
-            <%= image_tag "enviroment/self_serch.png", alt: "logo", width: 70 %>
-        <%= link_to '自分、探してます', root_path, class: 'navbar-brand pe-3', width:47 %>
-        <div id="navbarNav" class="offcanvas offcanvas-end">
-            <div class="offcanvas-header border-top">
-                <%= link_to new_user_path, class: 'btn btn-primary w-100' do %>
-                <i class="bx bx-cart fs-4 lh-1 me-1"></i>
-                会員登録
-                <% end %>
-            </div>      
-        </div>
-        <% if logged_in? %>
-            <div class="form-check form-switch mode-switch pe-lg-1 ms-auto me-4" data-bs-toggle="mode">
-                <%= link_to "新規投稿", new_post_path, class: "btn btn-primary btn-sm fs-sm rounded d-lg-inline-flex" %>
+  <div class="container px-3">
+    <%= image_tag "enviroment/logo.png", class: "navbar-brand pe-3", width:70 %>
+    <%= link_to '自分、探してます', root_path, class: 'navbar-brand pe-3', width:47 %>
+    <div id="navbarNav" class="offcanvas offcanvas-end">
+      <div class="offcanvas-header border-bottom">
+        <h5 class="offcanvas-title">Menu</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item dropdown">
+            <a href="#" class="nav-link" data-bs-toggle="dropdown">依頼人</a>
+            <div class="dropdown-menu">
+              <div class="d-lg-flex pt-lg-3">
+                <div class="mega-dropdown-column">
+                  <ul class="list-unstyled mb-3">
+                    <% if user_signed_in? %>
+                      <li><%= link_to "マイページ", user_path(current_user), class: "dropdown-item py-1" %></li>
+                      <li><%=  link_to "ログアウト", destroy_user_session_path, class: "dropdown-item py-1", data: {"turbo_method": :delete} %></li>
+                    <% else %>
+                      <li><%= link_to "ログイン", new_user_session_path, class: "dropdown-item py-1" %></li>
+                      <li><%= link_to "会員登録", new_user_registration_path, class: "dropdown-item py-1" %></li>
+                    <% end %>
+                  </ul>
+                </div>
+              </div>
             </div>
-            <div class="form-check form-switch mode-switch pe-lg-1 ms-auto me-4" data-bs-toggle="mode">
-                <%= link_to 'ログアウト', user_session_path, class: 'btn btn-primary btn-sm fs-sm rounded d-lg-inline-flex', data: {"turbo_method": :delete} %>
+          </li>
+          <li class="nav-item dropdown">
+            <a href="#" class="nav-link" data-bs-toggle="dropdown">手配書</a>
+            <div class="dropdown-menu">
+              <div class="d-lg-flex pt-lg-3">
+                <div class="mega-dropdown-column">
+                  <ul class="list-unstyled mb-3">
+                    <li><%= link_to "新規投稿", new_post_path, class: "dropdown-item py-1" %></li>
+                    <li><%=  link_to "投稿一覧", posts_path, class: "dropdown-item py-1" %></li>
+                  </ul>
+                </div>
+              </div>
             </div>
-        <% else %>
-            <div class="form-check form-switch mode-switch pe-lg-1 ms-auto me-4" data-bs-toggle="mode">
-                <%= link_to 'ログイン', new_user_session_path, class: 'btn btn-secondary btn-sm fs-sm rounded d-lg-inline-flex' %>
-            </div>
-            <%= link_to '会員登録', new_user_path, class: 'btn btn-primary btn-sm fs-sm rounded d-lg-inline-flex' %>
-        <% end %>
+          </li>
+        </ul>
+      </div>     
     </div>
+    <button type="button" class="navbar-toggler" data-bs-toggle="offcanvas" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </div>
 </header>
+</section>

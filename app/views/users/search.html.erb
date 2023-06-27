@@ -1,0 +1,43 @@
+<section class="bg-size-cover bg-position-bottom-center bg-repeat-0 py-5" style="background-image: url(<%= asset_path('enviroment/background1.jpg') %>);background-size: cover; background-position: center;">
+    <div class="container pt-5 pb-lg-4 pb-xl-5">
+
+        <!-- Breadcrumb -->
+        <nav class="pt-lg-4" aria-label="breadcrumb">
+        <ol class="breadcrumb mb-0">
+            <li class="breadcrumb-item">
+            <a href="index.html"><i class="bx bx-home-alt fs-lg me-1"></i>Home</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">Contacts v.3</li>
+        </ol>
+        </nav>
+
+        <div class="row pt-md-2 pt-lg-5 pb-2 pb-md-4">
+            <div class="col-xxl-4 col-xl-5 col-lg-6 pt-3 mt-3">
+                <h1 class="h3 mb-2">探し物は見つかりましたか?</h1>
+                <h2 class="display-1 text-gradient-primary pb-sm-2 pb-md-3 mb-3">報酬を支払う!</h2>
+                <div class="nav d-block lead pt-lg-5">
+                <a href="#" class="nav-link fw-normal text-decoration-underline p-0 mb-4">email@example.com</a>
+                <div class="text-nav">+1 406 555-0120</div>
+                </div>
+            </div>
+            <div class="col-lg-6 offset-xl-1 offset-xxl-2 pt-3 pt-md-4 pt-lg-3 mt-3">
+                <% if @users %>
+                    <% @users.each do |user| %>
+                        <div class="row g-4">
+                            <%= form_with url: transfers_path, method: :post do |f| %>
+                                <label for="fn" class="form-label fs-base"><%= user.username %></label>
+                                <div class="col-sm-6">
+                                    <%= f.hidden_field :user_id, value: user.id, class:  "form-control form-control-lg" %>
+                                    <%= hidden_field_tag :post_id, @post.id %>
+                                </div>
+                                <div class="col-12">
+                                    <%= f.submit '報酬を支払う', class: "btn btn-lg btn-primary w-100 w-sm-auto" %>
+                                </div>
+                            <% end %>
+                        </div>
+                    <% end %>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</section>

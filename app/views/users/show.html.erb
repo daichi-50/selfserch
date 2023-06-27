@@ -1,0 +1,86 @@
+<!-- Page content -->
+<section class="container pt-5">
+    <div class="row">
+        <!-- Sidebar (User info + Account menu) -->
+        <aside class="col-lg-3 col-md-4 border-end pb-5 mt-n5">
+        <div class="position-sticky top-0">
+            <div class="text-center pt-5">
+                <div class="d-table position-relative mx-auto mt-2 mt-lg-4 pt-5 mb-3">
+                    <img src="assets/img/avatar/18.jpg" class="d-block rounded-circle" width="120" alt="John Doe">
+                    <button type="button" class="btn btn-icon btn-light bg-white btn-sm border rounded-circle shadow-sm position-absolute bottom-0 end-0 mt-4" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Change picture">
+                    <i class="bx bx-refresh"></i>
+                    </button>
+                </div>
+                <h2 class="h5 mb-1"><%= @user.username %></h2>
+                <h4 class="h5 mb-1">獲得した懸賞金<br>$ <%= @user.money %></h4>
+                <button type="button" class="btn btn-secondary w-100 d-md-none mt-n2 mb-3" data-bs-toggle="collapse" data-bs-target="#account-menu">
+                    <i class="bx bxs-user-detail fs-xl me-2"></i>
+                    Account menu
+                    <i class="bx bx-chevron-down fs-lg ms-1"></i>
+                </button>
+                <div id="account-menu" class="list-group list-group-flush collapse d-md-block">
+                    <a href="#" class="list-group-item list-group-item-action d-flex align-items-center active">
+                    <i class="bx bx-collection fs-xl opacity-60 me-2"></i>
+                    自分の依頼書
+                    </a>
+                    <%= link_to users_path, class: "list-group-item list-group-item-action d-flex align-items-center" do %>
+                    <i class="bx bx-collection fs-xl opacity-60 me-2"></i>
+                    懸賞金の獲得ランキング
+                    <% end %>
+                    <%= link_to destroy_user_session_path, method: :delete, class: "list-group-item list-group-item-action d-flex align-items-center" do %>
+                    <i class="bx bx-log-out fs-xl opacity-60 me-2"></i>
+                    Sign Out
+                    <% end %>
+                </div>
+            </div>
+        </div>
+        </aside>
+
+        <!-- Account collections -->
+        <div class="col-md-8 offset-lg-1 pb-5 mb-lg-2 pt-md-5 mt-n3 mt-md-0">
+            <div class="ps-md-3 ps-lg-0 mt-md-2 pt-md-4 pb-md-2">
+                <div class="d-sm-flex align-items-center justify-content-between pt-xl-1 mb-3 pb-3">
+                <h1 class="h2 mb-sm-0">My Collections</h1>
+                <select class="form-select" style="max-width: 15rem;">
+                    <option value="Published">Published</option>
+                    <option value="Category">Category</option>
+                    <option value="Title AZ">Title AZ</option>
+                    <option value="Title ZA">Title ZA</option>
+                </select>
+                </div>
+
+                <!-- Item -->
+                <% @posts.each do |post| %>
+                    <div class="card border-0 shadow-sm overflow-hidden mb-4">
+                        <div class="row g-0">
+                        <%= link_to image_tag(post.generated_card.url, size: "300x200"), post_path(post), class: "col-sm-4 bg-repeat-0 bg-position-center bg-size-cover", alt: "Image" %>
+                            <div class="col-sm-8">
+                                <div class="card-body">
+                                    <div class="fs-sm text-muted mb-1"><%= post.created_at.strftime('%Y年%m月%d日 %H:%M') %></div>
+                                    <h2 class="h4 pb-1 mb-2">
+                                    <a href="#">3D Shape Illustration</a>
+                                    </h2>
+                                    <p class="mb-4 mb-lg-5">NFT / Graphic Design / Motion Design</p>
+                                    <div class="d-flex">
+                                    <button type="button" class="btn btn-outline-primary px-3 px-lg-4 me-3">
+                                        <i class="bx bx-edit fs-xl me-xl-2"></i>
+                                        <span class="d-none d-xl-inline">Edit</span>
+                                    </button>
+                                    <button type="button" class="btn btn-outline-secondary px-3 px-lg-4 me-3">
+                                        <i class="bx bx-power-off fs-xl me-xl-2"></i>
+                                        <span class="d-none d-xl-inline">Deactivate</span>
+                                    </button>
+                                    <button type="button" class="btn btn-outline-danger px-3 px-lg-4">
+                                        <i class="bx bx-trash-alt fs-xl me-xl-2"></i>
+                                        <span class="d-none d-xl-inline">Delete</span>
+                                    </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</section>

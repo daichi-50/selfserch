@@ -3,17 +3,24 @@
   <head>
     <title>Selfserch</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="turbolinks-visit-control" content="reload">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+    <%= display_meta_tags(default_meta_tags(@post)) %>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
   </head>
   <body>
+    <p class="notice"><%= notice %></p> 
+    <p class="alert"><%= alert %></p> 
     <main class="page-wrapper">
       <%= render 'shared/header' %>
       <%= yield %>
     </main>
       <%= render 'shared/footer' %>
+      
   </body>
 </html>

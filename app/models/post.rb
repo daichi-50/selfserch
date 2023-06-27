@@ -3,6 +3,7 @@ class Post < ApplicationRecord
     mount_uploader :generated_card, GeneratedCardUploader
 
   belongs_to :user
+  has_many :messages, dependent: :destroy
 
   require 'base64'
   require 'rmagick'
@@ -53,5 +54,16 @@ class Post < ApplicationRecord
 
   def escape_text(text)
     text.gsub("'", "\\\\'")  # replace ' with \'
+  end
+
+  #懸賞金の設定
+  def set_prize_money
+    count = 0
+    polite_words = ['です', 'ます', 'ございます','自分','私','僕','俺','おれ','わたし']
+    polite_words.each do |word|
+      count += self.title.scan(word).count if self.title
+      count += self.description.scan(word).count if self.description
+    end
+    self.prize_money = 100000 + count * 100000
   end
 end

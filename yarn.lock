@@ -30,7 +30,7 @@
   "resolved" "https://registry.npmjs.org/@popperjs/core/-/core-2.11.8.tgz"
   "version" "2.11.8"
 
-"@rails/actioncable@^7.0":
+"@rails/actioncable@^7.0", "@rails/actioncable@^7.0.5":
   "integrity" "sha512-SOBA2heB9lTw0VYIx8M/ed7inSf4I9sR8OIlJprhgkfQ3WJtrxPJ6DDATR1Z3RYaIR7HlT2Olj08v1lfGIGuHA=="
   "resolved" "https://registry.npmjs.org/@rails/actioncable/-/actioncable-7.0.5.tgz"
   "version" "7.0.5"
@@ -175,6 +175,11 @@
   "integrity" "sha512-41Cifkg6e8TylSpdtTpeLVMqvSBEVzTttHvERD741+pnZ8ANv0004MRL43QKPDlK9cGvNp6NZWZUBlbGXYxxng=="
   "resolved" "https://registry.npmjs.org/is-number/-/is-number-7.0.0.tgz"
   "version" "7.0.0"
+
+"jquery@^3.7.0":
+  "integrity" "sha512-umpJ0/k8X0MvD1ds0P9SfowREz2LenHsQaxSohMZ5OMNEU2r0tf8pdeEFTHMFxWVxKNyU9rTtK3CWzUCTKJUeQ=="
+  "resolved" "https://registry.npmjs.org/jquery/-/jquery-3.7.0.tgz"
+  "version" "3.7.0"
 
 "normalize-path@^3.0.0", "normalize-path@~3.0.0":
   "integrity" "sha512-6eZs5Ls3WtCisHWp9S2GUy8dqkpGi4BVSz3GaqiE6ezub0512ESztXUwUB6C6IKbQkY2Pnb/mD4WYojCRwcwLA=="

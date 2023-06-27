@@ -1,11 +1,15 @@
 class PostsController < ApplicationController
-    before_action :set_post, only: [:show, :edit, :update, :destroy]
+    before_action :set_post, only: [ :edit, :update, :destroy]
 
     def index
-        @posts = Post.all
+        @posts = Post.page(params[:page])
     end
 
-    def show; end
+    def show
+        @post = Post.find(params[:id])
+        @message = Message.new
+        @messages = @post.messages.includes(:user).order(created_at: :desc)
+    end
 
     def new
         @post = current_user.posts.build
@@ -14,7 +18,8 @@ class PostsController < ApplicationController
     def create
         @post = current_user.posts.build(post_params)
 
-        @post.create_image
+        @post.set_prize_money #懸賞金の設定
+        @post.create_image #画像の作成
 
         if @post.save
             flash[:success] = "Post created"

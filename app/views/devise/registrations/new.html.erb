@@ -1,0 +1,48 @@
+<!-- Sign up form -->
+<section class="jarallax position-relative d-flex align-items-center min-vh-100 bg-light mb-5 py-lg-5 pt-5" style="background-image: url(<%= asset_path('enviroment/background.jpg') %>);background-size: cover; background-position: center;" >
+    <div class="container d-flex flex-wrap justify-content-center justify-content-xl-start h-100 pt-5">
+        <div class="w-100 align-self-end pt-1 pt-md-4 pb-4" style="max-width: 526px;">
+            <h1 class="text-center text-xl-start">会員登録</h1>
+            <% if resource.errors.any? %>
+              <div id="error_explanation">
+                <h2><%= pluralize(resource.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+                <ul>
+                <% resource.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+                </ul>
+              </div>
+            <% end %>
+            <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="position-relative mb-4">
+                            <%= f.label :username, class: 'form-label fs-base' %>
+                            <%= f.text_field :username, class: 'form-control form-control-lg'%>
+                        </div>
+                    </div>
+                    <div class="col-12 mb-4">
+                        <%= f.label :email, class: 'form-label fs-base' %>
+                        <%= f.email_field :email, class: 'form-control form-control-lg'%>
+                    </div>
+                    <div class="col-12 mb-4">
+                        <%= f.label :password, class: 'form-label fs-base' %>
+                        <%= f.password_field :password, class: 'form-control form-control-lg'%>
+                    </div>
+                    <div class="col-12 mb-4">
+                        <%= f.label :password_confirmation, class: 'form-label fs-base' %>
+                        <%= f.password_field :password_confirmation, class: 'form-control form-control-lg'%>
+                    </div>
+                </div>
+                <%= f.submit '会員登録', class: 'btn btn-primary shadow-primary btn-lg w-100' %>
+            <% end %>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+

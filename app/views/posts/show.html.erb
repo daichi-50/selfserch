@@ -1,199 +1,119 @@
-<!-- Breadcrumb -->
-<nav class="container pt-4 mt-lg-3" aria-label="breadcrumb">
-<ol class="breadcrumb mb-0">
-    <li class="breadcrumb-item">
-    <a href="index.html"><i class="bx bx-home-alt fs-lg me-1"></i>Home</a>
-    </li>
-    <li class="breadcrumb-item">
-    <a href="blog-list-with-sidebar.html">Blog</a>
-    </li>
-    <li class="breadcrumb-item active" aria-current="page">Single Post</li>
-</ol> 
-</nav>
 
-
-<!-- Post title + Meta  -->
-<section class="container mt-4 pt-lg-2 pb-3">
-    <h1 class="pb-3" style="max-width: 970px;"><%= @post.title %> 、探してます</h1>
-    <div class="d-flex flex-md-row flex-column align-items-md-center justify-content-md-between mb-3">
-        <div class="d-flex align-items-center flex-wrap text-muted mb-md-0 mb-4">
-            <div class="fs-xs border-end pe-3 me-3 mb-2">
-                <span class="badge bg-faded-primary text-primary fs-base">手配書</span>
+<section class="container py-5 mt-5 mt-md-4 mb-md-3 mb-lg-4 mb-xl-5" style="background-image: url(<%= asset_path('enviroment/backboard.png') %>);background-size: cover; background-position: center;">
+    <div class="row align-items-center align-items-lg-stretch mb-2 mb-sm-3">
+        <!-- Parallax gfx -->
+        <div class="col-xl-7 col-md-6 d-flex justify-content-center justify-content-md-end overflow-hidden order-md-2 mt-n5 mt-sm-n4 mt-md-0">
+            <div class="position-relative mt-5" style="max-width: 660px;">
+                <div class="parallax zindex-2">
+                    <div class="parallax-layer zindex-2 mb-n3" data-depth="0.1">
+                        <%= image_tag @post.generated_card.url %>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="d-flex align-items-center position-relative ps-md-3 pe-lg-5 mb-2">
-            <div class="ps-3">
+
+        <!-- Text -->
+        <div class="col-xl-5 col-md-6 d-flex flex-column order-md-1">
+            <div class="text-center text-md-start pt-4 pt-sm-5 pt-xl-0 mt-2 mt-sm-0 mt-lg-auto">
+                <h1 class="display-3 mb-4"><%= @post.title %> 、探してます</h1>
                 <h6 class="mb-1">作成者</h6>
                 <a href="#" class="fw-semibold stretched-link"><%= @post.user.username %></a>
+                <span class="d-block mb-3"><%= @post.created_at.strftime('%Y年%m月%d日 %H:%M') %></span>
+                <h6>Share this :</h6>
+                <a href="https://twitter.com/share?url=<%= request.original_url %>&text=<%= @post.title %>" class="btn btn-icon btn-secondary btn-twitter me-2 mb-2" target="_blank">
+                    <i class="bi bi-twitter"></i>
+                </a>
+                <% if current_user && current_user.own?(@post) %>
+                    <button class="btn btn-lg btn-outline-secondary">
+                    <%= link_to '削除', post_path(@post), data: { turbo_method: :delete, turbo_confirm: "削除しますか?" } %>
+                    </button>
+                <% end %>
             </div>
-        </div>
-    </div>
-</section>
+            <!-- Chat window -->
+            <h1>Chat room</h1>
+            <div class="row g-0 border rounded-3 shadow-sm position-relative overflow-hidden">
+                <div class="col-lg-12" style="max-height: 712px;">
+                    <div class="card h-100 border-0 bg-transparent pb-3">
+                    <!-- Messages -->
+                    <div class="card-body swiper scrollbar-hover overflow-hidden w-100 pb-0" data-swiper-options='{
+                        "direction": "vertical",
+                        "slidesPerView": "auto",
+                        "freeMode": true,
+                        "scrollbar": {
+                        "el": ".swiper-scrollbar"
+                        },
+                        "mousewheel": true
+                    }'>
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide h-auto">
+                                <!-- User message -->
+                                <div data-post-id="<%= @post.id %>" id="messages">
+                                    <%= render partial: 'messages/message', collection: @messages, as: :message %>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-scrollbar end-0"></div>
+                    </div>
 
-
-<!-- Post image (parallax) -->
-
-<div class="jarallax d-flex justify-content-center align-items-center">
-  <%= image_tag @post.generated_card.url %>
-</div>
-
-<!-- Post content + Sharing -->
-<section class="container mb-5 pt-4 pb-2 py-mg-4">
-    <div class="row gy-4">
-
-    <!-- Sharing -->
-        <div class="col-lg-3 position-relative">
-            <div class="sticky-top ms-xl-5 ms-lg-4 ps-xxl-4" style="top: 105px !important;">
-                <span class="d-block mb-3">5 min read</span>
-                <h6>Share this post:</h6>
-                <div class="mb-4 pb-lg-3">
-                <a href="#" class="btn btn-icon btn-secondary btn-linkedin me-2 mb-2">
-                    <i class="bx bxl-linkedin"></i>
-                </a>
-                <a href="#" class="btn btn-icon btn-secondary btn-facebook me-2 mb-2">
-                    <i class="bx bxl-facebook"></i>
-                </a>
-                <a href="#" class="btn btn-icon btn-secondary btn-twitter me-2 mb-2">
-                    <i class="bx bxl-twitter"></i>
-                </a>
-                <a href="#" class="btn btn-icon btn-secondary btn-instagram me-2 mb-2">
-                    <i class="bx bxl-instagram"></i>
-                </a>
+                    <!-- Footer (Send message form) -->
+                    <div class="card-footer d-sm-flex w-100 border-0 pt-3 pb-3 px-4">
+                        <div class="position-relative w-100 me-2 mb-3 mb-sm-0">
+                            <input type="text" data-behavior="post_speaker" id="post_input" class="form-control form-control-lg" style="padding-right: 85px;">
+                        </div>
+                        <button id="submit_button" class="btn btn-primary btn-icon btn-lg d-sm-inline-flex ms-1">
+                        <i class="bx bx-send"></i>
+                        </button>
+                    </div>
                 </div>
-                <button class="btn btn-lg btn-outline-secondary">
-                <i class="bx bx-like me-2 lead"></i>
-                Like it
-                <span class="badge bg-primary shadow-primary mt-n1 ms-3">8</span>
-                </button>
             </div>
+            <% if current_user && current_user.own?(@post) %>
+            <div class="row g-0 border rounded-3 shadow-sm position-relative overflow-hidden">
+                <div class="col-lg-12" style="max-height: 712px;">
+                    <div class="card h-50 border-0 bg-transparent pb-3">
+                        <div class="card-footer d-sm-flex w-100 border-0 pt-3 pb-3 px-4">
+                            <div class="position-relative w-100 me-2 mb-3 mb-sm-0">
+                                <div class="navbar-brand text-dark">
+                                    懸賞金を支払う
+                                </div>
+                                <p>チャットをくれた人に懸賞金を贈ろう！！！その人の名前を入れてね！</p>
+                                <%= form_with url: search_users_path, class: "needs-validation", method: :get do |f| %>
+                                    <%= f.label :username, 'ユーザー名', class: "form-label" %>
+                                    <div class="input-group">
+                                        <%= f.text_field :username , class: "form-control rounded-start ps-5",  placeholder:"あきら" ,required: true %>
+                                        <%= hidden_field_tag :post_id, @post.id %>
+                                        <i class="bx bx-envelope fs-lg text-muted position-absolute top-50 start-0 translate-middle-y ms-3 zindex-5"></i>
+                                        <%= f.submit '検索', class: "btn btn-primary" %>
+                                    </div>
+                                <% end %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <% end %>
         </div>
     </div>
+    <div style="height: 50px;"></div>
 </section>
 
-<!-- Post comments -->
-<section class="container mb-4 pt-lg-4 pb-lg-3">
-<h2 class="h1 text-center text-sm-start">4 comments</h2>
-<div class="row">
+<script>
+window.onload = function() {
+    window.swiper = new Swiper('.swiper', {
+        direction: 'vertical',
+        slidesPerView: 'auto',
+        freeMode: true,
+        scrollbar: {
+        el: '.swiper-scrollbar',
+        },
+        mousewheel: true,
+    });
 
-    <!-- Comments -->
-    <div class="col-lg-9">
-
-    <!-- Comment -->
-    <div class="py-4">
-        <div class="d-flex align-items-center justify-content-between pb-2 mb-1">
-        <div class="d-flex align-items-center me-3">
-            <img src="assets/img/avatar/03.jpg" class="rounded-circle" width="48" alt="Avatar">
-            <div class="ps-3">
-            <h6 class="fw-semibold mb-0">Esther Howard</h6>
-            <span class="fs-sm text-muted">4 mins ago</span>
-            </div>
-        </div>
-        <a href="#" class="nav-link fs-sm px-0">
-            <i class="bx bx-share fs-lg me-2"></i>
-            Reply
-        </a>
-        </div>
-        <p class="mb-0">Nibh enim porta ut augue felis, donec sit luctus. Quis ullamcorper dolor sit mauris. Hendrerit eu libero, eu tristique sodales ultrices etiam adipiscing. Donec viverra sodales arcu gravida nibh at. Neque lobortis quis porta integer et placerat lectus scelerisque. Velit eget malesuada morbi faucibus at sed euismod. Tortor, eu ut id tincidunt leo placerat luctus.</p>
-    </div>
-
-    <hr class="my-2">
-
-    <!-- Comment -->
-    <div class="py-4">
-        <div class="d-flex align-items-center justify-content-between pb-2 mb-1">
-        <div class="d-flex align-items-center me-3">
-            <img src="assets/img/avatar/02.jpg" class="rounded-circle" width="48" alt="Avatar">
-            <div class="ps-3">
-            <h6 class="fw-semibold mb-0">Ralph Edwards</h6>
-            <span class="fs-sm text-muted">September 9 at 12:48</span>
-            </div>
-        </div>
-        <a href="#" class="nav-link fs-sm px-0">
-            <i class="bx bx-share fs-lg me-2"></i>
-            Reply
-        </a>
-        </div>
-        <p class="mb-0 pb-2">Eget amet, ac scelerisque tellus sed. Sapien duis sit neque pulvinar. Est sit aenean nisl etiam donec mattis ut diam. Luctus massa eu nunc aliquam viverra tempus, eu amet, luctus. Ac faucibus vestibulum eu lacus. Ullamcorper sem ultrices tincidunt pharetra?</p>
-
-        <!-- Comment reply -->
-        <div class="position-relative ps-4 mt-4">
-        <span class="position-absolute top-0 start-0 w-1 h-100 bg-primary"></span>
-        <div class="d-flex align-items-center justify-content-between ps-3 pb-2 mb-1">
-            <div class="d-flex align-items-center me-3">
-            <img src="assets/img/avatar/05.jpg" class="rounded-circle" width="48" alt="Avatar">
-            <div class="ps-3">
-                <h6 class="fw-semibold mb-0">Albert Flores</h6>
-                <span class="fs-sm text-muted">16 hours ago</span>
-            </div>
-            </div>
-            <a href="#" class="nav-link fs-sm px-0">
-            <i class="bx bx-share fs-lg me-2"></i>
-            Reply
-            </a>
-        </div>
-        <p class="ps-3 mb-0"><a href="#" class="fw-semibold text-decoration-none">@Ralph Edwards</a> Vulputate malesuada amet, consequat ullamcorper. Orci, cras maecenas in sit purus pellentesque. Ridiculus blandit pellentesque eget arcu morbi nisl. Morbi volutpat adipiscing sapien sed ut tempor.</p>
-        </div>
-    </div>
-
-    <hr class="my-2">
-
-    <!-- Comment -->
-    <div class="py-4">
-        <div class="d-flex align-items-center justify-content-between pb-2 mb-1">
-        <div class="d-flex align-items-center me-3">
-            <img src="assets/img/avatar/07.jpg" class="rounded-circle" width="48" alt="Avatar">
-            <div class="ps-3">
-            <h6 class="fw-semibold mb-0">Cameron Williamson</h6>
-            <span class="fs-sm text-muted">March 24 at 8:20</span>
-            </div>
-        </div>
-        <a href="#" class="nav-link fs-sm px-0">
-            <i class="bx bx-share fs-lg me-2"></i>
-            Reply
-        </a>
-        </div>
-        <p class="mb-0">Mattis id ut sed arcu metus elit faucibus condimentum aliquam. Nam adipiscing diam et suspendisse. Sagittis massa maecenas laoreet nulla amet nunc sagittis, pulvinar neque. Duis imperdiet ipsum suspendisse massa lectus habitasse. Id ante volutpat hendrerit augue parturient eget. Ac vitae posuere leo morbi vitae at hac lectus. Nibh neque quam quis amet mattis sit. Faucibus risus at sit tempus ut.</p>
-    </div>
-    </div>
-</div>
-</section>
-
-
-<!-- Comment form + Subscription -->
-<section class="container mb-4 pb-2 mb-md-5 pb-lg-5">
-<div class="row gy-5">
-
-    <!-- Comment form -->
-    <div class="col-lg-9">
-    <div class="card p-md-5 p-4 border-0 bg-secondary">
-        <div class="card-body w-100 mx-auto px-0" style="max-width: 746px;">
-        <h2 class="mb-4 pb-3">Leave a Comment</h2>
-        <form class="row gy-4 needs-validation" novalidate>
-            <div class="col-sm-6 col-12">
-            <label for="c-name" class="form-label fs-base">Name</label>
-            <input id="c-name" type="text" class="form-control form-control-lg" required>
-            <span class="invalid-tooltip">Please, enter your name.</span>
-            </div>
-            <div class="col-sm-6 col-12">
-            <label for="c-email" class="form-label fs-base">Email</label>
-            <input id="c-email" type="email" class="form-control form-control-lg" required>
-            <span class="invalid-tooltip">Please, provide a valid email address.</span>
-            </div>
-            <div class="col-12">
-            <label for="c-comment" class="form-label fs-base">Comment</label>
-            <textarea id="c-comment" class="form-control form-control-lg" rows="3" placeholder="Type your comment here..." required></textarea>
-            <span class="invalid-tooltip">Please, enter your comment.</span>
-            </div>
-            <div class="col-12">
-            <div class="form-check">
-                <input id="c-save" type="checkbox" class="form-check-input">
-                <label for="c-save" class="form-check-label">Save my name and email in this browser for the next time I comment.</label>
-            </div>
-            </div>
-            <div class="col-12">
-            <button type="submit" class="btn btn-lg btn-primary w-sm-auto w-100 mt-2">Post comment</button>
-            </div>
-        </form>
-        </div>
-    </div>
-    </div>
+    setTimeout(function() {
+        window.swiper.update();
+        const swiperContainer = document.querySelector('.swiper');
+        if (swiperContainer) {
+            swiperContainer.scrollTop = swiperContainer.scrollHeight;
+        }
+    }, 100);
+};
+</script>

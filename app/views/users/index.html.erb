@@ -1,0 +1,26 @@
+<section class="container py-5 mt-5 mt-md-4 mb-md-3 mb-lg-4 mb-xl-5" style="background-image: url(<%= asset_path('enviroment/rankboard.png') %>);background-size: cover; background-position: center;">
+  <div class="row align-items-center">
+    <div class="col-md-10 text-center text-md-start">
+      <h2 class="h1 mb-4">懸賞金の獲得 <br> ランキング！！！！</h2>
+    </div>
+    <div class="col-md-6">
+      <div class="row row-cols-1 row-cols-md-3">
+        <% @users.each_with_index do |user, index| %>
+        <div class="col text-md-center pb-2 mb-4">
+          <h3 class="h5 mb-2 mb-md-3">Rank: <%= index + 1 %>位</h3>
+          <ul class="list-unstyled">
+            <li class="d-flex align-items-center p-2">
+              <span class="text-dark fw-medium">名前:&nbsp;</span>
+              <%= user.username %>
+            </li>
+            <li class="d-flex align-items-center p-2 bg-secondary">
+              <span class="text-dark fw-medium">所持金:&nbsp;</span>
+              $ <%= user.money %>
+            </li>
+          </ul>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>

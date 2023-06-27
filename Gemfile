@@ -81,3 +81,6 @@ gem "sorcery", "~> 0.16.5"
 gem 'mini_magick'
 gem 'pry-byebug'
 gem 'rmagick'
+gem 'kaminari'
+gem "meta-tags"
+gem 'devise'
