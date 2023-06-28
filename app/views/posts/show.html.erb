@@ -20,7 +20,7 @@
                 <a href="#" class="fw-semibold stretched-link"><%= @post.user.username %></a>
                 <span class="d-block mb-3"><%= @post.created_at.strftime('%Y年%m月%d日 %H:%M') %></span>
                 <h6>Share this :</h6>
-                <a href="https://twitter.com/share?url=<%= request.original_url %>&text=<%= @post.title %>" class="btn btn-icon btn-secondary btn-twitter me-2 mb-2" target="_blank">
+                <a href="https://twitter.com/share?url=<%= request.original_url %>&text=<%= @post.id %>" class="btn btn-icon btn-secondary btn-twitter me-2 mb-2" target="_blank">
                     <i class="bi bi-twitter"></i>
                 </a>
                 <% if current_user && current_user.own?(@post) %>
