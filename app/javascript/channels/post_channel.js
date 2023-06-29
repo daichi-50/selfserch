@@ -5,15 +5,21 @@ function scrollToBottom() {
   messages.scrollTop = messages.scrollHeight;
 }
 
-window.addEventListener('DOMContentLoaded', (event) => {
+document.addEventListener("turbo:load", () => {
+  console.log('Turbolinks loaded');
   const messages = document.getElementById('messages');
+  if (messages === null) {
+    return;
+  }
   const postId = messages.dataset.postId;
   console.log(`Post ID is: ${postId}`);
   const appPost = consumer.subscriptions.create({channel: "PostChannel", post_id: postId}, {
     connected() {
       console.log('Successfully connected to the channel.');
     },
-    disconnected() {},
+    disconnected() {
+      console.log('Disconnected from the channel.');
+    },
     received(data) {
       console.log('Received data:', data);
       messages.insertAdjacentHTML('beforeend', data['message']);
