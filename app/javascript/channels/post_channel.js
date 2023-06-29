@@ -1,10 +1,5 @@
 import consumer from "./consumer"
 
-function scrollToBottom() {
-  const messages = document.getElementById('messages');
-  messages.scrollTop = messages.scrollHeight;
-}
-
 document.addEventListener("turbo:load", () => {
   console.log('Turbolinks loaded');
   const messages = document.getElementById('messages');
