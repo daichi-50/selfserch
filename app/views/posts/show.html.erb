@@ -17,13 +17,17 @@
             <div class="text-center text-md-start pt-4 pt-sm-5 pt-xl-0 mt-2 mt-sm-0 mt-lg-auto">
                 <h1 class="display-3 mb-4"><%= @post.title %> 、探してます</h1>
                 <h6 class="mb-1">作成者</h6>
-                <a href="#" class="fw-semibold stretched-link"><%= @post.user.username %></a>
+                <a href="#" class="fw-semibold"><%= @post.user.username %></a>
                 <span class="d-block mb-3"><%= @post.created_at.strftime('%Y年%m月%d日 %H:%M') %></span>
                 <% if current_user && current_user.own?(@post) %>
                     <button class="btn btn-lg btn-outline-secondary">
                     <%= link_to '削除', post_path(@post), data: { turbo_method: :delete, turbo_confirm: "削除しますか?" } %>
                     </button>
                 <% end %>
+                <h6>Share this :</h6>
+                <a href="https://twitter.com/share?url=<%= request.original_url %>&text=<%= @post.id %>" class="btn btn-icon btn-secondary btn-twitter me-2 mb-2" target="_blank">
+                    <i class="bi bi-twitter"></i>
+                </a>
             </div>
             <!-- Chat window -->
             <h1>Chat room</h1>
@@ -92,29 +96,26 @@
     <div style="height: 50px;"></div>
 </section>
 
-<h6>Share this :</h6>
-<a href="https://twitter.com/share?url=<%= request.original_url %>&text=<%= @post.id %>" class="btn btn-icon btn-secondary btn-twitter me-2 mb-2" target="_blank">
-    <i class="bi bi-twitter"></i>
-</a>
+
 
 <script>
-window.onload = function() {
-    window.swiper = new Swiper('.swiper', {
-        direction: 'vertical',
-        slidesPerView: 'auto',
-        freeMode: true,
-        scrollbar: {
-        el: '.swiper-scrollbar',
-        },
-        mousewheel: true,
-    });
+    document.addEventListener("turbo:load", function() {
+        window.swiper = new Swiper('.swiper', {
+            direction: 'vertical',
+            slidesPerView: 'auto',
+            freeMode: true,
+            scrollbar: {
+            el: '.swiper-scrollbar',
+            },
+            mousewheel: true,
+        });
 
-    setTimeout(function() {
-        window.swiper.update();
-        const swiperContainer = document.querySelector('.swiper');
-        if (swiperContainer) {
-            swiperContainer.scrollTop = swiperContainer.scrollHeight;
-        }
-    }, 100);
-};
+        setTimeout(function() {
+            window.swiper.update();
+            const swiperContainer = document.querySelector('.swiper');
+            if (swiperContainer) {
+                swiperContainer.scrollTop = swiperContainer.scrollHeight;
+            }
+        }, 100);
+    });
 </script>
