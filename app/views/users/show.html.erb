@@ -12,7 +12,6 @@
                     </button>
                 </div>
                 <h2 class="h1 mb-1"><%= @user.username %></h2>
-                <h4 class="h5 mb-1">獲得した懸賞金<br>$ <%= @user.money %></h4>
                 <button type="button" class="btn btn-secondary w-70 d-md-none mt-n2 mb-3" data-bs-toggle="collapse" data-bs-target="#account-menu">
                     <i class="bx bxs-user-detail fs-xl me-2"></i>
                     メニュー
@@ -32,6 +31,8 @@
                     ログアウト
                     <% end %>
                 </div>
+                <h4 class="h5 mb-1">獲得した懸賞金</h4>
+                <h6 class="h7 mb-4">$ <%= @user.money %></h6>
             </div>
         </div>
         </aside>
@@ -57,23 +58,19 @@
                             <div class="col-sm-8">
                                 <div class="card-body">
                                     <div class="fs-sm text-muted mb-1"><%= post.created_at.strftime('%Y年%m月%d日 %H:%M') %></div>
-                                    <h2 class="h4 pb-1 mb-2">
-                                    <a href="#">3D Shape Illustration</a>
-                                    </h2>
-                                    <p class="mb-4 mb-lg-5">NFT / Graphic Design / Motion Design</p>
+                                    <h5 class="h4 pb-1 mb-2">
+                                    <a href="#"><%= post.title %>、探してます</a>
+                                    </h5>
+                                    <p class="mb-4 mb-lg-5"><%= post.description %></p>
                                     <div class="d-flex">
                                     <button type="button" class="btn btn-outline-primary px-3 px-lg-4 me-3">
                                         <i class="bx bx-edit fs-xl me-xl-2"></i>
-                                        <span class="d-none d-xl-inline">Edit</span>
+                                        <span class="d-none d-xl-inline">$ <%= post.prize_money %></span>
                                     </button>
-                                    <button type="button" class="btn btn-outline-secondary px-3 px-lg-4 me-3">
-                                        <i class="bx bx-power-off fs-xl me-xl-2"></i>
-                                        <span class="d-none d-xl-inline">Deactivate</span>
-                                    </button>
-                                    <button type="button" class="btn btn-outline-danger px-3 px-lg-4">
+                                    <%= link_to post_path(post), data: { turbo_method: :delete,turbo_confirm: "削除しますか?" },class: "btn btn-outline-danger px-3 px-lg-4 me-3" do %>
                                         <i class="bx bx-trash-alt fs-xl me-xl-2"></i>
-                                        <span class="d-none d-xl-inline">Delete</span>
-                                    </button>
+                                        <span class="d-xl-inline">Delete</span>
+                                    <% end %>
                                     </div>
                                 </div>
                             </div>
