@@ -14,17 +14,4 @@ body {
     background-position: center;
 }
 
-.line__container {
-    padding:0;
-    background: #7494c0;
-    overflow: hidden;
-    // max-width: 400px; ←コメントアウト
-    margin: 20px auto;
-    font-size: 80%;
-}
-
-.line__container .scroll {
-    height: 80%;
-    overflow-y: scroll;
-  }
 
