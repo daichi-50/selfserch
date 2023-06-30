@@ -22,8 +22,10 @@ document.addEventListener("turbo:load", () => {
       setTimeout(function() {
         window.swiper.update(); // 更新
         const swiperContainer = document.querySelector('.swiper');
-        if (swiperContainer) {
+        if (swiperContainer !== null) {
           swiperContainer.scrollTop = swiperContainer.scrollHeight;
+        } else {
+          console.log('Error: No swiper container found.');
         }
       }, 100);
     },
