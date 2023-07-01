@@ -1,12 +1,5 @@
-<!-- Breadcrumb -->
-<nav class="container mt-lg-4 pt-5" aria-label="breadcrumb">
-    <ol class="breadcrumb mb-0 pt-5">
-        <li class="breadcrumb-item active" aria-current="page">投稿一覧</li>
-    </ol>
-</nav>
-
 <!-- Page content -->
-<section class="container mt-4 mb-lg-5 pt-lg-2 pb-5" style="background-image: url(<%= asset_path('enviroment/backboard.png') %>);background-size: cover; background-position: center;" >
+<div style="background-image: url(<%= asset_path('enviroment/backboard.png') %>);background-size: cover; background-position: center;">
 <section class="container mt-4 mb-lg-5 pt-lg-2 pb-5">
     <!-- Page title + Layout switcher + Search form -->
     <div class="row align-items-end gy-3 mb-4 pb-lg-3 pb-1">
@@ -69,3 +62,4 @@
     </div>
     <%= paginate @posts %>
 </section>
+</div>
