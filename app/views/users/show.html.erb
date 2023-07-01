@@ -6,12 +6,8 @@
         <div class="position-sticky top-0">
             <div class="text-center pt-5">
                 <div class="d-table position-relative mx-auto mt-2 mt-lg-4 pt-5 mb-3">
-                    <img src="assets/img/enviroment/user_logo.png" class="d-block rounded-circle" width="120" alt="John Doe">
-                    <button type="button" class="btn btn-icon btn-light bg-white btn-sm border rounded-circle shadow-sm position-absolute bottom-0 end-0 mt-4" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Change picture">
-                    <i class="bx bx-refresh"></i>
-                    </button>
+                    <h2 class="h1 mb-1"><%= @user.username %></h2>
                 </div>
-                <h2 class="h1 mb-1"><%= @user.username %></h2>
                 <button type="button" class="btn btn-secondary w-70 d-md-none mt-n2 mb-3" data-bs-toggle="collapse" data-bs-target="#account-menu">
                     <i class="bx bxs-user-detail fs-xl me-2"></i>
                     メニュー
@@ -38,7 +34,7 @@
         </aside>
 
         <!-- Account collections -->
-        <div class="col-md-8 offset-lg-1 pb-5 mb-lg-2 pt-md-5 mt-n3 mt-md-0" style="background-image: url(<%= asset_path('enviroment/background.jpg') %>);background-size: cover; background-position: center;">
+        <div class="col-md-8 offset-lg-1 pb-5 mb-lg-2 pt-md-5 mt-n3 mt-md-0"  style="background-image: url(<%= asset_path('enviroment/background.jpg') %>);background-size: cover; background-position: center;">
             <div class="ps-md-3 ps-lg-0 mt-md-2 pt-md-4 pb-md-2">
                 <div class="d-sm-flex align-items-center justify-content-between pt-xl-1 mb-3 pb-3">
                 <h1 class="h2 mb-sm-0">My Collections</h1>
@@ -65,7 +61,7 @@
                                     <div class="d-flex">
                                     <button type="button" class="btn btn-outline-primary px-3 px-lg-4 me-3">
                                         <i class="bx bx-edit fs-xl me-xl-2"></i>
-                                        <span class="d-none d-xl-inline">$ <%= post.prize_money %></span>
+                                        <span>$ <%= post.prize_money %></span>
                                     </button>
                                     <%= link_to post_path(post), data: { turbo_method: :delete,turbo_confirm: "削除しますか?" },class: "btn btn-outline-danger px-3 px-lg-4 me-3" do %>
                                         <i class="bx bx-trash-alt fs-xl me-xl-2"></i>
