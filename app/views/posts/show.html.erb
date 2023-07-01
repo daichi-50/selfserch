@@ -1,11 +1,12 @@
 
-<section class="container py-5 mt-5 mt-md-4 mb-md-3 mb-lg-4 mb-xl-5" style="background-image: url(<%= asset_path('enviroment/backboard.png') %>);background-size: cover; background-position: center;">
+<div style="background-image: url(<%= asset_path('enviroment/backboard.png') %>);background-size: cover; background-position: center;">
+<section class="container py-5 mt-5 mt-md-4 mb-md-3 mb-lg-4 mb-xl-5">
     <div class="row align-items-center align-items-lg-stretch mb-2 mb-sm-3">
         <!-- Parallax gfx -->
         <div class="col-xl-7 col-md-6 d-flex justify-content-center justify-content-md-end overflow-hidden order-md-2 mt-n5 mt-sm-n4 mt-md-0">
             <div class="position-relative mt-5" style="max-width: 660px;">
                 <div class="parallax zindex-2">
-                    <div class="parallax-layer zindex-2 mb-n3" data-depth="0.1">
+                    <div class="parallax-layer zindex-2 mb-n3 card card-hover" data-depth="0.1">
                         <%= image_tag @post.generated_card.url %>
                     </div>
                 </div>
@@ -31,8 +32,8 @@
             </div>
             <!-- Chat window -->
             <h1>Chat room</h1>
-            <div class="row g-0 border rounded-3 shadow-sm position-relative overflow-hidden">
-                <div class="col-lg-12" style="max-height: 712px;">
+            <div class="row g-0 border rounded-3 shadow-sm position-relative overflow-hidden white-background">
+                <div class="col-lg-12" style="max-height: 712px; min-height: 712px;">
                     <div class="card h-100 border-0 bg-transparent pb-3">
                     <!-- Messages -->
                     <div class="card-body swiper scrollbar-hover overflow-hidden w-100 pb-0" data-swiper-options='{
@@ -57,44 +58,45 @@
 
                     <!-- Footer (Send message form) -->
                     <div class="card-footer d-sm-flex w-100 border-0 pt-3 pb-3 px-4">
-                        <div class="position-relative w-100 me-2 mb-3 mb-sm-0">
+                        <div class="input-group">
                             <input type="text" data-behavior="post_speaker" id="post_input" class="form-control form-control-lg" style="padding-right: 85px;">
+                            <button id="submit_button" class="btn btn-primary btn-icon btn-lg d-sm-inline-flex ms-1">
+                            <i class="bi bi-send"></i>
+                            </button>
                         </div>
-                        <button id="submit_button" class="btn btn-primary btn-icon btn-lg d-sm-inline-flex ms-1">
-                        <i class="bi bi-send"></i>
-                        </button>
                     </div>
                 </div>
             </div>
-            <% if current_user && current_user.own?(@post) %>
-            <div class="row g-0 border rounded-3 shadow-sm position-relative overflow-hidden">
-                <div class="col-lg-12" style="max-height: 712px;">
-                    <div class="card h-50 border-0 bg-transparent pb-3">
-                        <div class="card-footer d-sm-flex w-100 border-0 pt-3 pb-3 px-4">
-                            <div class="position-relative w-100 me-2 mb-3 mb-sm-0">
-                                <div class="navbar-brand text-dark">
-                                    懸賞金を支払う
+        </div>
+        <% if current_user && current_user.own?(@post) %>
+            <h1>懸賞金を支払う</h1>
+            <div class="row g-0 border rounded-3 shadow-sm position-relative overflow-hidden white-background-2">
+                <div class="row g-0 border rounded-3 shadow-sm position-relative overflow-hidden">
+                    <div class="col-lg-12" style="max-height: 712px;">
+                        <div class="card h-50 border-0 bg-transparent pb-3">
+                            <div class="card-footer d-sm-flex w-100 border-0 pt-3 pb-3 px-4">
+                                <div class="position-relative w-100 me-2 mb-3 mb-sm-0">
+                                    <p>チャットをくれた人に懸賞金を贈ろう！！！その人の名前を入れてね！</p>
+                                    <%= form_with url: search_users_path, class: "needs-validation", method: :get do |f| %>
+                                        <%= f.label :username, 'ユーザー名', class: "form-label" %>
+                                        <div class="input-group">
+                                            <%= f.text_field :username , class: "form-control rounded-start ps-5",  placeholder:"あきら" ,required: true %>
+                                            <%= hidden_field_tag :post_id, @post.id %>
+                                            <i class="bx bx-envelope fs-lg text-muted position-absolute top-50 start-0 translate-middle-y ms-3 zindex-5"></i>
+                                            <%= f.submit '検索', class: "btn btn-primary" %>
+                                        </div>
+                                    <% end %>
                                 </div>
-                                <p>チャットをくれた人に懸賞金を贈ろう！！！その人の名前を入れてね！</p>
-                                <%= form_with url: search_users_path, class: "needs-validation", method: :get do |f| %>
-                                    <%= f.label :username, 'ユーザー名', class: "form-label" %>
-                                    <div class="input-group">
-                                        <%= f.text_field :username , class: "form-control rounded-start ps-5",  placeholder:"あきら" ,required: true %>
-                                        <%= hidden_field_tag :post_id, @post.id %>
-                                        <i class="bx bx-envelope fs-lg text-muted position-absolute top-50 start-0 translate-middle-y ms-3 zindex-5"></i>
-                                        <%= f.submit '検索', class: "btn btn-primary" %>
-                                    </div>
-                                <% end %>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <% end %>
-        </div>
+        <% end %>
     </div>
     <div style="height: 50px;"></div>
 </section>
+</div>
 
 
 
