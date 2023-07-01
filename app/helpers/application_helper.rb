@@ -14,7 +14,7 @@ module ApplicationHelper
             site_name: '自分、探してます',
             title: :title,
             description: :description,
-            image: image_url("ogp.jpg"),
+            image: post&.generated_card&.file&.present? ? post.generated_card.url : image_url("ogp.jpg"),
             type: 'website',
             url: request.original_url,
             local: 'ja-JP'
@@ -22,7 +22,7 @@ module ApplicationHelper
             twitter: {
             card: 'summary_large_image',
             site: '@Nakano-41期生',
-            image: image_url("ogp.jpg")
+            image: post&.generated_card&.file&.present? ? post.generated_card.url : image_url("ogp.jpg")
             }
         }
     end
