@@ -25,7 +25,7 @@
                     </button>
                 <% end %>
                 <h6>Share this :</h6>
-                <a href="https://twitter.com/share?url=<%= request.original_url %>&text=<%= @post.id %>" class="btn btn-icon btn-secondary btn-twitter me-2 mb-2" target="_blank">
+                <a href="https://twitter.com/share?url=<%= request.original_url %>&text=<%= @post.title %>、探してます" class="btn btn-icon btn-secondary btn-twitter me-2 mb-2" target="_blank">
                     <i class="bi bi-twitter"></i>
                 </a>
             </div>
@@ -61,7 +61,7 @@
                             <input type="text" data-behavior="post_speaker" id="post_input" class="form-control form-control-lg" style="padding-right: 85px;">
                         </div>
                         <button id="submit_button" class="btn btn-primary btn-icon btn-lg d-sm-inline-flex ms-1">
-                        <i class="bx bx-send"></i>
+                        <i class="bi bi-send"></i>
                         </button>
                     </div>
                 </div>
