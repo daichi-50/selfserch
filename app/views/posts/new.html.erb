@@ -38,18 +38,39 @@
                                     <div class="position-relative mb-4">
                                         <%= f.label :image, class: 'form-label fs-base' %>
                                         <%= f.file_field :image, class: 'form-control form-control-lg'%>
+                                        <% if @post.errors[:image].any? %>
+                                            <div class="alert alert-danger mt-2">
+                                                <% @post.errors.full_messages_for(:image).each do |message| %>
+                                                    <p class="mb-0"><%= message %></p>
+                                                <% end %>
+                                            </div>
+                                        <% end %>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="position-relative mb-4">
                                         <%= f.label :title, class: 'form-label fs-base' %>
-                                        <%= f.text_field :title, class: 'form-control form-control-lg', placeholder: '二度と戻らない彼との日々' %>
+                                        <%= f.text_field :title, class: 'form-control form-control-lg', placeholder: '二度と戻らない彼との日々 *10文字以下' %>
+                                        <% if @post.errors[:title].any? %>
+                                            <div class="alert alert-danger mt-2">
+                                                <% @post.errors.full_messages_for(:title).each do |message| %>
+                                                    <p class="mb-0"><%= message %></p>
+                                                <% end %>
+                                            </div>
+                                        <% end %>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="position-relative mb-4">
                                         <%= f.label :description, class: 'form-label fs-base' %>
-                                        <%= f.text_area :description, class: 'form-control form-control-lg', placeholder: 'あの日のことを思い出すと、胸が痛みます。タイムマシンに心あたりがある方はご一報ください'%>
+                                        <%= f.text_area :description, class: 'form-control form-control-lg', placeholder: 'あの日のことを思い出すと、胸が痛みます。タイムマシンに心あたりがある方はご一報ください *65文字以下'%>
+                                        <% if @post.errors[:description].any? %>
+                                            <div class="alert alert-danger mt-2">
+                                                <% @post.errors.full_messages_for(:description).each do |message| %>
+                                                    <p class="mb-0"><%= message %></p>
+                                                <% end %>
+                                            </div>
+                                        <% end %>
                                     </div>
                                 </div>
                             </div>

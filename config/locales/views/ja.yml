@@ -1,0 +1,46 @@
+ja:
+  defaults:
+    login: 'ログイン'
+    register: '登録'
+    logout: 'ログアウト'
+    guest: 'ゲストとして'
+  create:
+    success: 'ユーザー登録が完了しました'
+    fail: 'ユーザー登録に失敗しました'
+  users:
+    new:
+      title: 'ユーザー登録'
+      to_login_page: 'ログインページへ'
+    sessions:
+      guest_sign_in:
+        success: 'ゲストログインしました'
+    index:
+      title: 'ランキング'
+  user_sessions:
+    new:
+      title: 'ログイン'
+      to_register_page: '登録ページへ'
+      password_forget: 'パスワードをお忘れの方はこちら'
+    create:
+      success: 'ログインしました'
+      fail: 'ログインに失敗しました'
+    destroy:
+      success: 'ログアウトしました'
+    index:
+      title: 'ランキング'
+  boards:
+    index:
+      title: '手配書一覧'
+    new:
+      title: '手配書作成'
+    bookmarks:
+      title: 'ブックマーク一覧'
+  profiles:
+    show:
+      title: 'マイページ'
+  posts:
+    create:
+      success: '手配書を作成しました'
+      error: '手配書の作成に失敗しました。入力項目を確認してください'
+    destroy:
+      success: '手配書を削除しました'

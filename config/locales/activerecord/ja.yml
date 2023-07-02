@@ -12,8 +12,5 @@ ja:
         updated_at: 更新日時
       post: 
         image: 画像
-        lost_item_category: 見失ったもの
-        when: いつなくした？
-        user_height: 身長
-        user_weight: 体重or体型
-        lost_item_description: 見失ったものの詳細
+        title: 探しもの
+        description: 詳細
