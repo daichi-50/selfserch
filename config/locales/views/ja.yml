@@ -8,6 +8,8 @@ ja:
     success: 'ユーザー登録が完了しました'
     fail: 'ユーザー登録に失敗しました'
   users:
+    email: 'メールアドレス'
+    password: 'パスワード'
     new:
       title: 'ユーザー登録'
       to_login_page: 'ログインページへ'

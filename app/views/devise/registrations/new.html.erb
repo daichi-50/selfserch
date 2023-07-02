@@ -2,6 +2,8 @@
 <section class="jarallax position-relative d-flex align-items-center min-vh-100 bg-light mb-5 py-lg-5 pt-5" style="background-image: url(<%= asset_path('enviroment/background.jpg') %>);background-size: cover; background-position: center;" >
     <div class="container d-flex flex-wrap justify-content-center justify-content-xl-start h-100 pt-5">
         <div class="w-100 align-self-end pt-1 pt-md-4 pb-4" style="max-width: 526px;">
+            <% breadcrumb :user_new %>
+            <%= breadcrumbs separator: " > " %>
             <h1 class="text-center text-xl-start">会員登録</h1>
             <% if resource.errors.any? %>
               <div id="error_explanation">

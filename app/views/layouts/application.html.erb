@@ -19,6 +19,24 @@
     <main class="page-wrapper">
       <%= render 'shared/header' %>
       <%= render 'shared/flash_messages' %>
+
+    <!-- Breadcrumb -->
+    <nav class="pt-lg-4 pb-3 mb-2 mb-sm-3" aria-label="breadcrumb">
+      <ol class="breadcrumb mb-0">
+        <% breadcrumbs do |name, url, styles| %>
+          <% if url.blank? %>
+            <li class="breadcrumb-item active" aria-current="page">
+              <%= name %>
+            </li>
+          <% else %>
+            <li class="breadcrumb-item">
+              <%= link_to name, url %>
+            </li>
+          <% end %>
+        <% end %>
+      </ol>
+    </nav>
+
       <%= yield %>
     </main>
       <%= render 'shared/footer' %>

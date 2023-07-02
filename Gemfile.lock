@@ -131,6 +131,9 @@ GEM
     formatador (1.1.0)
     globalid (1.1.0)
       activesupport (>= 5.0)
+    gretel (4.5.0)
+      actionview (>= 5.1, < 7.1)
+      railties (>= 5.1, < 7.1)
     hashie (5.0.0)
     i18n (1.13.0)
       concurrent-ruby (~> 1.0)
@@ -328,6 +331,7 @@ DEPENDENCIES
   debug
   devise
   fog-aws
+  gretel
   jbuilder
   jsbundling-rails
   kaminari
