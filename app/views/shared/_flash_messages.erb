@@ -1,0 +1,17 @@
+<% flash.each do |type, msg| %>
+    <% if type == 'success' %>
+        <div class="alert alert-success shadow-lg" role="alert">
+        <div>
+            <i class="bi bi-hand-thumbs-up"></i>
+            <span><%= msg %></span>
+        </div>
+        </div>
+    <% elsif type == 'error' %>
+        <div class="alert alert-error shadow-lg" role="alert">
+        <div>
+            <i class="bi bi-emoji-wink"></i>
+            <span><%= msg %></span>
+        </div>
+        </div>
+    <% end %>
+<% end %>

@@ -2,7 +2,9 @@
   <section class="container py-5 mt-5 mt-md-4 mb-md-3 mb-lg-4 mb-xl-5">
     <div class="row align-items-center">
       <div class="col-md-10 text-center text-md-start">
-        <h2 class="h1 mb-4">懸賞金の獲得 <br> ランキング！！！！</h2>
+        <% breadcrumb :user_index %>
+        <%= breadcrumbs separator: " > " %>
+        <h2 class="h1 mb-4"><span class="text-gradient-primary">懸賞金の獲得</span><br> ランキング！！！！</h2>
       </div>
       <div class="col-md-6-4 text-center">
         <div class="row row-cols-1 row-cols-md-3">

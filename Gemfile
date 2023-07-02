@@ -84,3 +84,4 @@ gem 'rmagick'
 gem 'kaminari'
 gem "meta-tags"
 gem 'devise'
+gem 'gretel'

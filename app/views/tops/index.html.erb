@@ -1,6 +1,7 @@
-<!-- Hero -->
-<section class="jarallax position-relative d-flex align-items-center min-vh-100 bg-light mb-5 py-lg-5 pt-5" style="background-image: url(<%= asset_path('enviroment/background.jpg') %>);background-size: cover; background-position: center;" >
+<section class="jarallax position-relative d-flex align-items-center min-vh-100 bg-light mb-5 py-lg-5 pt-5" style="background-image: url(<%= asset_path('enviroment/background2.jpg') %>);background-size: cover; background-position: center;" >
     <div class="container position-relative zindex-5 py-5">
+        <% breadcrumb :root %>
+        <%= breadcrumbs separator: " > " %>
         <div class="row justify-content-md-start justify-content-center">
             <div class="col-md-6 col-sm-8 order-md-1 order-2 d-flex flex-column justify-content-between mt-4 pt-2 text-md-start text-center">
                 <div class="mb-md-5 pb-xl-5 mb-4">
@@ -11,7 +12,7 @@
                     <span class="white-text"><br>探しませんか？</span>
                 </h1>
                 <div class="d-md-flex align-items-md-start">
-                    <%= button_to "ゲストとして", users_guest_sign_in_path, class: "btn btn-lg btn-primary flex-shrink-0 me-md-4 mb-md-0 mb-sm-4 mb-3", data: { "turbo-method": :post } %>
+                    <%= button_to (t 'defaults.guest'), users_guest_sign_in_path, class: "btn btn-lg btn-primary flex-shrink-0 me-md-4 mb-md-0 mb-sm-4 mb-3", data: { "turbo-method": :post } unless user_signed_in? %>
                 </div>
                 </div>
             </div>
@@ -27,3 +28,4 @@
         </div>
     </div>
 </section>
+

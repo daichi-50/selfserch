@@ -18,14 +18,16 @@ class PostsController < ApplicationController
     def create
         @post = current_user.posts.build(post_params)
 
-        @post.set_prize_money #懸賞金の設定
-        @post.create_image #画像の作成
-
-        if @post.save
-            flash[:success] = "Post created"
-            redirect_to posts_path
+        if @post.valid? 
+            @post.set_prize_money #懸賞金の設定
+            @post.create_image #画像の作成
+            if @post.save
+                redirect_to posts_path, flash: { success: t('.success') }
+            else
+                render 'new', flash: { error: t('.error') }
+            end
         else
-            render 'new'
+            render 'new', flash: { error: t('.error') }
         end
     end
 
@@ -33,7 +35,6 @@ class PostsController < ApplicationController
 
     def update
         if @post.update(post_params)
-            flash[:success] = "Post updated"
             redirect_to posts_path
         else
             render 'edit'
@@ -42,8 +43,7 @@ class PostsController < ApplicationController
 
     def destroy
         @post.destroy
-        flash[:success] = "Post deleted"
-        redirect_to posts_path
+        redirect_to posts_path, flash: { success: t('.success') }
     end
 
 private
