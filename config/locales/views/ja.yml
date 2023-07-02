@@ -34,7 +34,7 @@ ja:
     index:
       title: '手配書一覧'
     new:
-      title: '手配書作成'
+      title: '手配書の作成'
     bookmarks:
       title: 'ブックマーク一覧'
   profiles:

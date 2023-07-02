@@ -10,7 +10,7 @@ end
 
 crumb :user_sign_in do
   link "ログイン", new_user_session_path
-  parent :user_new
+  parent :root
 end
 
 crumb :user_show do |user|
@@ -23,9 +23,9 @@ crumb :user_index do
   parent :post_index
 end
 
-crumb :user_search do
+crumb :user_search do |post|
   link "懸賞金を贈る", search_users_path
-  parent :post_show
+  parent :post_show, post
 end
 
 crumb :post_index do
