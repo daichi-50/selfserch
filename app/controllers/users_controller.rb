@@ -6,6 +6,8 @@ class UsersController < ApplicationController
     def show
         @user = User.find(params[:id])
         @posts = @user.posts.page(params[:page]).per(3).order(created_at: :desc)
+
+        @favorites = Favorite.where(user_id: @user.id).page(params[:page]).per(3).order(created_at: :desc)
     end
 
     def search

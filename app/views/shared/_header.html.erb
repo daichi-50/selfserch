@@ -20,7 +20,7 @@
                   <ul class="list-unstyled mb-3">
                     <% if user_signed_in? %>
                       <li><%= link_to (t 'profiles.show.title'), user_path(current_user), class: "dropdown-item py-1" %></li>
-                      <li><%= link_to (t 'defaults.logout'), destroy_user_session_path, class: "dropdown-item py-1", data: {"turbo_method": :delete, "turbo_confirm": "ログアウトしますか？"} %></li>
+                      <li><%= link_to (t 'defaults.logout'), destroy_user_session_path, class: "dropdown-item py-1", data: {turbo_method: :delete, turbo_confirm: "ログアウトしますか？"} %></li>
                     <% else %>
                       <li><%= link_to (t 'defaults.login'), new_user_session_path, class: "dropdown-item py-1" %></li>
                       <li><%= link_to (t 'defaults.register'), new_user_registration_path, class: "dropdown-item py-1" %></li>
