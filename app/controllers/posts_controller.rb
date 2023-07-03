@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-    before_action :set_post, only: [ :edit, :update, :destroy]
+    before_action :set_post, only: [:destroy, :favorites]
 
     def index
         @posts = Post.page(params[:page]).includes(:user).order(created_at: :desc)
@@ -28,16 +28,6 @@ class PostsController < ApplicationController
             end
         else
             render 'new', flash: { error: t('.error') }
-        end
-    end
-
-    def edit; end
-
-    def update
-        if @post.update(post_params)
-            redirect_to posts_path
-        else
-            render 'edit'
         end
     end
 

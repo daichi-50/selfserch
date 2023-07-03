@@ -40,6 +40,7 @@ ja:
   profiles:
     show:
       title: 'マイページ'
+      favorite: 'お気に入り'
   posts:
     create:
       success: '手配書を作成しました'

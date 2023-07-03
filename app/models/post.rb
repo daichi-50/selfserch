@@ -4,7 +4,7 @@ class Post < ApplicationRecord
 
   belongs_to :user
   has_many :messages, dependent: :destroy
-
+  has_many :favorites, dependent: :destroy
   validates :image, presence: true
   validates :title, length: { maximum: 10 }
   validates :description, length: { maximum: 65 }

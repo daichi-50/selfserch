@@ -12,4 +12,9 @@ class UsersController < ApplicationController
         @post = Post.find(params[:post_id])
         @users = User.where('username LIKE ?', "%#{params[:username]}%")
     end
+
+    def favorites
+        @user = User.find(params[:id])
+        @favorite_posts = @user.favorites.joins(:post).page(params[:page]).per(3).order(created_at: :desc)
+    end
 end

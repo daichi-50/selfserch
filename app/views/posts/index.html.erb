@@ -54,9 +54,13 @@
                         </div>
                     </div>
                     <div class="card-footer py-4">
-                        <a href="#" class="d-flex align-items-center fw-bold text-dark text-decoration-none">
-                            <%= post.user.username %>
-                        </a>
+                    <div class="d-flex align-items-center">
+                        <%= post.user.username %>
+                        <div class="ms-auto">
+                            <i class="bi bi-heart-fill"><%= post.favorites.count %></i>
+                            <i class="bi bi-chat-left-text-fill"><%=post.messages.count%></i>
+                        </div>
+                    </div>
                     </div>
                 </article>
             </div>

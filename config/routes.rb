@@ -7,13 +7,18 @@ Rails.application.routes.draw do
     post 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
   end
 
-  resources :users, only: [:show, :index]
+  resources :users, only: [:show, :index] do
+    member do
+      get :favorites
+    end
+  end
 
   mount ActionCable.server => '/cable'
   root "tops#index"
 
   resources :posts do
     resources :messages, only: [:create]
+    resources :favorites, only: [:create, :destroy]
   end
   resources :transfers, only: :create
   get 'search_users', to: 'users#search'
