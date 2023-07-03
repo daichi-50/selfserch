@@ -8,7 +8,9 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: [:show, :index] do
-    get :favorites, on: :collection
+    member do
+      get :favorites
+    end
   end
 
   mount ActionCable.server => '/cable'

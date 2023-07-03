@@ -28,6 +28,11 @@ crumb :user_search do |post|
   parent :post_show, post
 end
 
+crumb :user_favorite do |user|
+  link "お気に入り", favorites_user_path(user)
+  parent :user_show, user
+end
+
 crumb :post_index do
   link "手配書一覧", posts_path
   parent :root
