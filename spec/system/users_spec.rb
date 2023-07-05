@@ -86,19 +86,46 @@ RSpec.describe "UserRegistrations", type: :system do
         end
     end
 
+    describe 'ユーザーログアウト' do
+        context 'ログインしているとき' do
+            it 'ログアウトが成功する' do
+                sign_in @user
+                visit posts_path
+                click_link 'ログアウト'
+                expect(page).to have_current_path(root_path) # ログアウト後のリダイレクト先を確認します。
+            end
+        end
+    end
+
     describe 'ユーザー詳細' do
         context 'ログインしているとき' do
             it 'ユーザー詳細ページが表示される' do
                 sign_in @user
                 visit user_path(@user)
-                expect(page).to have_current_path(user_path(@user))
+                expect(page).to have_current_path(user_path(@user)) # ログアウト後のリダイレクト先を確認します。
                 expect(page).to have_content(@user.username)
             end
         end
         context 'ログインしていないとき' do
             it 'ユーザー詳細ページが表示されない' do
                 visit user_path(@user)
-                expect(page).to have_current_path(new_user_session_path)
+                expect(page).to have_current_path(new_user_session_path) # ログアウト後のリダイレクト先を確認します。
+            end
+        end
+    end
+
+    describe 'ランキングの閲覧' do
+        context 'ログインしているとき' do
+            it 'ランキングページが表示される' do
+                sign_in @user
+                visit users_path
+                expect(page).to have_current_path(users_path) # ランキングページが表示されるはずです。
+            end
+        end
+        context 'ログインしていないとき' do
+            it 'ランキングページが表示されない' do
+                visit users_path
+                expect(page).to have_current_path(new_user_session_path) # ランキングページが表示されないはずです。
             end
         end
     end
