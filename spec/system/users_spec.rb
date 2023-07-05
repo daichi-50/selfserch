@@ -2,7 +2,8 @@ require 'rails_helper'
 
 RSpec.describe "UserRegistrations", type: :system do
     before do
-    driven_by(:rack_test)
+        driven_by(:rack_test)
+        @user = FactoryBot.create(:user)
     end
     describe 'ユーザー登録' do
         context '有効な値を入力したとき' do
@@ -48,7 +49,6 @@ RSpec.describe "UserRegistrations", type: :system do
 
         context '登録済みのメールアドレスを入力したとき' do
             it 'ユーザー登録が失敗する' do
-                FactoryBot.create(:user)
                 visit new_user_registration_path
 
                 fill_in '名前', with: 'new_user'
@@ -67,11 +67,11 @@ RSpec.describe "UserRegistrations", type: :system do
             it 'ログインが成功する' do
                 visit new_user_session_path
             
-                fill_in 'メールアドレス', with: 'new_user@example.com'
+                fill_in 'メールアドレス', with: 'test@example.com'
                 fill_in 'パスワード', with: 'password'
                 click_button 'ログイン'
             
-                expect(page).to have_current_path(new_user_session_path) # ログイン後のリダイレクト先を確認します。
+                expect(page).to have_current_path(posts_path) # ログイン後のリダイレクト先を確認します。
             end
             
             it 'ログインが失敗する' do
@@ -82,6 +82,23 @@ RSpec.describe "UserRegistrations", type: :system do
                 click_button 'ログイン'
             
                 expect(page).to have_current_path(new_user_session_path) # ログイン失敗後は同じページに戻るはずです。
+            end
+        end
+    end
+
+    describe 'ユーザー詳細' do
+        context 'ログインしているとき' do
+            it 'ユーザー詳細ページが表示される' do
+                sign_in @user
+                visit user_path(@user)
+                expect(page).to have_current_path(user_path(@user))
+                expect(page).to have_content(@user.username)
+            end
+        end
+        context 'ログインしていないとき' do
+            it 'ユーザー詳細ページが表示されない' do
+                visit user_path(@user)
+                expect(page).to have_current_path(new_user_session_path)
             end
         end
     end
