@@ -24,10 +24,12 @@ class PostsController < ApplicationController
             if @post.save
                 redirect_to posts_path, flash: { success: t('.success') }
             else
-                render 'new', flash: { error: t('.error') }
+                flash.now[:error] = t('.error')
+                render 'new'
             end
         else
-            render 'new', flash: { error: t('.error') }
+            flash.now[:error] = t('.error')
+            render 'new'
         end
     end
 

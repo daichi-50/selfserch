@@ -34,7 +34,7 @@
                 <div class="bg-dark position-absolute top-0 start-0 w-100 h-100 rounded-3 d-none d-dark-mode-block"></div>
                     <div class="card-body position-relative zindex-2">
                         <h2 class="card-title pb-3 mb-4">探し物は何ですか？</h2>
-                        <%= form_with model: @post, local: true, html: {class: 'needs-validation', novalidate: true} do |f| %>
+                        <%= form_with model: @post, data: { turbo: false }, html: {class: 'needs-validation', novalidate: true} do |f| %>
                             <div class="row g-4 needs-validation">
                                 <div class="col-12">
                                     <div class="position-relative mb-4">

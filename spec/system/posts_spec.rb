@@ -18,7 +18,7 @@ RSpec.describe 'Posts', type: :system do
           click_button "投稿する"
 
           expect(page).to have_current_path(posts_path)
-          expect(page).to have_content (post.user.username)
+          expect(page).to have_content ("手配書を作成しました")
         end
       end
       context "画像が未選択のとき" do

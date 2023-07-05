@@ -6,8 +6,8 @@ class Post < ApplicationRecord
   has_many :messages, dependent: :destroy
   has_many :favorites, dependent: :destroy
   validates :image, presence: true
-  validates :title, length: { maximum: 10 }
-  validates :description, length: { maximum: 65 }
+  validates :title, length: { maximum: 10, minimum: 1 }
+  validates :description, length: { maximum: 65, minimum: 1 }
 
   require 'base64'
   require 'rmagick'
