@@ -3,7 +3,8 @@ ja:
     login: 'ログイン'
     register: '登録'
     logout: 'ログアウト'
-    guest: 'ゲストとして'
+    guest: 'ゲストログイン'
+    submit: '手配する'
   create:
     success: 'ユーザー登録が完了しました'
     fail: 'ユーザー登録に失敗しました'
@@ -37,10 +38,11 @@ ja:
       title: '手配書の作成'
     bookmarks:
       title: 'ブックマーク一覧'
-  profiles:
+  user:
     show:
       title: 'マイページ'
       favorite: 'お気に入り'
+      delete: '削除'
   posts:
     create:
       success: '手配書を作成しました'

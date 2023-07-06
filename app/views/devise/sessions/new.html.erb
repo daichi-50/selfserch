@@ -7,7 +7,7 @@
             <%= breadcrumbs separator: " > " %>
             <h1 class="text-center text-xl-start"><%= (t 'defaults.login') %></h1>
             </p>
-            <%= form_with url: user_session_path, local: true, html: {class: 'needs-validation mb-2', novalidate: true} do |f| %>
+            <%= form_with model: @user,url: user_session_path, html: {class: 'needs-validation mb-2', novalidate: true} do |f| %>
                 <div class="position-relative mb-4">
                     <%= f.label :email, (t 'users.email'),class: 'form-label fs-base' %>
                     <%= f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control form-control-lg', placeholder: (t 'users.email'), required: true %>

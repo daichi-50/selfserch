@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_many :favorite_posts, through: :favorites, source: :post
 
   validates :username, presence: true, length: { maximum: 50, allow_blank: true }
-  validates :email, presence: true, uniqueness: true
+
 
   def own?(object)
     object.user_id == id

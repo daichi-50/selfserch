@@ -23,9 +23,7 @@
                 <a href="#" class="fw-semibold"><%= @post.user.username %></a>
                 <span class="d-block mb-3"><%= @post.created_at.strftime('%Y年%m月%d日 %H:%M') %></span>
                 <% if current_user && current_user.own?(@post) %>
-                    <button class="btn btn-lg btn-outline-secondary">
-                    <%= link_to '削除', post_path(@post), data: { turbo_method: :delete, turbo_confirm: "削除しますか?" } %>
-                    </button>
+                    <%= link_to '削除', post_path(@post), data: { turbo_method: :delete, turbo_confirm: "削除しますか?" }, class: "btn btn-lg btn-inline-block btn-warning me-2 mb-2" %>
                 <% end %>
                 <h6>Share & いいね！</h6>
                 <div class="d-flex align-items-center">
