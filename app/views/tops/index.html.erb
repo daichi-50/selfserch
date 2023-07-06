@@ -29,3 +29,84 @@
     </div>
 </section>
 
+<!-- Steps (How it works) -->
+<section class="container pb-md-3 pb-lg-4 pb-xl-0 pt-sm-2 pt-md-3 pt-lg-5 mt-2 mt-md-3">
+<h2 class="display-5 text-center pt-5 pb-3 pb-md-4 pb-lg-5 mb-xl-4">このアプリの使い方♪</h2>
+
+<!-- Step -->
+<div class="row align-items-center pb-5 mb-2 mb-md-3 mb-lg-4 mb-xl-5">
+    <div class="rellax col-md-6 pb-2 pb-md-0 mb-4 mb-md-0" data-rellax-percentage="0.5" data-rellax-speed="0.8" data-disable-parallax-down="md">
+    <div class="position-relative rounded-3 overflow-hidden card card-hover" data-depth="0.2">
+        <div class="bg-gradient-primary position-absolute top-0 start-0 w-100 h-100"></div>
+            <%= link_to image_tag "enviroment/post_sample.png", class: "d-block position-relative zindex-2 mx-auto", width: "636", alt: "Image" %>
+    </div>
+    </div>
+    <div class="rellax col-md-6 col-lg-5 offset-lg-1" data-rellax-percentage="0.5" data-rellax-speed="-0.7" data-disable-parallax-down="md">
+    <div class="ps-md-4 ps-lg-0">
+        <div class="text-primary fs-xl fw-bold pb-1 mb-2">Step 1</div>
+        <h3 class="h1 mb-lg-4"><%= link_to "手配書を作ろう！", new_post_path, class: "text-decoration-none" %></h3>
+        <h5 class="fs-xl mb-0">
+            1. 探したいものの画像をいれます。<br><br>
+            2. 探したいものの名前を入れます。<br><br>
+            3. 探したいものの説明を入れます。<br><br>
+        </h5>
+    </div>
+    </div>
+</div>
+
+<!-- Step -->
+<div class="row align-items-center pb-5 mb-2 mb-md-3 mb-lg-4 mb-xl-5">
+    <div class="rellax col-md-6 pb-2 pb-md-0 mb-4 mb-md-0" data-rellax-percentage="0.5" data-rellax-speed="0.8" data-disable-parallax-down="md">
+    <div class="position-relative rounded-3 overflow-hidden card card-hover" data-depth="0.2">
+        <div class="bg-gradient-primary position-absolute top-0 start-0 w-100 h-100"></div>
+        <%= link_to image_tag("enviroment/tyatto.png"), posts_path, class: "d-block position-relative zindex-2 mx-auto", width: "636", alt: "Image" %>
+    </div>
+    </div>
+    <div class="rellax col-md-6 col-lg-5 offset-lg-1" data-rellax-percentage="0.5" data-rellax-speed="-0.7" data-disable-parallax-down="md">
+    <div class="ps-md-4 ps-lg-0">
+        <div class="text-primary fs-xl fw-bold pb-1 mb-2">Step 2</div>
+        <h3 class="h1 mb-lg-4"><%= link_to "チャットをして意見をもらおう！", new_post_path, class: "text-decoration-none" %></h3>
+        <h5 class="fs-xl mb-0">
+        ・探しものについて誰かが知っているかもしれませんよ！！！
+        </h5>
+    </div>
+    </div>
+</div>
+
+<!-- Step -->
+<div class="row align-items-center pb-5 mb-2 mb-md-3 mb-lg-4 mb-xl-5">
+    <div class="rellax col-md-6 pb-2 pb-md-0 mb-4 mb-md-0" data-rellax-percentage="0.5" data-rellax-speed="0.8" data-disable-parallax-down="md">
+    <div class="position-relative rounded-3 overflow-hidden card card-hover" data-depth="0.2">
+        <div class="bg-gradient-primary position-absolute top-0 start-0 w-100 h-100"></div>
+        <%= link_to image_tag("enviroment/serch.png"), posts_path, class: "d-block position-relative zindex-2 mx-auto", width: "636", alt: "Image" %>
+    </div>
+    </div>
+    <div class="rellax col-md-6 col-lg-5 offset-lg-1" data-rellax-percentage="0.5" data-rellax-speed="-0.7" data-disable-parallax-down="md">
+    <div class="ps-md-4 ps-lg-0">
+        <div class="text-primary fs-xl fw-bold pb-1 mb-2">Step 3</div>
+        <h3 class="h1 mb-lg-4"><%= link_to "探しもの手伝ってくれた人に懸賞金を払う！", new_post_path, class: "text-decoration-none" %></h3>
+        <h5 class="fs-xl mb-0">１人にしか送れないよ</h5>
+    </div>
+    </div>
+</div>
+
+<!-- Step -->
+<div class="row align-items-center pb-5 mb-2 mb-md-3 mb-lg-4 mb-xl-5">
+    <div class="rellax col-md-6 pb-2 pb-md-0 mb-4 mb-md-0" data-rellax-percentage="0.5" data-rellax-speed="0.8" data-disable-parallax-down="md">
+    <div class="position-relative rounded-3 overflow-hidden card card-hover" data-depth="0.2">
+        <div class="bg-gradient-primary position-absolute top-0 start-0 w-100 h-100"></div>
+        <%= link_to image_tag("enviroment/money.png"), posts_path, class: "d-block position-relative zindex-2 mx-auto", width: "636", alt: "Image" %>
+    </div>
+    </div>
+    <div class="rellax col-md-6 col-lg-5 offset-lg-1" data-rellax-percentage="0.5" data-rellax-speed="-0.7" data-disable-parallax-down="md">
+    <div class="ps-md-4 ps-lg-0">
+        <div class="text-primary fs-xl fw-bold pb-1 mb-2">Step 4</div>
+        <h3 class="h1 mb-lg-4"><%= link_to "懸賞金をいっぱいもらってランキング上位を目指そう！！", new_post_path, class: "text-decoration-none" %></h3>
+        <h5 class="fs-xl mb-0">
+        ・一番懸賞金をもらった９人がランキングに載ります。<br><br>
+        ・<%= link_to "マイページ", user_path(current_user), class: "text-decoration-none" %>から今の獲得した懸賞金を確認できます
+        </h5>
+    </div>
+    </div>
+</div>
+</section>
