@@ -1,5 +1,12 @@
+<!-- Page loading spinner -->
+<div id="page-loading" class="page-loading">
+    <div class="page-loading-inner">
+    <div class="page-spinner"></div><span>Loading...</span>
+    </div>
+</div>
+
 <section class="position-relative bg-secondary pt-5">
-    <div class="container position-relative zindex-2 pt-5" style="margin-top: 50px; background-image: url(<%= asset_path('enviroment/backboard.png') %>);background-size: cover; background-position: center;">
+    <div class="container position-relative zindex-2 pt-5" style="margin-top: 50px; background-image: url(<%= asset_path('enviroment/backboard2.png') %>);background-size: cover; background-position: center;">
         <div class="row">
         <!-- Contact links -->
             <div class="col-xl-4 col-lg-5 pb-4 pb-sm-5 mb-2 mb-sm-0">
@@ -34,7 +41,7 @@
                 <div class="bg-dark position-absolute top-0 start-0 w-100 h-100 rounded-3 d-none d-dark-mode-block"></div>
                     <div class="card-body position-relative zindex-2">
                         <h2 class="card-title pb-3 mb-4">探し物は何ですか？</h2>
-                        <%= form_with model: @post, data: { turbo: false }, html: {class: 'needs-validation', novalidate: true} do |f| %>
+                        <%= form_with model: @post, data: { turbo: false }, html: {class: 'needs-validation', novalidate: true, id: 'my_form'} do |f| %>
                             <div class="row g-4 needs-validation">
                                 <div class="col-12">
                                     <div class="position-relative mb-4">
@@ -76,7 +83,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <%= f.submit (t ('defaults.submit')), class: 'btn btn-lg btn-primary w-100 w-sm-auto' %>
+                            <%= f.submit (t ('defaults.submit')), class: 'btn btn-lg btn-primary w-100 w-sm-auto', id: 'form_submit_button' %>
                         <% end %>
                     </div>
                 </div>
@@ -85,3 +92,14 @@
     </div>
     <div class="position-absolute bottom-0 start-0 w-100 bg-light" style="height: 8rem;"></div>
 </section>
+
+<script>
+document.addEventListener("turbo:load", function(){
+    var form = document.getElementById('my_form');
+    var loader = document.getElementById('page-loading');
+
+    form.addEventListener('submit', function() {
+        loader.classList.add('active');
+    });
+});
+</script>
