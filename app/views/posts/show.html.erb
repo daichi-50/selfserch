@@ -38,42 +38,44 @@
                 </div>
             </div>
             <!-- Chat window -->
-            <h1>Chat room</h1>
-            <div class="row g-0 border rounded-3 shadow-sm position-relative overflow-hidden white-background">
-                <div class="col-lg-12" style="max-height: 712px; min-height: 712px;">
-                    <div class="card h-100 border-0 bg-transparent pb-3">
-                    <!-- Messages -->
-                    <div class="card-body swiper scrollbar-hover overflow-hidden w-100 pb-0" data-swiper-options='{
-                        "direction": "vertical",
-                        "slidesPerView": "auto",
-                        "freeMode": true,
-                        "scrollbar": {
-                        "el": ".swiper-scrollbar"
-                        },
-                        "mousewheel": true
-                    }'>
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide h-auto">
-                                <!-- User message -->
-                                <div data-post-id="<%= @post.id %>" id="messages">
-                                    <%= render partial: 'messages/message', collection: @messages, as: :message %>
+            <% if user_signed_in? %>
+                <h1>Chat room</h1>
+                <div class="row g-0 border rounded-3 shadow-sm position-relative overflow-hidden white-background">
+                    <div class="col-lg-12" style="max-height: 712px; min-height: 712px;">
+                        <div class="card h-100 border-0 bg-transparent pb-3">
+                        <!-- Messages -->
+                        <div class="card-body swiper scrollbar-hover overflow-hidden w-100 pb-0" data-swiper-options='{
+                            "direction": "vertical",
+                            "slidesPerView": "auto",
+                            "freeMode": true,
+                            "scrollbar": {
+                            "el": ".swiper-scrollbar"
+                            },
+                            "mousewheel": true
+                        }'>
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide h-auto">
+                                    <!-- User message -->
+                                    <div data-post-id="<%= @post.id %>" id="messages">
+                                        <%= render partial: 'messages/message', collection: @messages, as: :message %>
+                                    </div>
                                 </div>
                             </div>
+                            <div class="swiper-scrollbar end-0"></div>
                         </div>
-                        <div class="swiper-scrollbar end-0"></div>
-                    </div>
 
-                    <!-- Footer (Send message form) -->
-                    <div class="card-footer d-sm-flex w-100 border-0 pt-3 pb-3 px-4">
-                        <div class="input-group">
-                            <input type="text" data-behavior="post_speaker" id="post_input" class="form-control form-control-lg" style="padding-right: 85px;">
-                            <button id="submit_button" class="btn btn-primary btn-icon btn-lg d-sm-inline-flex ms-1">
-                            <i class="bi bi-send"></i>
-                            </button>
+                        <!-- Footer (Send message form) -->
+                        <div class="card-footer d-sm-flex w-100 border-0 pt-3 pb-3 px-4">
+                            <div class="input-group">
+                                <input type="text" data-behavior="post_speaker" id="post_input" class="form-control form-control-lg" style="padding-right: 85px;">
+                                <button id="submit_button" class="btn btn-primary btn-icon btn-lg d-sm-inline-flex ms-1">
+                                <i class="bi bi-send"></i>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            <% end %>
         </div>
         <% if current_user && current_user.own?(@post) %>
             <h1>懸賞金を支払う</h1>

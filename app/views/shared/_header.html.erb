@@ -11,20 +11,40 @@
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
       <div class="offcanvas-body">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 fs-6 lh-1 me-1">
           <li class="nav-item dropdown">
-            <a href="#" class="nav-link" data-bs-toggle="dropdown">依頼人</a>
+            <a href="#" class="nav-link" data-bs-toggle="dropdown"><i class="bi bi-person-fill"></i>依頼人</a>
             <div class="dropdown-menu">
-              <div class="d-lg-flex pt-lg-3">
+              <div class="d-lg-flex pt-lg-3 justify-content-lg-end">
                 <div class="mega-dropdown-column">
                   <ul class="list-unstyled mb-3">
                     <% if user_signed_in? %>
-                      <li><%= link_to (t 'user.show.title'), user_path(current_user), class: "dropdown-item py-1" %></li>
-                      <li><%= link_to (t 'user.show.favorite'), favorites_user_path(current_user), class: "dropdown-item py-1" %></li>
-                      <li><%= link_to (t 'defaults.logout'), destroy_user_session_path, class: "dropdown-item py-1", data: {turbo_method: :delete, turbo_confirm: "ログアウトしますか？"} %></li>
+                      <li><%= link_to user_path(current_user), class: "dropdown-item py-1" do %>
+                          <i class="bi bi-person-badge"></i>
+                          <%= (t 'user.show.title') %>
+                          <% end %>
+                      </li>
+                      <li><%= link_to favorites_user_path(current_user), class: "dropdown-item py-1" do %>
+                          <i class="bi bi-bookmark-heart-fill"></i>
+                          <%= (t 'user.show.favorite') %>
+                          <% end %>
+                      </li>
+                      <li><%= link_to destroy_user_session_path, class: "dropdown-item py-1", data: {turbo_method: :delete, turbo_confirm: "ログアウトしますか？"} do %>
+                          <i class="bi bi-box-arrow-right"></i>
+                          <%= (t 'defaults.logout') %>
+                          <% end %>
+                      </li>
                     <% else %>
-                      <li><%= link_to (t 'defaults.login'), new_user_session_path, class: "dropdown-item py-1" %></li>
-                      <li><%= link_to (t 'defaults.register'), new_user_registration_path, class: "dropdown-item py-1" %></li>
+                      <li><%= link_to new_user_session_path, class: "dropdown-item py-1" do %>
+                          <i class="bi bi-door-open-fill"></i>
+                          <%= (t 'defaults.login') %>
+                          <% end %>
+                      </li>
+                      <li><%= link_to new_user_registration_path, class: "dropdown-item py-1" do %>
+                          <i class="bi bi-box-arrow-in-right"></i>
+                          <%= (t 'defaults.register') %>
+                          <% end %>
+                      </li>
                     <% end %>
                   </ul>
                 </div>
@@ -32,14 +52,26 @@
             </div>
           </li>
           <li class="nav-item dropdown">
-            <a href="#" class="nav-link" data-bs-toggle="dropdown">手配書</a>
+            <a href="#" class="nav-link" data-bs-toggle="dropdown"><i class="bi bi-device-ssd"></i></i>手配書</a>
             <div class="dropdown-menu">
               <div class="d-lg-flex pt-lg-3">
                 <div class="mega-dropdown-column">
                   <ul class="list-unstyled mb-3">
-                    <li><%= link_to (t 'boards.new.title'), new_post_path, class: "dropdown-item py-1" %></li>
-                    <li><%=  link_to (t 'boards.index.title'), posts_path, class: "dropdown-item py-1" %></li>
-                    <li><%= link_to (t 'user_sessions.index.title'), users_path, class: "dropdown-item py-1" %></li>
+                    <li><%= link_to new_post_path, class: "dropdown-item py-1" do %>
+                        <i class="bi bi-pencil-square"></i>
+                        <%= (t 'boards.new.title') %>
+                        <% end %>
+                    </li>
+                    <li><%=  link_to posts_path, class: "dropdown-item py-1" do%>
+                        <i class="bi bi-table"></i>
+                        <%= (t 'boards.index.title') %>
+                        <% end %>
+                    </li>
+                    <li><%= link_to users_path, class: "dropdown-item py-1" do %>
+                        <i class="bi bi-stars"></i>
+                        <%= (t 'user_sessions.index.title') %>
+                        <% end %>
+                    </li>
                   </ul>
                 </div>
               </div>

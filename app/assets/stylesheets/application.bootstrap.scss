@@ -37,13 +37,10 @@ body {
     height: 100%;
     -webkit-transition: all .4s .2s ease-in-out;
     transition: all .4s .2s ease-in-out;
-    background-color: #fff;
+    background-color: #F5DEB3;
     opacity: 0;
     visibility: hidden;
     z-index: 9999;
-}
-.dark-mode .page-loading {
-    background-color: #0b0f19;
 }
 .page-loading.active {
     opacity: 1;
@@ -98,3 +95,4 @@ body {
     transform: rotate(360deg);
     }
 }
+
