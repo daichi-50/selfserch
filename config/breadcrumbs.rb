@@ -13,6 +13,16 @@ crumb :user_sign_in do
   parent :root
 end
 
+crumb :password_new do
+  link "パスワード再設定", new_user_password_path
+  parent :user_sign_in
+end
+
+crumb :password_edit do
+  link "パスワード再設定", edit_user_password_path
+  parent :user_sign_in
+end
+
 crumb :user_show do |user|
   link "#{user.username}さんのページ", user_path(user)
   parent :root
