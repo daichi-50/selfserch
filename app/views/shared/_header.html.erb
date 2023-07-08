@@ -1,6 +1,5 @@
 <!-- Navbar -->
 <!-- Remove "fixed-top" class to make navigation bar scrollable with the page -->
-<section>
 <header class="header navbar navbar-expand-lg bg-light shadow-sm fixed-top">
   <div class="container px-3">
     <%= image_tag "enviroment/logo.png", class: "navbar-brand pe-3", width:70 %>
@@ -78,11 +77,20 @@
             </div>
           </li>
         </ul>
-      </div>     
+      </div> 
+      <div class="offcanvas-header border-top">
+        <a href="https://docs.google.com/forms/d/1bafUcTOExZkoR6iRO_xXg4s86_20UdyvQdjBlnJ7hL8/edit" class="btn btn-secondary w-100" style="margin-right: 16px;" target="_blank" rel="noopener">
+          <i class="bi bi-question-circle"></i>
+          &nbsp;お問い合わせ
+        </a>
+      </div>  
     </div>
     <button type="button" class="navbar-toggler" data-bs-toggle="offcanvas" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+    <a href="https://docs.google.com/forms/d/1bafUcTOExZkoR6iRO_xXg4s86_20UdyvQdjBlnJ7hL8/edit" class="btn btn-secondary btn-sm fs-sm rounded d-none d-lg-inline-flex" style="margin-right: 16px;" target="_blank" rel="noopener">
+      <i class="bi bi-question-circle"></i>
+      &nbsp;お問い合わせ
+    </a>
   </div>
 </header>
-</section>
