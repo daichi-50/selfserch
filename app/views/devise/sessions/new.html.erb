@@ -6,7 +6,7 @@
             <% breadcrumb :user_sign_in %>
             <%= breadcrumbs separator: " > " %>
             <h1 class="text-center text-xl-start"><%= (t 'defaults.login') %></h1>
-            </p>
+            <p class="text-center text-xl-start pb-3 mb-3">パスワードを忘れた方は<%= link_to "こちら", new_user_password_path %></p>
             <%= form_with model: @user,url: user_session_path, html: {class: 'needs-validation mb-2', novalidate: true} do |f| %>
                 <div class="position-relative mb-4">
                     <%= f.label :email, (t 'users.email'),class: 'form-label fs-base' %>

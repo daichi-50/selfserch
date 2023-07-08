@@ -2,14 +2,12 @@
     <!-- Password reset form -->
     <div class="container d-flex flex-wrap justify-content-center justify-content-xl-start h-100 pt-5">
     <div class="w-100 align-self-end pt-1 pt-md-4 pb-4" style="max-width: 526px;">
-        <% breadcrumb :user_password_new %>
-        <%= breadcrumbs separator: " > " %>
         <h1 class="text-center text-xl-start"><%= (t 'defaults.password_new') %></h1>
-        </p>
+        <p class="text-center text-xl-start pb-3 mb-3">会員登録は<%= link_to "こちら", new_user_registration_path %></p>
         <%= form_with model: @user,url: user_password_path, html: {class: 'needs-validation mb-2', novalidate: true} do |f| %>
             <div class="position-relative mb-4">
                 <%= f.label :email,class: 'form-label fs-base' %>
-                <%= f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control form-control-lg', placeholder: sample@co.jp, required: true %>
+                <%= f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control form-control-lg', placeholder: 'sample@co.jp', required: true %>
             </div>
                 <%= f.submit '送信', class: 'btn btn-primary shadow-primary btn-lg w-100' %>
             </div>
