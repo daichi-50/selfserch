@@ -5,6 +5,7 @@ ja:
     logout: 'ログアウト'
     guest: 'ゲストログイン'
     submit: '手配する'
+    password_new: 'パスワード再設定'
   create:
     success: 'ユーザー登録が完了しました'
     fail: 'ユーザー登録に失敗しました'
