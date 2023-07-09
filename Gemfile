@@ -87,3 +87,4 @@ gem 'kaminari'
 gem "meta-tags"
 gem 'devise'
 gem 'gretel'
+gem 'ransack'

@@ -1,0 +1,6 @@
+<%= search_form_for @q, url: url do |f| %>
+    <div class="input-group">
+        <%= f.search_field :title_or_description_cont, class: "form-control pe-5 rounded" %>
+        <%= f.submit "検索", class: "btn btn-primary" %>
+    </div>
+<% end %>
