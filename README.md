@@ -62,9 +62,8 @@ README〜ER図作成：６/1 〆切
 - JavaScript
 - Bootstrap
 - heroku
-- google map API
 - Rails Hotwireを使って一部SPAとして実装
-- Rails ActionCableを使ってベルマーク通知
+- Acctioncableを用いたチャット機能
 
 ■画面遷移図
 
