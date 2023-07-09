@@ -72,4 +72,13 @@ class Post < ApplicationRecord
     end
     self.prize_money = 100000 + count * 100000
   end
+
+  #ransackの検索対象カラムを設定
+  def self.ransackable_attributes(auth_object = nil)
+    ["description", "prize_money", "title"]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    ["user", "favorites", "messages"]
+  end
 end

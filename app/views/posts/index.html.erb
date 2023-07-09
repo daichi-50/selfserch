@@ -10,31 +10,10 @@
         </div>
         <div class="col-lg-7 col-md-8">
             <form class="row gy-2">
-                <div class="col-lg-5 col-sm-6">
-                <div class="d-flex align-items-center">
-                    <div class="d-flex align-items-center me-sm-4 me-3">
-                    <a href="blog-list-no-sidebar.html" class="nav-link me-2 p-0">
-                        <i class="bx bx-list-ul fs-4"></i>
-                    </a>
-                    <a href="blog-grid-no-sidebar.html" class="nav-link p-0 active">
-                        <i class="bx bx-grid-alt fs-4"></i>
-                    </a>
+                <div class="col-lg-8 col-sm-6">
+                    <div class="d-flex align-items-center">
+                        <%= render "search_form", url: posts_path %>
                     </div>
-                    <select class="form-select">
-                    <option>All categories</option>
-                    <option value="processes-and-tools">Processes &amp; Tools</option>
-                    <option value="startups">Startups</option>
-                    <option value="digital">Digital</option>
-                    <option value="strategy">Strategy</option>
-                    <option value="business">Business</option>
-                    </select>
-                </div>
-                </div>
-                <div class="col-lg-7 col-sm-6">
-                <div class="input-group">
-                    <input type="text" class="form-control pe-5 rounded" placeholder="Search the blog...">
-                    <i class="bx bx-search position-absolute top-50 end-0 translate-middle-y me-3 zindex-5 fs-lg"></i>
-                </div>
                 </div>
             </form>
         </div>

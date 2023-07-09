@@ -3,7 +3,8 @@ class PostsController < ApplicationController
     skip_before_action :authenticate_user!, only: [:index, :show]
 
     def index
-        @posts = Post.page(params[:page]).includes(:user).order(created_at: :desc)
+        @q = Post.ransack(params[:q])
+        @posts = @q.result(distinct: true).page(params[:page]).includes(:user).order(created_at: :desc)
     end
 
     def show
