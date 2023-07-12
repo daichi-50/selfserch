@@ -41,7 +41,7 @@ class PostsController < ApplicationController
     end
 
     def autocomplete_user_username
-        @users = User.where("username LIKE ?", "%#{params[:term]}%").limit(3)
+        @users = User.where("username LIKE ?", "%#{params[:q]}%").limit(3)
     end
 
 private
