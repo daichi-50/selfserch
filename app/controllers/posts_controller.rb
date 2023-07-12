@@ -40,6 +40,14 @@ class PostsController < ApplicationController
         redirect_to posts_path, flash: { success: t('.success') }
     end
 
+    def autocomplete_user_username
+        @users = User.where("username LIKE ?", "%#{params[:q]}%").limit(3)
+    end
+
+    def autocomplete_post_title_and_description_and_user_username
+        @posts = Post.where("title LIKE ? OR description LIKE ?", "%#{params[:q]}%", "%#{params[:q]}%").limit(3)
+    end
+
 private
     def post_params
         params.require(:post).permit(:image, :title, :prize_money, :description, :image_data_url)

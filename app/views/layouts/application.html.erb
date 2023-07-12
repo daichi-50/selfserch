@@ -8,6 +8,8 @@
     <%= csp_meta_tag %>
     <%= display_meta_tags(default_meta_tags(@post)) %>
 
+      <%= action_cable_meta_tag %>
+
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
@@ -22,7 +24,9 @@
 
       gtag('config', 'G-RZCRC2K1SY');
     </script>
+    
   </head>
+  <% unless controller_name == 'posts' && (action_name == 'autocomplete_post_title_and_description_and_user_username' || action_name == 'autocomplete_user_username') %>
   <body>
     <p class="notice"><%= notice %></p> 
     <p class="alert"><%= alert %></p> 
@@ -46,10 +50,13 @@
         <% end %>
       </ol>
     </nav>
-
-      <%= yield %>
+      <div>
+        <%= yield %>
+      </div>
+    <%= render 'shared/footer' %>
     </main>
-      <%= render 'shared/footer' %>
-      
   </body>
+  <% else %>
+    <%= yield %>
+  <% end %>
 </html>

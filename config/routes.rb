@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     member do
       get :favorites
     end
+    
   end
 
   mount ActionCable.server => '/cable'
@@ -19,6 +20,9 @@ Rails.application.routes.draw do
   resources :posts do
     resources :messages, only: [:create]
     resources :favorites, only: [:create, :destroy]
+    get :autocomplete_user_username, :on => :collection
+    get :autocomplete_post_title_and_description_and_user_username, :on => :collection
+    get 'search_users', to: 'users#search'
   end
   resources :transfers, only: :create
   get 'search_users', to: 'users#search'

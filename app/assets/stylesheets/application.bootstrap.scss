@@ -18,6 +18,10 @@ body {
     background-color: rgba(255, 255, 255, 0.5);
 }
 
+.white-background-1 {
+    background-color: rgba(255, 255, 255, 0.95);
+}
+
 .white-background-2 {
     background-color: #FFFFCC;
 }
@@ -97,4 +101,20 @@ body {
     -webkit-transform: rotate(360deg);
     transform: rotate(360deg);
     }
+}
+.element1 {
+    position: absolute;
+    z-index: 10;
+}
+.autocomplete-results {
+    max-height: 200px; /* 必要に応じて高さを調整 */
+    overflow-y: auto; /* 結果が多い場合にスクロールバーを表示 */
+    /* 他のスタイルを維持 */
+    list-style-type: none;
+    background: #fff;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    z-index: 99;
+    width: 100%;
 }
