@@ -1,0 +1,5 @@
+<% @posts.each do |post| %>
+  <li class="list-group-item" role="option" data-autocomplete-value="<%= post.id %>" data-autocomplete-label="<%= post.title %>">
+    <%= post.title %>
+  </li>
+<% end %>
