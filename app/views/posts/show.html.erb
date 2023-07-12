@@ -86,21 +86,19 @@
                         <div class="card h-50 border-0 bg-transparent pb-3">
                             <div class="card-footer d-sm-flex w-100 border-0 pt-3 pb-3 px-4">
                                 <div class="position-relative w-100 me-2 mb-3 mb-sm-0">
-                                    <p>チャットをくれた人に懸賞金を贈ろう！！！その人の名前を入れてね！</p>
-
                                     <div data-controller="autocomplete" data-autocomplete-url-value="<%= autocomplete_user_username_posts_path %>">
                                         <%= form_with url: search_users_path, class: "needs-validation", method: :get do |f| %>
                                             <%= f.label :username, 'ユーザー名', class: "form-label" %>
-                                            <div class="autocomplete" data-autocomplete="container">
+                                            <div class="input-group">
                                                 <%= f.text_field :username , class: "form-control rounded-start ps-5" ,required: true, 'data-autocomplete-target': 'input' %>
                                                 <input type="hidden" name="user_id" data-autocomplete-target="hidden"/>
                                                 <%= hidden_field_tag :post_id, @post.id %>
-                                                <ul class="autocomplete-results list-group" data-autocomplete-target="results" data-autocomplete="results"></ul>
+                                                <%= f.submit '検索', class: "btn btn-primary" %>
                                             </div>
-                                            <%= f.submit '検索', class: "btn btn-primary" %>
+                                            <ul class="autocomplete-results list-group element1 white-background-1 autocomplete-results" data-autocomplete-target="results" data-autocomplete="results"></ul>
                                         <% end %>
                                     </div>
-
+                                    <p>チャットをくれた人に懸賞金を贈ろう！！！その人の名前を入れてね！</p>
                                 </div>
                             </div>
                         </div>
