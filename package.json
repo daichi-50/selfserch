@@ -11,11 +11,11 @@
     "esbuild": "^0.17.19",
     "html2canvas": "^1.4.1",
     "jquery": "^3.7.0",
-    "sass": "^1.62.1"
+    "sass": "^1.62.1",
+    "stimulus-autocomplete": "^3.1.0"
   },
   "scripts": {
     "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=assets",
     "build:css": "sass ./app/assets/stylesheets/application.bootstrap.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules"
   }
 }
-

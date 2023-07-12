@@ -1,0 +1,4 @@
+<% users.each do |user| %>
+  <li class="list-group-item" role="option" data-autocomplete-value="<%= user.id %>"><%= user.username %>
+  </li>
+<% end %>
