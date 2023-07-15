@@ -66,15 +66,16 @@
                         <%= (t 'boards.index.title') %>
                         <% end %>
                     </li>
-                    <li><%= link_to users_path, class: "dropdown-item py-1" do %>
-                        <i class="bi bi-stars"></i>
-                        <%= (t 'user_sessions.index.title') %>
-                        <% end %>
-                    </li>
                   </ul>
                 </div>
               </div>
             </div>
+          </li>
+          <li class="nav-item dropdown">
+            <%= link_to users_path, class: "nav-link" do %>
+              <i class="bi bi-bar-chart-steps"></i>
+              <%= (t 'user_sessions.index.title') %>
+            <% end %>
           </li>
         </ul>
       </div> 
