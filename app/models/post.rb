@@ -65,7 +65,7 @@ class Post < ApplicationRecord
   #懸賞金の設定
   def set_prize_money
     count = 0
-    polite_words = ['です', 'ます', 'ございます','自分','私','僕','俺','おれ','わたし']
+    polite_words = ['です', 'ます', 'ございます','自分','私','僕','俺','おれ','わたし','あ','い','う','え','お']
     polite_words.each do |word|
       count += self.title.scan(word).count if self.title
       count += self.description.scan(word).count if self.description

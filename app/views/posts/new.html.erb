@@ -23,11 +23,6 @@
                         <%= image_tag "enviroment/post_sample.png" %>
                     </div>
                 </div>
-                <div class="d-flex align-items-start">
-                    <div class="bg-light text-primary rounded-circle flex-shrink-0 fs-3 lh-1 p-3">
-                        <i class="bx bx-group"></i>
-                    </div>
-                </div>
             </div>
         </div>
 
@@ -50,6 +45,7 @@
                                                 <% end %>
                                             </div>
                                         <% end %>
+                                        <%= f.hidden_field :image_cache %>
                                     </div>
                                 </div>
                                 <div class="col-12">
