@@ -19,7 +19,7 @@ body {
 }
 
 .white-background-1 {
-    background-color: rgba(255, 255, 255, 0.95);
+    background-color: rgba(255, 255, 255, 0.8);
 }
 
 .white-background-2 {
@@ -32,6 +32,10 @@ body {
 
 .white-background-4 {
     background-color: rgba(12, 180, 236, 0.1);
+}
+
+.blue-background {
+    background-color: $blue-100;
 }
 
 .page-loading {
@@ -107,8 +111,8 @@ body {
     z-index: 10;
 }
 .autocomplete-results {
-    max-height: 200px; /* 必要に応じて高さを調整 */
-    overflow-y: auto; /* 結果が多い場合にスクロールバーを表示 */
+    max-height: 200px; 
+    overflow-y: auto; 
     /* 他のスタイルを維持 */
     list-style-type: none;
     background: #fff;
@@ -118,3 +122,12 @@ body {
     z-index: 99;
     width: 100%;
 }
+
+.text-area-custom-width {
+    width: 50%; 
+}
+
+.text-area-custom-width2 {
+    width: 70%; 
+}
+

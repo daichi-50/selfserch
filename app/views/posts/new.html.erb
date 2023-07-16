@@ -5,8 +5,8 @@
     </div>
 </div>
 
-<section class="position-relative bg-secondary pt-5">
-    <div class="container position-relative zindex-2 pt-5" style="margin-top: 50px; background-image: url(<%= asset_path('enviroment/backboard2.png') %>);background-size: cover; background-position: center;">
+<section class="position-relative pt-5">
+    <div class="container position-relative zindex-2 pt-5" style="margin-top: 50px; background-image: url(<%= asset_path('enviroment/board2.png') %>);background-size: cover; background-position: center;">
         <div class="row">
         <!-- Contact links -->
             <div class="col-xl-4 col-lg-5 pb-4 pb-sm-5 mb-2 mb-sm-0">
@@ -28,7 +28,7 @@
 
         <!-- Contact form -->
         <div class="col-xl-6 col-lg-7 offset-xl-2">
-            <div class="card border-light shadow-lg py-3 p-sm-4 p-md-5">
+            <div class="card border-light shadow-lg py-3 p-sm-4 p-md-5 white-background-1">
                 <div class="bg-dark position-absolute top-0 start-0 w-100 h-100 rounded-3 d-none d-dark-mode-block"></div>
                     <div class="card-body position-relative zindex-2">
                         <h2 class="card-title pb-3 mb-4">探し物は何ですか？</h2>
@@ -37,7 +37,7 @@
                                 <div class="col-12">
                                     <div class="position-relative mb-4">
                                         <%= f.label :image, class: 'form-label fs-base' %>
-                                        <%= f.file_field :image, class: 'form-control form-control-lg'%>
+                                        <%= f.file_field :image, class: 'form-control form-control-lg text-area-custom-width2'%>
                                         <% if @post.errors[:image].any? %>
                                             <div class="alert alert-danger mt-2">
                                                 <% @post.errors.full_messages_for(:image).each do |message| %>
@@ -51,7 +51,7 @@
                                 <div class="col-12">
                                     <div class="position-relative mb-4">
                                         <%= f.label :title, class: 'form-label fs-base' %>
-                                        <%= f.text_field :title, class: 'form-control form-control-lg', placeholder: '二度と戻らない彼との日々 *10文字以下' %>
+                                        <%= f.text_field :title, class: 'form-control form-control-lg text-area-custom-width', placeholder: '二度と戻らない彼との日々 *10文字以下' %>
                                         <% if @post.errors[:title].any? %>
                                             <div class="alert alert-danger mt-2">
                                                 <% @post.errors.full_messages_for(:title).each do |message| %>
@@ -64,7 +64,7 @@
                                 <div class="col-12">
                                     <div class="position-relative mb-4">
                                         <%= f.label :description, class: 'form-label fs-base' %>
-                                        <%= f.text_area :description, class: 'form-control form-control-lg', placeholder: 'あの日のことを思い出すと、胸が痛みます。タイムマシンに心あたりがある方はご一報ください *65文字以下'%>
+                                        <%= f.text_area :description, rows: 5,class: 'form-control form-control-lg text-area-custom-width', placeholder: 'あの日のことを思い出すと、胸が痛みます。タイムマシンに心あたりがある方はご一報ください *65文字以下'%>
                                         <% if @post.errors[:description].any? %>
                                             <div class="alert alert-danger mt-2">
                                                 <% @post.errors.full_messages_for(:description).each do |message| %>
@@ -82,7 +82,6 @@
             </div>
         </div>
     </div>
-    <div class="position-absolute bottom-0 start-0 w-100 bg-light" style="height: 8rem;"></div>
 </section>
 
 <script>
