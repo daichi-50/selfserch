@@ -1,16 +1,16 @@
 <!-- Navbar -->
 <!-- Remove "fixed-top" class to make navigation bar scrollable with the page -->
-<header class="header navbar navbar-expand-lg bg-light shadow-sm fixed-top">
+<header class="header navbar navbar-expand-lg shadow-sm fixed-top blue-background">
   <div class="container px-3">
-    <%= image_tag "enviroment/logo.png", class: "navbar-brand pe-3", width:70 %>
-    <%= link_to '自分、探してます', root_path, class: 'navbar-brand pe-3', width:47 %>
-    <div id="navbarNav" class="offcanvas offcanvas-end">
+    <%= image_tag "enviroment/logo.png", class: "navbar-brand pe-3", width:100 %>
+    <%= link_to '自分、探してます', root_path, class: 'navbar-brand pe-3' %>
+    <div id="navbarNav" class="offcanvas offcanvas-end blue-background">
       <div class="offcanvas-header border-bottom">
         <h5 class="offcanvas-title">Menu</h5>
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
       <div class="offcanvas-body">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0 fs-6 lh-1 me-1">
+        <ul class="navbar-nav mb-2 mb-lg-0 fs-6 lh-1 me-1 d-lg-flex justify-content-lg-end">
           <li class="nav-item dropdown">
             <a href="#" class="nav-link" data-bs-toggle="dropdown"><i class="bi bi-person-fill"></i>依頼人</a>
             <div class="dropdown-menu">
@@ -66,31 +66,22 @@
                         <%= (t 'boards.index.title') %>
                         <% end %>
                     </li>
-                    <li><%= link_to users_path, class: "dropdown-item py-1" do %>
-                        <i class="bi bi-stars"></i>
-                        <%= (t 'user_sessions.index.title') %>
-                        <% end %>
-                    </li>
                   </ul>
                 </div>
               </div>
             </div>
           </li>
+          <li class="nav-item dropdown">
+            <%= link_to users_path, class: "nav-link" do %>
+              <i class="bi bi-bar-chart-steps"></i>
+              <%= (t 'user_sessions.index.title') %>
+            <% end %>
+          </li>
         </ul>
       </div> 
-      <div class="offcanvas-header border-top">
-        <a href="https://docs.google.com/forms/d/1bafUcTOExZkoR6iRO_xXg4s86_20UdyvQdjBlnJ7hL8/edit" class="btn btn-secondary w-100" style="margin-right: 16px;" target="_blank" rel="noopener">
-          <i class="bi bi-question-circle"></i>
-          &nbsp;お問い合わせ
-        </a>
-      </div>  
     </div>
     <button type="button" class="navbar-toggler" data-bs-toggle="offcanvas" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <a href="https://docs.google.com/forms/d/1bafUcTOExZkoR6iRO_xXg4s86_20UdyvQdjBlnJ7hL8/edit" class="btn btn-secondary btn-sm fs-sm rounded d-none d-lg-inline-flex" style="margin-right: 16px;" target="_blank" rel="noopener">
-      <i class="bi bi-question-circle"></i>
-      &nbsp;お問い合わせ
-    </a>
   </div>
 </header>

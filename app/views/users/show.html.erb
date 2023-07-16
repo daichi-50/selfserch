@@ -1,5 +1,4 @@
 <!-- Page content -->
-<div style="margin-top: 50px; background-image: url(<%= asset_path('enviroment/backboard2.png') %>);background-size: cover; background-position: center;">
 <section class="container pt-5" style="background-image: url(<%= asset_path('enviroment/background.png') %>);background-size: cover; background-position: center;">
     <div class="row">
         <!-- Sidebar (User info + Account menu) -->
@@ -44,13 +43,6 @@
                 <% breadcrumb :user_show, @user %>
                 <%= breadcrumbs separator: " > " %>
                 <div class="d-sm-flex align-items-center justify-content-between pt-xl-1 mb-3 pb-3">
-                <h1 class="h2 mb-sm-0">My Collections</h1>
-                <select class="form-select" style="max-width: 15rem;">
-                    <option value="Published">Published</option>
-                    <option value="Category">Category</option>
-                    <option value="Title AZ">Title AZ</option>
-                    <option value="Title ZA">Title ZA</option>
-                </select>
                 </div>
 
                 <!-- Item -->
@@ -91,4 +83,3 @@
         </div>
     </div>
 </section>
-</div>

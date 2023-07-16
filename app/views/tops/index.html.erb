@@ -1,4 +1,3 @@
-<div style="background-color: 	#FAEBD7;">
 <section class="jarallax position-relative d-flex align-items-center min-vh-100 bg-light mb-5 py-lg-5 pt-5" style="background-image: url(<%= asset_path('enviroment/background2.png') %>);background-size: cover; background-position: center;" >
     <div class="container position-relative zindex-5 py-5">
         <% breadcrumb :root %>
@@ -13,7 +12,7 @@
                     <span class="white-text"><br>探しませんか？</span>
                 </h1>
                 <div class="d-md-flex align-items-md-start">
-                    <%= link_to (t 'defaults.login'), new_user_registration_path, class: "btn btn-lg btn-primary flex-shrink-0 me-md-4 mb-md-0 mb-sm-4 mb-3" unless user_signed_in? %>
+                    <%= link_to (t 'defaults.login'), user_session_path, class: "btn btn-lg btn-primary flex-shrink-0 me-md-4 mb-md-0 mb-sm-4 mb-3" unless user_signed_in? %>
                     <%= button_to (t 'defaults.guest'), users_guest_sign_in_path, class: "btn btn-lg btn-info flex-shrink-0 me-md-4 mb-md-0 mb-sm-4 mb-3", data: { "turbo-method": :post } unless user_signed_in? %>
                 </div>
                 </div>
@@ -47,7 +46,7 @@
     <div class="ps-md-4 ps-lg-0">
         <article class="card card-hover white-background-3">
         <div class="text-primary fs-xl fw-bold pb-1 mb-2">Step 1</div>
-        <h3 class="h1 mb-lg-4"><%= link_to "手配書を作ろう！", new_post_path, class: "text-decoration-none" %></h3>
+        <h3 class="text-gradient-primary h1 mb-lg-4"><%= link_to "手配書を作ろう！", new_post_path, class: "text-decoration-none" %></h3>
         <h5 class="fs-xl mb-0">
             1. 探したいものの画像を入れます！<br><br>
             2. 探したいものの名前を入れます！<br><br>
@@ -70,7 +69,7 @@
     <div class="ps-md-4 ps-lg-0">
         <article class="card card-hover white-background-3">
         <div class="text-primary fs-xl fw-bold pb-1 mb-2">Step 2</div>
-        <h3 class="h1 mb-lg-4"><%= link_to "チャットで意見をもらおう！", new_post_path, class: "text-decoration-none" %></h3>
+        <h3 class="text-gradient-primary h1 mb-lg-4"><%= link_to "チャットで意見をもらおう！", new_post_path, class: "text-decoration-none" %></h3>
         <h5 class="fs-xl mb-0">
         ・探しものについて誰かが知っているかもしれませんよ！！！
         </h5>
@@ -91,7 +90,7 @@
     <div class="ps-md-4 ps-lg-0">
         <article class="card card-hover white-background-3">
         <div class="text-primary fs-xl fw-bold pb-1 mb-2">Step 3</div>
-        <h3 class="h1 mb-lg-4"><%= link_to "探しもの手伝ってくれた人に懸賞金を払う！", new_post_path, class: "text-decoration-none" %></h3>
+        <h3 class="text-gradient-primary h1 mb-lg-4"><%= link_to "探しもの手伝ってくれた人に懸賞金を払う！", new_post_path, class: "text-decoration-none" %></h3>
         <h5 class="fs-xl mb-0">１人にしか送れないよ~</h5>
         </article>
     </div>
@@ -110,7 +109,7 @@
     <div class="ps-md-4 ps-lg-0">
         <article class="card card-hover white-background-3">
         <div class="text-primary fs-xl fw-bold pb-1 mb-2">Step 4</div>
-        <h3 class="h1 mb-lg-4"><%= link_to "懸賞金をいっぱいもらってランキング上位を目指そう！！", new_post_path, class: "text-decoration-none" %></h3>
+        <h3 class="text-gradient-primary h1 mb-lg-4"><%= link_to "懸賞金をいっぱいもらってランキング上位を目指そう！！", new_post_path, class: "text-decoration-none" %></h3>
         <h5 class="fs-xl mb-0">
         ・一番懸賞金をもらった９人がランキングに載ります。<br><br>
         ・<%= link_to "マイページ", new_user_session_path, class: "text-decoration-none" %>から今の獲得した懸賞金を確認できます
@@ -120,4 +119,3 @@
     </div>
 </div>
 </section>
-</div>
