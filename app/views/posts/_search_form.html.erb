@@ -1,7 +1,7 @@
 <div data-controller="autocomplete" data-autocomplete-url-value="<%= autocomplete_post_title_and_description_and_user_username_posts_path %>">
     <%= search_form_for @q, url: url do |f| %>
         <div class="input-group">
-            <%= f.search_field :title_or_description_cont, class: "form-control pe-5 rounded",required: true, 'data-autocomplete-target': 'input' %>
+            <%= f.search_field :title_or_description_cont, class: "form-control pe-5 rounded", 'data-autocomplete-target': 'input' %>
             <input type="hidden" name="post_id" data-autocomplete-target="hidden"/>
             <%= f.submit "検索", class: "btn btn-primary" %>
         </div>
