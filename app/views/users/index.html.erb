@@ -9,21 +9,65 @@
       <div class="col-md-6-4 text-center">
         <div class="row row-cols-1 row-cols-md-3">
           <% @users.each_with_index do |user, index| %>
-          <article class="card card-hover white-background-3">
-          <div class="col text-md-center pb-2 mb-4">
-            <h3 class="h5 mb-2 mb-md-3">Rank: <%= index + 1 %>位</h3>
-            <ul class="list-unstyled">
-              <li class="d-flex align-items-center p-2">
-                <span class="text-dark fw-medium">名前:&nbsp;</span>
-                <%= user.username %>
-              </li>
-              <li class="d-flex align-items-center p-2 bg-secondary">
-                <span class="text-dark fw-medium">所持金:&nbsp;</span>
-                $ <%= user.money %>
-              </li>
-            </ul>
-          </div>
-          </article>
+            <div class="col text-md-center pb-2 mb-4">
+              <% if index == 0 %> <!-- 1位の場合 -->
+                <article class="card card-hover rank1">
+                <h3 class="h5 mb-2 mb-md-3"><i class="bi bi-trophy"></i> Rank: 1位</h3>
+                <ul class="list-unstyled">
+                  <li class="d-flex align-items-center p-2">
+                    <span class="text-dark fw-medium">名前:&nbsp;</span>
+                    <%= user.username %>
+                  </li>
+                  <li class="d-flex align-items-center p-2 bg-secondary">
+                    <span class="text-dark fw-medium">所持金:&nbsp;</span>
+                    $ <%= user.money %>
+                  </li>
+                </ul>
+                </article>
+              <% elsif index == 1 %> <!-- 2位の場合 -->
+                <article class="card card-hover rank2">
+                <h3 class="h5 mb-2 mb-md-3"><i class="bi bi-trophy"></i> Rank: 2位</h3>
+                <ul class="list-unstyled">
+                  <li class="d-flex align-items-center p-2">
+                    <span class="text-dark fw-medium">名前:&nbsp;</span>
+                    <%= user.username %>
+                  </li>
+                  <li class="d-flex align-items-center p-2 bg-secondary">
+                    <span class="text-dark fw-medium">所持金:&nbsp;</span>
+                    $ <%= user.money %>
+                  </li>
+                </ul>
+                </article>
+              <% elsif index == 2 %> <!-- 3位の場合 -->
+                <article class="card card-hover rank3">
+                <h3 class="h5 mb-2 mb-md-3"><i class="bi bi-trophy"></i> Rank: 3位</h3>
+                <ul class="list-unstyled">
+                  <li class="d-flex align-items-center p-2">
+                    <span class="text-dark fw-medium">名前:&nbsp;</span>
+                    <%= user.username %>
+                  </li>
+                  <li class="d-flex align-items-center p-2 bg-secondary">
+                    <span class="text-dark fw-medium">所持金:&nbsp;</span>
+                    $ <%= user.money %>
+                  </li>
+                </ul>
+                </article>
+              <% else %> <!-- 4位以降の場合 -->
+                <article class="card card-hover white-background-3">
+                  <h3 class="h5 mb-2 mb-md-3">Rank: <%= index + 1 %>位</h3>
+                  <ul class="list-unstyled">
+                    <li class="d-flex align-items-center p-2">
+                      <span class="text-dark fw-medium">名前:&nbsp;</span>
+                      <%= user.username %>
+                    </li>
+                    <li class="d-flex align-items-center p-2 bg-secondary">
+                      <span class="text-dark fw-medium">所持金:&nbsp;</span>
+                      $ <%= user.money %>
+                    </li>
+                  </ul>
+                <article class="card card-hover white-background-3">
+              <% end %>
+            </div>
           <% end %>
         </div>
       </div>
