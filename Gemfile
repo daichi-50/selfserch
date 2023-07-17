@@ -88,4 +88,4 @@ gem "meta-tags"
 gem 'devise'
 gem 'gretel'
 gem 'ransack'
-
+gem 'high_voltage'

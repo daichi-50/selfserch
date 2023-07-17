@@ -141,6 +141,7 @@ GEM
       actionview (>= 5.1, < 7.1)
       railties (>= 5.1, < 7.1)
     hashie (5.0.0)
+    high_voltage (3.1.2)
     i18n (1.13.0)
       concurrent-ruby (~> 1.0)
     image_processing (1.12.2)
@@ -360,6 +361,7 @@ DEPENDENCIES
   factory_bot_rails
   fog-aws
   gretel
+  high_voltage
   jbuilder
   jsbundling-rails
   kaminari
