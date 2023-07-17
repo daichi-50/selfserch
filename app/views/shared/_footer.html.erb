@@ -2,14 +2,12 @@
 <footer class="footer border-top pt-5 pb-4 pb-lg-5" style="background-image: url(<%= asset_path('enviroment/backboard3.png') %>);">
   <div class="container text-center pt-2 pt-md-4 pt-lg-5 pb-xl-3">
     <div class="btn-group" role="group" aria-label="Basic outlined example">
-    <a href="https://docs.google.com/forms/d/1bafUcTOExZkoR6iRO_xXg4s86_20UdyvQdjBlnJ7hL8/edit" class="btn btn-outline-primary">
+    <a href="https://docs.google.com/forms/d/1bafUcTOExZkoR6iRO_xXg4s86_20UdyvQdjBlnJ7hL8" class="btn btn-outline-primary">
       <i class="bi bi-question-circle"></i>
       お問い合わせ
     </a>
-      <button type="button" class="btn btn-outline-primary">利用規約</button>
-        <a href = "https://kiyac.app/privacypolicy/IpHq3e0hJ396sA9GFe1Y" type="button" class="btn btn-outline-primary w-100">
-          プライバシーポリシー
-        </a>
+      <%= link_to "利用規約", page_path('terms'), class: "btn btn-outline-primary" %>
+      <%= link_to "プライバシーポリシー", page_path('privacy'), class: "btn btn-outline-primary" %>
     </div>
     <div class="row justify-content-center pt-xxl-2">
       <div class="col-xl-6 col-lg-7 col-md-9 col-sm-11">
