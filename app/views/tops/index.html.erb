@@ -1,4 +1,4 @@
-<section class="jarallax position-relative d-flex align-items-center min-vh-100 bg-light mb-5 py-lg-5 pt-5" style="background-image: url(<%= asset_path('enviroment/background2.png') %>);background-size: cover; background-position: center;" >
+<section class="jarallax position-relative d-flex align-items-center min-vh-100 bg-light mb-5 py-lg-5 pt-5" style="background-image: url(<%= asset_path('enviroment/background3.png') %>);background-size: cover; background-position: center;" >
     <div class="container position-relative zindex-5 py-5">
         <% breadcrumb :root %>
         <%= breadcrumbs separator: " > " %>
@@ -8,8 +8,8 @@
 
                 <!-- Text -->
                 <h1 class="display-2 mb-md-5 mb-3 pb-3">
-                    <span class="text-gradient-primary">自分、</span>
-                    <span class="white-text"><br>探しませんか？</span>
+                    <span class="blue-text text-shadow">自分、</span>
+                    <span class="white-text text-shadow"><br>探しませんか？</span>
                 </h1>
                 <div class="d-md-flex align-items-md-start">
                     <%= link_to (t 'defaults.login'), user_session_path, class: "btn btn-lg btn-primary flex-shrink-0 me-md-4 mb-md-0 mb-sm-4 mb-3" unless user_signed_in? %>
@@ -91,7 +91,7 @@
         <article class="card card-hover white-background-3">
         <div class="text-primary fs-xl fw-bold pb-1 mb-2">Step 3</div>
         <h3 class="text-gradient-primary h1 mb-lg-4"><%= link_to "探しもの手伝ってくれた人に懸賞金を払う！", new_post_path, class: "text-decoration-none" %></h3>
-        <h5 class="fs-xl mb-0">１人にしか送れないよ~</h5>
+        <h5 class="fs-xl mb-0">１人にしか送れません</h5>
         </article>
     </div>
     </div>
