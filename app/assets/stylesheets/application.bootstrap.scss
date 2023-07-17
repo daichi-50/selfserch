@@ -153,3 +153,19 @@ body {
     color: rgb(143, 137, 137);
 }
 
+.autocomplete-results {
+    max-width: 300px;
+    overflow: hidden;
+}
+
+.autocomplete-results .list-group-item {
+    white-space: nowrap;
+}
+
+.autocomplete-results .list-group-item span.badge {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+    max-width: 200px; 
+    white-space: nowrap;
+}
