@@ -20,4 +20,12 @@ class User < ApplicationRecord
       user.username = "ゲスト" 
     end
   end
+
+  def self.ransackable_attributes(auth_object = nil)
+    %w(created_at email id money remember_created_at reset_password_sent_at updated_at username)
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    %w(favorite_posts favorites messages posts)
+  end
 end
