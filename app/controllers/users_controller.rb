@@ -19,11 +19,12 @@ class UsersController < ApplicationController
   end
 
   def autocomplete_user_username
-    @users = User.where("username LIKE ?", "#{params[:query]}%")
+    @users = User.where('username LIKE ?', "#{params[:query]}%")
 
     respond_to do |format|
-      format.html {
-      render partial: 'users/autocomplete', locals: { users: @users }, layout: false}
+      format.html do
+        render partial: 'users/autocomplete', locals: { users: @users }, layout: false
+      end
     end
   end
 end

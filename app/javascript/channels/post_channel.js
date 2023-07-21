@@ -1,24 +1,14 @@
 import consumer from "./consumer"
 
 document.addEventListener("turbo:load", () => {
-  console.log('Turbolinks loaded');
   const messages = document.getElementById('messages');
   if (messages === null) {
     return;
   }
   const postId = messages.dataset.postId;
-  console.log(`Post ID is: ${postId}`);
   const appPost = consumer.subscriptions.create({channel: "PostChannel", post_id: postId}, {
-    connected() {
-      console.log('Successfully connected to the channel.');
-    },
-    disconnected() {
-      console.log('Disconnected from the channel.');
-    },
     received(data) {
-      console.log('Received data:', data);
       messages.insertAdjacentHTML('beforeend', data['message']);
-      console.log('Message inserted');
       setTimeout(function() {
         window.swiper.update(); // 更新
         const swiperContainer = document.querySelector('.swiper');
