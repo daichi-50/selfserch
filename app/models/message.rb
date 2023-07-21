@@ -11,7 +11,7 @@ class Message < ApplicationRecord
     MessageBroadcastJob.perform_later(self)
   end
 
-  def self.ransackable_attributes(auth_object = nil)
-    ["content", "created_at", "id", "post_id", "updated_at", "user_id"]
+  def self.ransackable_attributes(_auth_object = nil)
+    %w[content created_at id post_id updated_at user_id]
   end
 end

@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:destroy, :favorites]
-  skip_before_action :authenticate_user!, only: [:index, :show]
+  before_action :set_post, only: %i[destroy favorites]
+  skip_before_action :authenticate_user!, only: %i[index show]
 
   def index
     @q = Post.ransack(params[:q])
@@ -20,9 +20,9 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.build(post_params)
 
-    if @post.valid? 
-      @post.set_prize_money #懸賞金の設定
-      @post.create_image #画像の作成
+    if @post.valid?
+      @post.set_prize_money # 懸賞金の設定
+      @post.create_image # 画像の作成
       if @post.save
         redirect_to posts_path, flash: { success: t('.success') }
       else
@@ -41,14 +41,15 @@ class PostsController < ApplicationController
   end
 
   def autocomplete_user_username
-    @users = User.where("username LIKE ?", "%#{params[:q]}%").limit(3)
+    @users = User.where('username LIKE ?', "%#{params[:q]}%").limit(3)
   end
 
   def autocomplete_post_title_and_description_and_user_username
-    @posts = Post.where("title LIKE ? OR description LIKE ?", "%#{params[:q]}%", "%#{params[:q]}%").limit(3)
+    @posts = Post.where('title LIKE ? OR description LIKE ?', "%#{params[:q]}%", "%#{params[:q]}%").limit(3)
   end
 
   private
+
   def post_params
     params.require(:post).permit(:image, :title, :prize_money, :description, :image_data_url, :image_cache)
   end

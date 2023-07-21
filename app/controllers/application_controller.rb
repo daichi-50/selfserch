@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  before_action :authenticate_user! 
+  before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   # エラー発生時の処理
@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
     rescue_from ActiveRecord::RecordNotFound,     with: :_render_404
     rescue_from ActionController::RoutingError,   with: :_render_404
   end
-  
+
   def routing_error
     raise ActionController::RoutingError, params[:path]
   end
@@ -20,7 +20,8 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:account_update, keys: [:username])
   end
 
-  private 
+  private
+
   def after_sign_in_path_for(resource)
     if resource.is_a?(AdminUser)
       admin_dashboard_path
@@ -42,7 +43,7 @@ class ApplicationController < ActionController::Base
 
   def _render_500(e = nil)
     logger.error "Rendering 500 with exception: #{e.message}" if e
-    Airbrake.notify(e) if e 
+    Airbrake.notify(e) if e
 
     if request.format.to_sym == :json
       render json: { error: '500 error' }, status: :internal_server_error

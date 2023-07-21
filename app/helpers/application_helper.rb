@@ -11,19 +11,19 @@ module ApplicationHelper
       canonical: request.original_url,
       noindex: !Rails.env.production?,
       og: {
-      site_name: '自分、探してます',
-      title: :title,
-      description: :description,
-      image: post&.generated_card&.file&.present? ? post.generated_card.url : image_url("ogp.jpg"),
-      type: 'website',
-      url: request.original_url,
-      local: 'ja-JP'
+        site_name: '自分、探してます',
+        title: :title,
+        description: :description,
+        image: post&.generated_card&.file&.present? ? post.generated_card.url : image_url('ogp.jpg'),
+        type: 'website',
+        url: request.original_url,
+        local: 'ja-JP'
       },
       twitter: {
-      card: 'summary_large_image',
-      site: '@Nakano-41期生',
-      image: post&.generated_card&.file&.present? ? post.generated_card.url : image_url("ogp.jpg")
+        card: 'summary_large_image',
+        site: '@Nakano-41期生',
+        image: post&.generated_card&.file&.present? ? post.generated_card.url : image_url('ogp.jpg')
       }
-  }
+    }
   end
 end

@@ -10,84 +10,84 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_18_212445) do
+ActiveRecord::Schema[7.0].define(version: 20_230_718_212_445) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  enable_extension 'plpgsql'
 
-  create_table "active_admin_comments", force: :cascade do |t|
-    t.string "namespace"
-    t.text "body"
-    t.string "resource_type"
-    t.bigint "resource_id"
-    t.string "author_type"
-    t.bigint "author_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["author_type", "author_id"], name: "index_active_admin_comments_on_author"
-    t.index ["namespace"], name: "index_active_admin_comments_on_namespace"
-    t.index ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource"
+  create_table 'active_admin_comments', force: :cascade do |t|
+    t.string 'namespace'
+    t.text 'body'
+    t.string 'resource_type'
+    t.bigint 'resource_id'
+    t.string 'author_type'
+    t.bigint 'author_id'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index %w[author_type author_id], name: 'index_active_admin_comments_on_author'
+    t.index ['namespace'], name: 'index_active_admin_comments_on_namespace'
+    t.index %w[resource_type resource_id], name: 'index_active_admin_comments_on_resource'
   end
 
-  create_table "admin_users", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_admin_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
+  create_table 'admin_users', force: :cascade do |t|
+    t.string 'email', default: '', null: false
+    t.string 'encrypted_password', default: '', null: false
+    t.string 'reset_password_token'
+    t.datetime 'reset_password_sent_at'
+    t.datetime 'remember_created_at'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['email'], name: 'index_admin_users_on_email', unique: true
+    t.index ['reset_password_token'], name: 'index_admin_users_on_reset_password_token', unique: true
   end
 
-  create_table "favorites", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "post_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["post_id"], name: "index_favorites_on_post_id"
-    t.index ["user_id"], name: "index_favorites_on_user_id"
+  create_table 'favorites', force: :cascade do |t|
+    t.bigint 'user_id', null: false
+    t.bigint 'post_id', null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['post_id'], name: 'index_favorites_on_post_id'
+    t.index ['user_id'], name: 'index_favorites_on_user_id'
   end
 
-  create_table "messages", force: :cascade do |t|
-    t.text "content"
-    t.bigint "post_id", null: false
-    t.bigint "user_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["post_id"], name: "index_messages_on_post_id"
-    t.index ["user_id"], name: "index_messages_on_user_id"
+  create_table 'messages', force: :cascade do |t|
+    t.text 'content'
+    t.bigint 'post_id', null: false
+    t.bigint 'user_id', null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['post_id'], name: 'index_messages_on_post_id'
+    t.index ['user_id'], name: 'index_messages_on_user_id'
   end
 
-  create_table "posts", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.string "image"
-    t.string "title"
-    t.string "description"
-    t.integer "prize_money"
-    t.string "generated_card"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_posts_on_user_id"
+  create_table 'posts', force: :cascade do |t|
+    t.bigint 'user_id', null: false
+    t.string 'image'
+    t.string 'title'
+    t.string 'description'
+    t.integer 'prize_money'
+    t.string 'generated_card'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['user_id'], name: 'index_posts_on_user_id'
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string "username", null: false
-    t.string "email", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "money", default: 0
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  create_table 'users', force: :cascade do |t|
+    t.string 'username', null: false
+    t.string 'email', null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.integer 'money', default: 0
+    t.string 'encrypted_password', default: '', null: false
+    t.string 'reset_password_token'
+    t.datetime 'reset_password_sent_at'
+    t.datetime 'remember_created_at'
+    t.index ['email'], name: 'index_users_on_email', unique: true
+    t.index ['reset_password_token'], name: 'index_users_on_reset_password_token', unique: true
   end
 
-  add_foreign_key "favorites", "posts"
-  add_foreign_key "favorites", "users"
-  add_foreign_key "messages", "posts"
-  add_foreign_key "messages", "users"
-  add_foreign_key "posts", "users"
+  add_foreign_key 'favorites', 'posts'
+  add_foreign_key 'favorites', 'users'
+  add_foreign_key 'messages', 'posts'
+  add_foreign_key 'messages', 'users'
+  add_foreign_key 'posts', 'users'
 end
