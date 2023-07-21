@@ -81,4 +81,12 @@ class Post < ApplicationRecord
   def self.ransackable_associations(auth_object = nil)
     ["user", "favorites", "messages"]
   end
+
+  def self.ransackable_attributes(auth_object = nil)
+    ["title", "content", "description", "image", "created_at", "updated_at"]
+  end
+
+  def self.ransackable_attributes(auth_object = nil)
+    super(auth_object) + ['prize_money']
+  end
 end

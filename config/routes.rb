@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
   devise_for :users, controllers: {
     registrations: 'users/registrations'
   }
@@ -26,4 +28,6 @@ Rails.application.routes.draw do
   end
   resources :transfers, only: :create
   get 'search_users', to: 'users#search'
+  get '*not_found' => 'application#routing_error'
+  post '*not_found' => 'application#routing_error'
 end
