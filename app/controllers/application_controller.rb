@@ -22,7 +22,11 @@ class ApplicationController < ActionController::Base
 
   private 
   def after_sign_in_path_for(resource)
-    posts_path # ログイン後に遷移するpathを設定
+    if resource.is_a?(AdminUser)
+      admin_dashboard_path
+    else
+      posts_path
+    end
   end
 
   # エラー発生時の処理
