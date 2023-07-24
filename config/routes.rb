@@ -27,6 +27,8 @@ Rails.application.routes.draw do
   end
   resources :transfers, only: :create
   get 'search_users', to: 'users#search'
+  get 'terms', to: 'pages#terms'
+  get 'privacy', to: 'pages#privacy'
   get '*not_found' => 'application#routing_error'
   post '*not_found' => 'application#routing_error'
 end
