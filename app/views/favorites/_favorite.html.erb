@@ -1,11 +1,11 @@
 <!--- favorite -->
 <% if !Favorite.exists?(user_id: current_user.id, post_id: post.id) %>
-    <%= link_to post_favorites_path(post), data: { turbo_method: :post }, class: "btn btn-outline btn-outline-danger" do %>
-        <i class="bi bi-heart"></i>
-    <% end %>
+  <%= link_to post_favorites_path(post), data: { turbo_method: :post }, class: "btn btn-outline btn-outline-danger" do %>
+    <i class="bi bi-heart"></i>
+  <% end %>
 <% else %>
-    <% favorite = Favorite.find_by(user_id: current_user.id, post_id: post.id) %>
-    <%= link_to post_favorite_path(post, favorite), data: { turbo_method: :delete }, class: "btn btn-inline btn-danger" do %>
-        <i class="bi bi-heart-fill"></i>
-    <% end %>
+  <% favorite = Favorite.find_by(user_id: current_user.id, post_id: post.id) %>
+  <%= link_to post_favorite_path(post, favorite), data: { turbo_method: :delete }, class: "btn btn-inline btn-danger" do %>
+    <i class="bi bi-heart-fill"></i>
+  <% end %>
 <% end %>

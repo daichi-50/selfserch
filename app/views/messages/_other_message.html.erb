@@ -1,8 +1,8 @@
 <% message = local_assigns[:message] %>
 <div class="d-flex align-items-start mb-3">
-    <%= message.user.username %>
-    <div class="ps-2 ms-1" style="max-width: 348px;">
-        <div class="bg-secondary p-3 mb-1" style="border-top-right-radius: .5rem; border-bottom-right-radius: .5rem; border-bottom-left-radius: .5rem;"><%= message.content %></div>
-        <div class="fs-sm text-muted"><%= message.created_at.strftime('%Y年%m月%d日 %H:%M') %></div>
-    </div>
+  <%= message.user.username %>
+  <div class="ps-2 ms-1" style="max-width: 348px;">
+    <div class="bg-secondary p-3 mb-1" style="border-top-right-radius: .5rem; border-bottom-right-radius: .5rem; border-bottom-left-radius: .5rem;"><%= message.content %></div>
+    <div class="fs-sm text-muted"><%= message.created_at.strftime('%Y年%m月%d日 %H:%M') %></div>
+  </div>
 </div>

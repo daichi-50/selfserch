@@ -1,24 +1,24 @@
 <!-- Page content -->
 <section class="jarallax position-relative d-flex align-items-center min-vh-100 bg-light mb-5 py-lg-5 pt-5" style="background-image: url(<%= asset_path('enviroment/background.png') %>);background-size: cover; background-position: center;" >
-    <!-- Password reset form -->
-    <div class="container d-flex flex-wrap justify-content-center justify-content-xl-start h-100 pt-5">
-    <div class="w-100 align-self-end pt-1 pt-md-4 pb-4" style="max-width: 526px;">
-        <% breadcrumb :user_password_edit %>
-        <%= breadcrumbs separator: " > " %>
-        <h1 class="text-center text-xl-start"><%= (t 'defaults.password_new') %></h1>
-        </p>
-        <%= form_with model: @user,url: user_password_path, html: {class: 'needs-validation mb-2', novalidate: true} do |f| %>
-            <div class="position-relative mb-4">
-                <%= f.label :password,class: 'form-label fs-base' %>
-                <%= f.password_field :password, class: 'form-control form-control-lg', required: true %>
-              <div class="mb-4">
-                  <%= f.label :password_confirmation,class: 'form-label fs-base' %>
-                  <%= f.password_field :password_confirmation, class: 'form-control form-control-lg', required: true %>
-              </div>
-              <%# 隠しフィールドでトークンもパラメーターで送る。こうすることでDBに保存されているリセットトークンとここから送られたトークンが一致するか確認している。 %>
-              <%= f.hidden_field :reset_password_token %>
-                <%= f.submit 'パスワードを変更する', class: 'btn btn-primary shadow-primary btn-lg w-100' %>
-            </div>
-        <% end %>
-    </div>
+  <!-- Password reset form -->
+  <div class="container d-flex flex-wrap justify-content-center justify-content-xl-start h-100 pt-5">
+  <div class="w-100 align-self-end pt-1 pt-md-4 pb-4" style="max-width: 526px;">
+    <% breadcrumb :user_password_edit %>
+    <%= breadcrumbs separator: " > " %>
+    <h1 class="text-center text-xl-start"><%= (t 'defaults.password_new') %></h1>
+    </p>
+    <%= form_with model: @user,url: user_password_path, html: {class: 'needs-validation mb-2', novalidate: true} do |f| %>
+      <div class="position-relative mb-4">
+        <%= f.label :password,class: 'form-label fs-base' %>
+        <%= f.password_field :password, class: 'form-control form-control-lg', required: true %>
+        <div class="mb-4">
+          <%= f.label :password_confirmation,class: 'form-label fs-base' %>
+          <%= f.password_field :password_confirmation, class: 'form-control form-control-lg', required: true %>
+        </div>
+        <%# 隠しフィールドでトークンもパラメーターで送る。こうすることでDBに保存されているリセットトークンとここから送られたトークンが一致するか確認している。 %>
+        <%= f.hidden_field :reset_password_token %>
+          <%= f.submit 'パスワードを変更する', class: 'btn btn-primary shadow-primary btn-lg w-100' %>
+      </div>
+    <% end %>
+  </div>
 </section>
