@@ -1,49 +1,48 @@
 <!-- Page content -->
 <section class="container mt-4 mb-lg-5 pt-lg-2 pb-5">
-    <!-- Page title + Layout switcher + Search form -->
-    <div class="row align-items-end gy-3 mb-4 pb-lg-3 pb-1">
-        <div class="col-lg-5 col-md-4">
-        <% breadcrumb :post_index %>
-        <%= breadcrumbs separator: " > " %>
-        <h1 class="mb-2 mb-md-0">手配書</h1>
-        </div>
-        <div class="col-lg-7 col-md-8">
-            <form class="row gy-2">
-                <div class="col-lg-8 col-sm-6">
-                    <div class="d-flex align-items-center">
-                        <%= render "search_form", url: posts_path %>
-                    </div>
-                </div>
-            </form>
-        </div>
+  <!-- Page title + Layout switcher + Search form -->
+  <div class="row align-items-end gy-3 mb-4 pb-lg-3 pb-1">
+    <div class="col-lg-5 col-md-4">
+      <% breadcrumb :post_index %>
+      <%= breadcrumbs separator: " > " %>
+      <h1 class="mb-2 mb-md-0">手配書</h1>
     </div>
-<!-- Blog grid -->
-    <div class="row row-cols-lg-3 row-cols-sm-2 row-cols-1 gy-md-4 gy-2">
-        <% @posts.each do |post| %>
-            <!-- Item -->
-            <div class="col pb-3">
-                <article class="card card-hover">
-                    <div class="position-relative">
-                        <%= link_to image_tag(post.generated_card.url, size: "400x400"), post_path(post), class: "card-img-top", alt: "Image",data: { turbolinks: false } %>
-                    </div>
-                    <div class="card-body pb-0">
-                        <div class="d-flex align-items-center text-muted">
-                            <span class="fs-sm text-muted"><%= post.created_at.strftime('%Y年%m月%d日 %H:%M') %> </span>
-                        </div>
-                    </div>
-                    <div class="card-footer py-4">
-                    <div class="d-flex align-items-center">
-                        <%= post.user.username %>
-                        <div class="ms-auto">
-                            <i class="bi bi-heart-fill"><%= post.favorites.count %></i>
-                            <i class="bi bi-chat-left-text-fill"><%=post.messages.count%></i>
-                        </div>
-                    </div>
-                    </div>
-                </article>
+    <div class="col-lg-7 col-md-8">
+      <form class="row gy-2">
+        <div class="col-lg-8 col-sm-6">
+          <div class="d-flex align-items-center">
+            <%= render "search_form", url: posts_path %>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <!-- Blog grid -->
+  <div class="row row-cols-lg-3 row-cols-sm-2 row-cols-1 gy-md-4 gy-2">
+    <% @posts.each do |post| %>
+      <!-- Item -->
+      <div class="col pb-3">
+        <article class="card card-hover">
+          <div class="position-relative">
+            <%= link_to image_tag(post.generated_card.url, size: "400x400"), post_path(post), class: "card-img-top", alt: "Image",data: { turbolinks: false } %>
+          </div>
+          <div class="card-body pb-0">
+            <div class="d-flex align-items-center text-muted">
+              <span class="fs-sm text-muted"><%= post.created_at.strftime('%Y年%m月%d日 %H:%M') %> </span>
             </div>
-        <% end %>
-    </div>
-    <%= paginate @posts %>
+          </div>
+          <div class="card-footer py-4">
+            <div class="d-flex align-items-center">
+              <%= post.user.username %>
+              <div class="ms-auto">
+                <i class="bi bi-heart-fill"><%= post.favorites.count %></i>
+                <i class="bi bi-chat-left-text-fill"><%=post.messages.count%></i>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    <% end %>
+  </div>
+  <%= paginate @posts %>
 </section>
-</div>
