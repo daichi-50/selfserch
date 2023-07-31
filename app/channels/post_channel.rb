@@ -14,6 +14,6 @@ class PostChannel < ApplicationCable::Channel
     return unless content.present? # メッセージが空でないことを確認
 
     # メッセージの作成だけ行い、ブロードキャストは after_commit フックに任せる
-    post.messages.create!(content:, user: current_user)
+    post.messages.create!(content:, user_id: current_user.id)
   end
 end
