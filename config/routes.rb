@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   mount ActionCable.server => '/cable'
   root 'tops#index'
 
+  resources :notifications, only: :index
   resources :posts do
     resources :messages, only: [:create]
     resources :favorites, only: %i[create destroy]

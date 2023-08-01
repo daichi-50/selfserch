@@ -9,6 +9,10 @@ class MessageBroadcastJob < ApplicationJob
   private
 
   def render_message(message)
-    ApplicationController.renderer.render(partial: 'messages/message', locals: { message: message, user_id: message.user_id })
+    ApplicationController.renderer.render(partial: select_partial(message), locals: { message: message })
+  end
+
+  def select_partial(message)
+    message.user.id == message.user_id ? 'messages/own_message' : 'messages/other_message'
   end
 end
