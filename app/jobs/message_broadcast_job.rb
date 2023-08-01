@@ -3,16 +3,16 @@ class MessageBroadcastJob < ApplicationJob
 
   def perform(message)
     Rails.logger.info "Broadcasting message #{message.id}"
-    PostChannel.broadcast_to(message.post, message: render_message(message))
+    PostChannel.broadcast_to(message.post, message: render_message(message), second_message: render_second_message(message), sender_id: message.user_id)
   end
 
   private
 
   def render_message(message)
-    ApplicationController.renderer.render(partial: select_partial(message), locals: { message: message })
+    ApplicationController.renderer.render(partial: 'messages/own_message', locals: { message: message })
   end
 
-  def select_partial(message)
-    message.user.id == message.user_id ? 'messages/own_message' : 'messages/other_message'
+  def render_second_message(message)
+    ApplicationController.renderer.render(partial: 'messages/other_message', locals: { message: message })
   end
 end

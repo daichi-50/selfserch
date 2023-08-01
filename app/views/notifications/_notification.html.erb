@@ -8,10 +8,10 @@
           <div class="ms-3">
             <%= link_to visitor.username, visitor %>
             さんが
-            <% if notification.action == "Favorite" %>
+            <% if notification.action == "favorite" %>
               <%= link_to 'あなたの投稿', post_path(notification.post_id) %>
               をお気に入りに登録しました
-            <% elsif notification.action == "Message" %>
+            <% elsif notification.action == "message" %>
               <%= link_to 'あなたの投稿', post_path(notification.post_id) %>
               にコメントしました
             <% end %>

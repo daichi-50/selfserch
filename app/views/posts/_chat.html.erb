@@ -1,3 +1,4 @@
+<body data-current-user-id="<%= current_user.id %>">
 <% if user_signed_in? %>
   <h1>Chat room</h1>
   <div class="row g-0 border rounded-3 shadow-sm position-relative overflow-hidden white-background">
@@ -59,6 +60,7 @@
     </div>
   </div>
 <% end %>
+</body>
 
 <script>
   document.addEventListener("turbo:load", function() {
