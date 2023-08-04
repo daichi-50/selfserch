@@ -12,6 +12,24 @@
       <div class="offcanvas-body">
         <ul class="navbar-nav mb-2 mb-lg-0 fs-6 lh-1 me-1 d-lg-flex justify-content-lg-end">
           <li class="nav-item dropdown">
+            <a href="#" class="nav-link" data-bs-toggle="dropdown">
+              <% if unchecked_notifications.any? %>
+                <i class="bi bi-bell-fill" style="font-size: 1.5em;"></i>
+              <% else %>
+                <i class="bi bi-bell" style="font-size: 1.5em;"></i>
+              <% end %>
+            </a>
+            <div class="dropdown-menu">
+              <div class="d-lg-flex pt-lg-3 justify-content-lg-end">
+                <div class="mega-dropdown-column">
+                  <ul class="list-unstyled mb-3">
+                    <%= render partial: 'notifications/notification', collection: unchecked_notifications %>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="nav-item dropdown">
             <a href="#" class="nav-link" data-bs-toggle="dropdown"><i class="bi bi-person-fill"></i>依頼人</a>
             <div class="dropdown-menu">
               <div class="d-lg-flex pt-lg-3 justify-content-lg-end">
