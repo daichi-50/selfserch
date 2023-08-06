@@ -5,10 +5,20 @@ document.addEventListener("turbo:load", () => {
   if (messages === null) {
     return;
   }
+  const currentUserId = document.body.dataset.currentUserId;
   const postId = messages.dataset.postId;
   const appPost = consumer.subscriptions.create({channel: "PostChannel", post_id: postId}, {
     received(data) {
-      messages.insertAdjacentHTML('beforeend', data['message']);
+      // 送信者か受信者かを確認するロジックを追加
+      let messageHtml;
+      if (data.sender_id.toString() === currentUserId) {
+        messageHtml = data.message;
+      } else {
+        messageHtml = data.second_message;
+      }
+      
+      messages.insertAdjacentHTML('beforeend', messageHtml);
+      
       setTimeout(function() {
         window.swiper.update(); // 更新
         const swiperContainer = document.querySelector('.swiper');

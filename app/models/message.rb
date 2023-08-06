@@ -2,6 +2,7 @@ class Message < ApplicationRecord
   belongs_to :post
   belongs_to :user
   after_commit :broadcast_message, on: [:create]
+  has_many :notifications, dependent: :destroy
 
   validates :user_id, presence: true
   validates :post_id, presence: true

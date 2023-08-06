@@ -5,6 +5,7 @@ class Post < ApplicationRecord
   belongs_to :user
   has_many :messages, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :notifications, dependent: :destroy
   validates :image, presence: true
   validates :title, length: { maximum: 10, minimum: 1 }
   validates :description, length: { maximum: 65, minimum: 1 }
@@ -65,7 +66,7 @@ class Post < ApplicationRecord
   # 懸賞金の設定
   def set_prize_money
     count = 0
-    polite_words = %w[です ます ございます 自分 私 僕 俺 おれ わたし あ い う え お]
+    polite_words = "%w[です ます ございます 自分 私 僕 俺 おれ わたし あ い う え お]"
     polite_words.each do |word|
       count += title.scan(word).count if title
       count += description.scan(word).count if description
@@ -88,5 +89,47 @@ class Post < ApplicationRecord
 
   def self.ransackable_attributes(auth_object = nil)
     super(auth_object) + ['prize_money']
+  end
+
+  # いいね通知の作成
+  def create_notification_favorite!(current_user)
+    # すでに「いいね」されているか検索
+    temp = Notification.where(['visitor_id = ? and visited_id = ? and post_id = ? and action = ? ', current_user.id, user_id, id, 'favorite'])
+    # いいねされていない場合のみ、通知レコードを作成
+    return if temp.present?
+
+    notification = current_user.active_notifications.new(
+      post_id: id,
+      visited_id: user_id,
+      action: 'favorite'
+    )
+    # 自分の投稿に対するいいねの場合は、通知済みとする
+    notification.checked = true if notification.visitor_id == notification.visited_id
+    notification.save if notification.valid?
+  end
+
+  # メッセージ通知の作成
+  def create_notification_message!(current_user, message_id)
+    # 自分以外にメッセージしている人をすべて取得し、全員に通知を送る
+    temp_ids = Message.select(:user_id).where(post_id: id).where.not(user_id: current_user.id).distinct
+    temp_ids.each do |temp_id|
+      save_notification_message!(current_user, message_id, temp_id['user_id'])
+    end
+    # まだ誰もメッセージしていない場合は、投稿者に通知を送る
+    save_notification_message!(current_user, message_id, user_id) if temp_ids.blank?
+  end
+
+  # メッセージ通知の保存
+  def save_notification_message!(current_user, message_id, visited_id)
+    # 自分以外にメッセージしている人をすべて取得し、全員に通知を送る
+    notification = current_user.active_notifications.new(
+      post_id: id,
+      message_id: message_id,
+      visited_id: visited_id,
+      action: 'message'
+    )
+    # 自分の投稿に対するメッセージの場合は、通知済みとする
+    notification.checked = true if notification.visitor_id == notification.visited_id
+    notification.save if notification.valid?
   end
 end

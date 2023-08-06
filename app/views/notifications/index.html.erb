@@ -1,0 +1,15 @@
+<% notifications = @notifications.where.not(visitor_id: current_user.id) %>
+<h3 class="text-center">通知</h3>
+<div class="col-md-6 mx-auto">
+  <%= link_to destroy_all_notifications_path, data: {turbo_method: :delete, turbo_confirm: "全ての通知を削除しますか？"} do %>
+    <i class="bi bi-trash-fill"></i>
+    <h7 style="color: black;">全削除</h7>
+  <% end %>
+
+  <% if notifications.exists? %>
+    <%= render notifications %>
+    <%= paginate @notifications %>
+  <% else %>
+    <p>通知はありません</p>
+  <% end %>
+</div>
