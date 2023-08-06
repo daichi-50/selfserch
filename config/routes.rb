@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   root 'tops#index'
 
   resources :notifications, only: :index
+  delete 'notifications/destroy_all', to: 'notifications#destroy_all', as: :destroy_all_notifications
   resources :posts do
     resources :messages, only: [:create]
     resources :favorites, only: %i[create destroy]

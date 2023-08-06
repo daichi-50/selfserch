@@ -66,7 +66,7 @@ class Post < ApplicationRecord
   # 懸賞金の設定
   def set_prize_money
     count = 0
-    polite_words = %w[です ます ございます 自分 私 僕 俺 おれ わたし あ い う え お]
+    polite_words = "%w[です ます ございます 自分 私 僕 俺 おれ わたし あ い う え お]"
     polite_words.each do |word|
       count += title.scan(word).count if title
       count += description.scan(word).count if description
@@ -91,6 +91,7 @@ class Post < ApplicationRecord
     super(auth_object) + ['prize_money']
   end
 
+  # いいね通知の作成
   def create_notification_favorite!(current_user)
     # すでに「いいね」されているか検索
     temp = Notification.where(['visitor_id = ? and visited_id = ? and post_id = ? and action = ? ', current_user.id, user_id, id, 'favorite'])
@@ -107,6 +108,7 @@ class Post < ApplicationRecord
     notification.save if notification.valid?
   end
 
+  # メッセージ通知の作成
   def create_notification_message!(current_user, message_id)
     # 自分以外にメッセージしている人をすべて取得し、全員に通知を送る
     temp_ids = Message.select(:user_id).where(post_id: id).where.not(user_id: current_user.id).distinct
@@ -117,6 +119,7 @@ class Post < ApplicationRecord
     save_notification_message!(current_user, message_id, user_id) if temp_ids.blank?
   end
 
+  # メッセージ通知の保存
   def save_notification_message!(current_user, message_id, visited_id)
     # 自分以外にメッセージしている人をすべて取得し、全員に通知を送る
     notification = current_user.active_notifications.new(
