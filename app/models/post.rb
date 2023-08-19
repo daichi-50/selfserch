@@ -66,7 +66,7 @@ class Post < ApplicationRecord
   # 懸賞金の設定
   def set_prize_money
     count = 0
-    polite_words = "%w[です ます ございます 自分 私 僕 俺 おれ わたし あ い う え お]"
+    polite_words = %w[です ます ございます 自分 私 僕 俺 おれ わたし あ い う え お]
     polite_words.each do |word|
       count += title.scan(word).count if title
       count += description.scan(word).count if description
