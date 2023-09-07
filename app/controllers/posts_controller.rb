@@ -11,9 +11,6 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @message = Message.new
     @messages = @post.messages.includes(:user)
-    if @post.user_id != current_user.id
-      @post.create_notification_message!(current_user, @message.id)
-    end
   end
 
   def new
