@@ -15,5 +15,9 @@ class PostChannel < ApplicationCable::Channel
 
     # メッセージの作成だけ行い、ブロードキャストは after_commit フックに任せる
     post.messages.create!(content:, user_id: current_user.id)
+    sleep(0.1)
+    if post.user_id != current_user.id
+    post.create_notification_message!(current_user, post.messages.last.id)
+    end
   end
 end

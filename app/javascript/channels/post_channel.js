@@ -9,7 +9,7 @@ document.addEventListener("turbo:load", () => {
   const postId = messages.dataset.postId;
   const appPost = consumer.subscriptions.create({channel: "PostChannel", post_id: postId}, {
     received(data) {
-      // 送信者か受信者かを確認するロジックを追加
+      // 送信者か受信者かを確認するロジック
       let messageHtml;
       if (data.sender_id.toString() === currentUserId) {
         messageHtml = data.message;
