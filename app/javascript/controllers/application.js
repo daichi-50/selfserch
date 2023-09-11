@@ -5,7 +5,7 @@ import { Autocomplete } from "stimulus-autocomplete"
 const application = Application.start()
 application.register('autocomplete', Autocomplete)
 
-// Configure Stimulus development experience
+// 開発中のログと警告を表示させない
 application.debug = false
 window.Stimulus   = application
 
